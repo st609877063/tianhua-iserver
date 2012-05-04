@@ -108,7 +108,7 @@
 						//progress.toggleCancel(false);
 						//$("#articlePicture").val(decodeURIComponent(timestamp+file.name));
 						$("#articlePicture").val(decodeURIComponent(timestamp));
-						alert("文件上传成功");
+						alert("文件上传成功.");
 					} catch (ex) { this.debug(ex); } 
 				} 
 			
