@@ -1,0 +1,8 @@
+<html>
+    <body> 
+     List:<br>
+     #foreach($user in $list)
+       <li>$user.id - $user.name - $user.password</li>
+     #end
+     </body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Link>
+	<title>help</title>
+	<url>login.jsp</url>
+	<HelpShow>true</HelpShow>
+</Link>
