@@ -1,0 +1,528 @@
+#Indexbody {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(topbg.gif) #fff repeat-x left top; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+A:link {
+	FONT: 12px "宋体"; COLOR: #1835d1; TEXT-DECORATION: none
+}
+A:visited {
+	FONT: 12px "宋体"; COLOR: #1835d1; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #f30; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #f30; TEXT-DECORATION: underline
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+
+#indexContent {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(logo.gif) no-repeat left top; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 23px; TEXT-ALIGN: left
+}
+
+#ChannelMenuItems {
+	OVERFLOW: hidden; HEIGHT: 30px
+}
+#ChannelMenuItems LI {
+	OVERFLOW: hidden; HEIGHT: 30px
+}
+#ChannelMenuItems A {
+	OVERFLOW: hidden; HEIGHT: 30px
+}
+#ChannelMenuItems A SPAN {
+	OVERFLOW: hidden; HEIGHT: 30px
+}
+#ChannelMenuItems {
+	MARGIN: 0px 0px 0px 220px
+}
+#ChannelMenuItems LI {
+	FLOAT: left; MARGIN-RIGHT: 1px
+}
+#ChannelMenuItems A {
+	DISPLAY: block; BACKGROUND: url(none_left.gif) #ffefbd no-repeat left top; FLOAT: left; LINE-HEIGHT: 20px; TEXT-DECORATION: none
+}
+#ChannelMenuItems A SPAN {
+	PADDING-RIGHT: 13px; DISPLAY: block; PADDING-LEFT: 13px; BACKGROUND: url(none_side.gif) no-repeat right top; FLOAT: left; PADDING-BOTTOM: 0px; CURSOR: pointer; PADDING-TOP: 7px; TEXT-ALIGN: center
+}
+#ChannelMenuItems LI A {
+	BACKGROUND: url(digital_left.gif) #2e7bcb no-repeat left top
+}
+#ChannelMenuItems LI A SPAN {
+	FONT-WEIGHT: bold; BACKGROUND: url(digital_side.gif) no-repeat right top
+}
+.digitaltext {
+	COLOR: #2867b1
+}
+#ChannelMenuItems LI A {
+	COLOR: #2867b1
+}
+.segtext {
+	COLOR: #fff
+}
+#ChannelMenuItems LI A SPAN#SpanChannelMenu_MenuMyDeskTop {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 13px; FONT-WEIGHT: bold; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 7px
+}
+#ChannelMenuItems LI A SPAN#MenuMyDeskTopMore_Triangle {
+	PADDING-RIGHT: 13px; DISPLAY: block; PADDING-LEFT: 5px; BACKGROUND: url(digital_side.gif) no-repeat right top; PADDING-BOTTOM: 0px; PADDING-TOP: 13px
+}
+#PE_TopQiuck {
+	MARGIN: 0px auto; WIDTH: 170px; COLOR: #0065b1
+}
+#PE_TopQiuck DL {
+	BORDER-RIGHT: #8da8d0 1px solid; BORDER-TOP: #8da8d0 1px solid; DISPLAY: block; MIN-HEIGHT: 250px; BACKGROUND: url(TopQuick03.gif) repeat-x left 1px; BORDER-LEFT: #8da8d0 1px solid; BORDER-BOTTOM: #8da8d0 1px solid; HEIGHT: 250px
+}
+#PE_TopQiuck .Border {
+	BORDER-RIGHT: #fff 1px solid; BORDER-LEFT: #fff 1px solid
+}
+#PE_TopQiuck .Title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-WEIGHT: bold; BACKGROUND: url(TopQuick04.gif) no-repeat center bottom; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-TOP: 5px; HEIGHT: 26px
+}
+#PE_TopQiuck .List {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 10px; PADDING-TOP: 5px
+}
+#PE_TopQiuck .List LI {
+	DISPLAY: block; LINE-HEIGHT: 22px; HEIGHT: 22px
+}
+#PE_TopQiuck .List A {
+	DISPLAY: block; PADDING-LEFT: 8px; COLOR: #4579b9; LINE-HEIGHT: 22px; HEIGHT: 22px; TEXT-DECORATION: none
+}
+#PE_TopQiuck .List A:hover {
+	BORDER-RIGHT: #e6eff8 1px solid; BORDER-TOP: #e6eff8 1px solid; BACKGROUND: #f2f8fd; BORDER-LEFT: #e6eff8 1px solid; COLOR: #c00; LINE-HEIGHT: 20px; BORDER-BOTTOM: #e6eff8 1px solid; HEIGHT: 20px
+}
+#SubMenu {
+	MARGIN-LEFT: 225px; COLOR: #fff; LINE-HEIGHT: 25px; HEIGHT: 25px; TEXT-ALIGN: left
+}
+#SubMenu LI {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; BACKGROUND: url(chanli.gif) no-repeat left center; FLOAT: left; LINE-HEIGHT: 25px
+}
+#SubMenu LI A {
+	DISPLAY: block; COLOR: #fff; LINE-HEIGHT: 25px
+}
+.SubMenuDiv {
+	BORDER-RIGHT: #9fbdd7 1px solid; BORDER-TOP: #9fbdd7 1px solid; Z-INDEX: 2; FLOAT: left; VISIBILITY: hidden; BORDER-LEFT: #9fbdd7 1px solid; BORDER-BOTTOM: #9fbdd7 1px solid; POSITION: absolute; TEXT-ALIGN: left
+}
+.SubMenuDiv DL {
+	MARGIN: 0px; TEXT-ALIGN: left
+}
+.SubMenuDiv DD {
+	MARGIN: 0px; TEXT-ALIGN: left
+}
+.SubMenuDiv DD {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; WIDTH: 130px; PADDING-TOP: 0px
+}
+.SubMenuDiv DL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(SubMenuDivbg.gif) #d6e7f7 repeat-y left top; PADDING-BOTTOM: 1px; PADDING-TOP: 1px
+}
+#SubMenu DD A {
+	PADDING-LEFT: 20px
+}
+#SubMenu DD A:hover {
+	PADDING-LEFT: 20px
+}
+#SubMenu DD A {
+	COLOR: #446592
+}
+#SubMenu DD A:hover {
+	BACKGROUND: #e4f1fc; COLOR: #003685; TEXT-DECORATION: underline
+}
+.clearbox2 {
+	CLEAR: both; BORDER-TOP: 0px; MARGIN-TOP: 0px; FONT-SIZE: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 700px; HEIGHT: 0px
+}
+#Announce {
+	RIGHT: 5px; COLOR: #2b6ab3; POSITION: absolute; TOP: 10px
+}
+#Announce A {
+	FONT: 12px "宋体"; TEXT-DECORATION: none
+}
+#Announce A:link {
+	COLOR: #2b6ab3
+}
+#Announce A:visited {
+	COLOR: #2b6ab3
+}
+#Announce A:active {
+	COLOR: #c00
+}
+#Announce A:hover {
+	COLOR: #c00
+}
+.but {
+	CURSOR: pointer
+}
+.popupTips {
+	DISPLAY: none; Z-INDEX: 999; RIGHT: 20px; BACKGROUND: url(bg_tipsAll.gif) repeat-y left 50%; WIDTH: 247px; BOTTOM: 0px; POSITION: absolute
+}
+.popupTips DT {
+	PADDING-LEFT: 18px; FONT-WEIGHT: bolder; BACKGROUND: url(bg_tipsTop.gif) no-repeat left top; COLOR: #3666aa; LINE-HEIGHT: 27px; HEIGHT: 29px
+}
+.popupTips DT A {
+	DISPLAY: block; FLOAT: right; WIDTH: 20px; CURSOR: pointer; LINE-HEIGHT: 27px; HEIGHT: 27px
+}
+.tips_close {
+	BACKGROUND: url(bt_close.gif) no-repeat left 10px
+}
+.tips_fold {
+	BACKGROUND: url(bt_fold.gif) no-repeat left 11px
+}
+.popupTips DD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 25px; MIN-HEIGHT: 100px; BACKGROUND: url(bg_tipsBottom.gif) no-repeat left bottom; PADDING-BOTTOM: 20px; PADDING-TOP: 8px; HEIGHT: 100px
+}
+.popupTips DD A {
+	COLOR: #3666aa; LINE-HEIGHT: 17px
+}
+.popupTips DD A:visited {
+	COLOR: #3666aa; LINE-HEIGHT: 17px
+}
+.popupTips DD A:hover {
+	COLOR: #2e82f9
+}
+.HelpTips {
+	DISPLAY: none; Z-INDEX: 10001; RIGHT: 300px; WIDTH: 500px; POSITION: absolute; TOP: 100px; BACKGROUND-COLOR: #e1e3e5
+}
+.HelpTitle {
+	BACKGROUND-POSITION: left top; PADDING-LEFT: 18px; FONT-WEIGHT: bolder; FLOAT: left; BACKGROUND-IMAGE: url(help_tips.gif); WIDTH: 480px; CURSOR: move; COLOR: #3666aa; LINE-HEIGHT: 27px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 29px
+}
+.HelpTitle A {
+	DISPLAY: block; FLOAT: right; WIDTH: 20px; CURSOR: pointer; LINE-HEIGHT: 27px; HEIGHT: 27px
+}
+.tips_close {
+	BACKGROUND: url(bt_close.gif) no-repeat left 10px; FLOAT: right;  HEIGHT: 7px
+}
+.HelpInfo {
+	 WIDTH: 470px;PADDING-RIGHT: 5px; PADDING-LEFT: 25px; FLOAT: left; PADDING-BOTTOM: 20px; PADDING-TOP: 8px; HEIGHT: 250px; BACKGROUND-COLOR: #e1e3e5
+}
+.HelpInfo A {
+	COLOR: #3666aa; LINE-HEIGHT: 17px
+}
+.popupTips DD A:visited {
+	COLOR: #3666aa; LINE-HEIGHT: 17px
+}
+.HelpInfo A:hover {
+	COLOR: #2e82f9
+}
+.HelpInfo UL {
+	LIST-STYLE-TYPE: square
+}
+.HelpTipsb {
+	FLOAT: left; WIDTH: 500px; HEIGHT: 25px; BACKGROUND-COLOR: #e1e3e5
+}
+#quicknavigation {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+#ShowQuickNavigation {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+#quicknavigation {
+	BACKGROUND: #ffffff; MARGIN: 0px auto; WIDTH: 170px; COLOR: #0065b1
+}
+#quicknavigation .Topdl {
+	MARGIN-TOP: -6px
+}
+#quicknavigation .Top {
+	FONT-SIZE: 0px; BACKGROUND: url(TopQuick02.gif) no-repeat left bottom; HEIGHT: 7px
+}
+#quicknavigation .Content {
+	BORDER-RIGHT: #8da8d0 1px solid; BORDER-TOP: #8da8d0 1px solid; BACKGROUND: url(TopQuick03.gif) #ffffff repeat-x left 1px; BORDER-LEFT: #8da8d0 1px solid; BORDER-BOTTOM: #8da8d0 1px solid
+}
+#quicknavigation .Border {
+	BORDER-RIGHT: #fff 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-LEFT: #fff 1px solid
+}
+#quicknavigation .Title {
+	BORDER-RIGHT: medium none; PADDING-RIGHT: 0px; BORDER-TOP: medium none; PADDING-LEFT: 12px; FONT-WEIGHT: bold; BACKGROUND: url(TopQuick04.gif) no-repeat center bottom; PADDING-BOTTOM: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 26px; PADDING-TOP: 5px; BORDER-BOTTOM: medium none; HEIGHT: 26px
+}
+#quicknavigation .Title .UpDown {
+	PADDING-RIGHT: 10px; DISPLAY: none; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 0px; WIDTH: 11px; PADDING-TOP: 0px; HEIGHT: 22px
+}
+#quicknavigation .Title .UpDown LI {
+	DISPLAY: block; FONT-SIZE: 0px; OVERFLOW: hidden; HEIGHT: 11px
+}
+#quicknavigation .Title .UpDown LI A {
+	DISPLAY: block; BACKGROUND: url(TopQuick02.gif) no-repeat 0px 0px; WIDTH: 11px; HEIGHT: 9px
+}
+#quicknavigation .Title .UpDown LI A.dn {
+	BACKGROUND-POSITION: left -11px
+}
+#quicknavigation .Title .UpDown LI A.dn_out {
+	BACKGROUND-POSITION: left -11px
+}
+#quicknavigation .Title .UpDown LI A.up_hover {
+	BACKGROUND-POSITION: left -22px
+}
+#quicknavigation .Title .UpDown LI A.dn_hover {
+	BACKGROUND-POSITION: left -33px
+}
+#quicknavigation .List {
+	BORDER-RIGHT: medium none; PADDING-RIGHT: 8px; BORDER-TOP: medium none; PADDING-LEFT: 8px; PADDING-BOTTOM: 10px; BORDER-LEFT: medium none; PADDING-TOP: 5px; BORDER-BOTTOM: medium none
+}
+#quicknavigation .List LI {
+	DISPLAY: block; LINE-HEIGHT: 22px; HEIGHT: 22px
+}
+#quicknavigation .List A {
+	DISPLAY: block; PADDING-LEFT: 8px; COLOR: #4579b9; LINE-HEIGHT: 22px; HEIGHT: 22px; TEXT-DECORATION: none
+}
+#quicknavigation .List A:hover {
+	BORDER-RIGHT: #e6eff8 1px solid; BORDER-TOP: #e6eff8 1px solid; BACKGROUND: #f2f8fd; BORDER-LEFT: #e6eff8 1px solid; COLOR: #c00; LINE-HEIGHT: 20px; BORDER-BOTTOM: #e6eff8 1px solid; HEIGHT: 20px
+}
+#FrameTabs {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(tab-strip-bg.gif) #d4e4f6 repeat-x 50% top; PADDING-BOTTOM: 1px; PADDING-TOP: 2px; POSITION: relative; HEIGHT: 28px! important
+}
+#FrameTabs UL {
+	PADDING-RIGHT: 4px; DISPLAY: block; PADDING-LEFT: 4px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; HEIGHT: 24px
+}
+UL.tab-strip {
+	DISPLAY: block; ZOOM: 1
+}
+UL.tab-strip-top {
+	
+}
+.tab-left {
+	DISPLAY: none; Z-INDEX: 10; BACKGROUND: url(scroll-left.gif) no-repeat -18px 0px; LEFT: 0px; WIDTH: 18px; CURSOR: pointer; POSITION: absolute; TOP: 0px; HEIGHT: 23px
+}
+.tab-left-over {
+	BACKGROUND-POSITION: 0px 0px
+}
+.tab-disabled {
+	BACKGROUND-POSITION: -36px 0px; CURSOR: default
+}
+.tab-right {
+	DISPLAY: none; Z-INDEX: 10; RIGHT: 0px; BACKGROUND: url(scroll-right.gif) no-repeat 0px 0px; FLOAT: right; WIDTH: 18px; CURSOR: pointer; POSITION: absolute; TOP: 0px; HEIGHT: 23px
+}
+.tab-right-over {
+	BACKGROUND-POSITION: -18px 0px
+}
+.tab-strip-wrap {
+	OVERFLOW: hidden; WIDTH: 100%; ZOOM: 1; POSITION: relative
+}
+.tab-strip-margin {
+	MARGIN-LEFT: 18px; MARGIN-RIGHT: 18px
+}
+#FrameTabs LI {
+	BACKGROUND: url(tabs-sprite.gif) repeat-x left -201px; FLOAT: left; LINE-HEIGHT: 21px; MARGIN-RIGHT: 2px; HEIGHT: 21px
+}
+#FrameTabs LI A {
+	DISPLAY: block; PADDING-LEFT: 8px; FONT-SIZE: 12px; BACKGROUND: url(tabs-sprite.gif) no-repeat left -51px; FLOAT: left; COLOR: #416aa3; LINE-HEIGHT: 21px; HEIGHT: 21px; TEXT-DECORATION: none
+}
+#FrameTabs LI A.closeTab {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 5px; BACKGROUND: url(tabs-sprite.gif) no-repeat right -351px; PADDING-BOTTOM: 6px; CURSOR: pointer; PADDING-TOP: 4px; HEIGHT: 11px
+}
+#FrameTabs LI.FrameTabs_hover {
+	BACKGROUND-POSITION: left -251px
+}
+#FrameTabs LI.FrameTabs_hover A {
+	BACKGROUND-POSITION: left -101px
+}
+#FrameTabs LI.FrameTabs_hover A.closeTab {
+	BACKGROUND-POSITION: right -401px
+}
+#FrameTabs LI.current {
+	BACKGROUND-POSITION: left -151px; LINE-HEIGHT: 24px; HEIGHT: 24px
+}
+#FrameTabs LI.current A {
+	BACKGROUND-POSITION: left 0px; FONT-WEIGHT: bold
+}
+#FrameTabs LI.current A.closeTab {
+	BACKGROUND-POSITION: right -301px
+}
+#FrameTabs LI#newFrameTab {
+	PADDING-LEFT: 2px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-TOP: 4px; HEIGHT: 15px
+}
+#FrameTabs LI#newFrameTab A {
+	BACKGROUND: url(FrameTabs_Add.gif) no-repeat left top; WIDTH: 15px; HEIGHT: 15px
+}
+#FrameTabs LI#newFrameTab A:hover {
+	BACKGROUND-POSITION: 0px -15px
+}
+.contextMenuEleOn {
+	BACKGROUND-COLOR: #bfdfff
+}
+#MasterPagebody .operatingMenu {
+	BORDER-RIGHT: #868686 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #868686 1px solid; PADDING-LEFT: 0px; BACKGROUND: url(Controls.con-bg.gif) #fafafa repeat-y left 50%; PADDING-BOTTOM: 2px; MARGIN: 0px auto; BORDER-LEFT: #868686 1px solid; WIDTH: 150px; PADDING-TOP: 2px; BORDER-BOTTOM: #868686 1px solid
+}
+#MasterPagebody .operatingMenu IMG {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+#MasterPagebody .operatingMenu LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; LINE-HEIGHT: 25px; PADDING-TOP: 0px; HEIGHT: 25px
+}
+#MasterPagebody .operatingMenu LI UL {
+	DISPLAY: block
+}
+#MasterPagebody .operatingMenu LI UL LI {
+	LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+#MasterPagebody .operatingMenu LI SPAN {
+	FLOAT: left; CURSOR: pointer; LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+#MasterPagebody .operatingMenu LI SPAN.Picview {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; WIDTH: 26px; PADDING-TOP: 2px; HEIGHT: 22px
+}
+#MasterPagebody .operatingMenu LI SPAN.Right-side {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 9px; OVERFLOW: hidden; WIDTH: 4px; PADDING-TOP: 9px; HEIGHT: 7px
+}
+#MasterPagebody .operatingMenu LI.menuitemhover {
+	BACKGROUND: url(Controls.List-on.left.gif) no-repeat 0px 0px
+}
+#MasterPagebody .operatingMenu LI UL LI A {
+	DISPLAY: block; FONT-SIZE: 12px; BACKGROUND: none transparent scroll repeat 0% 0%; LINE-HEIGHT: 25px; TEXT-DECORATION: none
+}
+#MasterPagebody .operatingMenu LI.separator {
+	CLEAR: both; FONT-SIZE: 0px; BACKGROUND: url(Controls.separator.gif) no-repeat left top; OVERFLOW: hidden; LINE-HEIGHT: 0; HEIGHT: 2px
+}
+#prompt-note {
+	BORDER-RIGHT: #6493c8 1px solid; BORDER-TOP: #6493c8 1px solid; MARGIN-TOP: 10px; BACKGROUND: #fff; BORDER-LEFT: #6493c8 1px solid; BORDER-BOTTOM: #6493c8 1px solid
+}
+#prompt-note DL {
+	PADDING-RIGHT: 1px; DISPLAY: block; PADDING-LEFT: 1px; MIN-HEIGHT: 100px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; HEIGHT: 100px
+}
+#prompt-note DT.prompt-note-tit {
+	FONT-SIZE: 12px; BACKGROUND: url(prompt-note-tit-bg.gif) repeat-x 50% top; OVERFLOW: hidden; LINE-HEIGHT: 26px; HEIGHT: 26px
+}
+#prompt-note DT.prompt-note-tit SPAN {
+	PADDING-RIGHT: 80px; DISPLAY: block; PADDING-LEFT: 28px; FONT-WEIGHT: bold; BACKGROUND: url(prompt-note-ico.gif) no-repeat 10px 8px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #3666aa; PADDING-TOP: 0px
+}
+#prompt-note DT.prompt-note-tit A {
+	PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 15px; BACKGROUND: url(prompt-note-off.gif) no-repeat left bottom; FLOAT: left; PADDING-BOTTOM: 0px; CURSOR: pointer; COLOR: #999; LINE-HEIGHT: 20px; PADDING-TOP: 6px; HEIGHT: 20px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+#prompt-note DT.prompt-note-tit A.on {
+	BACKGROUND: url(prompt-note-on.gif) no-repeat left bottom; COLOR: #000
+}
+#prompt-note DT.prompt-note-tit SPAN.right-line {
+	PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; MARGIN-TOP: 4px; PADDING-LEFT: 0px; BACKGROUND: #d0d0d0; PADDING-BOTTOM: 0px; WIDTH: 1px; PADDING-TOP: 0px; HEIGHT: 21px
+}
+#prompt-note DD.prompt-note-con {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; PADDING-TOP: 10px
+}
+#prompt-note DD.prompt-note-con P {
+	LINE-HEIGHT: 22px
+}
+#prompt-note DD.prompt-note-con LI {
+	LIST-STYLE-POSITION: outside; MARGIN-LEFT: 25px; LINE-HEIGHT: 22px; LIST-STYLE-TYPE: disc
+}
+
+
+.btn3_mouseout {
+	BORDER-RIGHT: #99CCCC 1px solid;
+	PADDING-RIGHT: 2px;
+	BORDER-TOP: #99CCCC 1px solid;
+	PADDING-LEFT: 2px;
+	FONT-SIZE: 12px;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+	BORDER-LEFT: #99CCCC 1px solid;
+	CURSOR: hand;
+	COLOR: black;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #99CCCC 1px solid;
+	HEIGHT: 20px
+}
+
+.btn3_mouseover {
+	BORDER-RIGHT: #99CCCC 1px solid;
+	PADDING-RIGHT: 2px;
+	BORDER-TOP: #99CCCC 1px solid;
+	PADDING-LEFT: 2px;
+	FONT-SIZE: 12px;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#0066CC);
+	BORDER-LEFT: #99CCCC 1px solid;
+	CURSOR: hand;
+	COLOR: black;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #99CCCC 1px solid;
+	HEIGHT: 20px
+}
+
+.btn3_mousedown {
+	BORDER-RIGHT: #FFE400 1px solid;
+	PADDING-RIGHT: 2px;
+	BORDER-TOP: #FFE400 1px solid;
+	PADDING-LEFT: 2px;
+	FONT-SIZE: 12px;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#0066CC);
+	BORDER-LEFT: #FFE400 1px solid;
+	CURSOR: hand;
+	COLOR: black;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #FFE400 1px solid;
+	HEIGHT: 20px
+}
+
+.btn3_mouseup {
+	BORDER-RIGHT: #99CCCC 1px solid;
+	PADDING-RIGHT: 2px;
+	BORDER-TOP: #99CCCC 1px solid;
+	PADDING-LEFT: 2px;
+	FONT-SIZE: 12px;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+	BORDER-LEFT: #99CCCC 1px solid;
+	CURSOR: hand;
+	COLOR: black;
+	PADDING-TOP: 1px;
+	BORDER-BOTTOM: #99CCCC 1px solid;
+	HEIGHT: 20px
+}
+
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	font-size: 0;
+	width: 0%;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	margin-top: 2px;
+	width: 337px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+}
+
+a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(../images/cancelbutton.gif);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}
+
+.swfupload {
+	vertical-align: top;
+}
+
