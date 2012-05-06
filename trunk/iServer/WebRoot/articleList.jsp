@@ -45,7 +45,8 @@
 				"&articlePicture="+$(rowData).data("articlePicture").toString()+
 				"&articleDesc="+$(rowData).data("articleDesc").toString()+
 				"&articleTop="+$(rowData).data("articleTop").toString()+
-				"&author="+$(rowData).data("author").toString();
+				"&author="+$(rowData).data("author").toString()+
+				"&shareLink="+$(rowData).data("shareLink").toString();
 		}
 		$(document).ready(function(){
 			magazineId = '${magazineId}';
@@ -56,18 +57,18 @@
 					colModel : [
 						{display: '文章ID', id:'articleId',name :'articleId', width : 50, sortable : false, align: 'left',hide:true},
 						{display: '文章名称', id:'articleName',name :'articleName', width : 150, sortable : false, align: 'left'},
-						{display: '栏目名称', id:'sectionName',name :'sectionName', width : 150, sortable : false, align: 'left'},
-						{display: '杂志名称',id:'magazineName', name :'magazineName', width : 150, sortable : false, align: 'left'},
+						{display: '栏目名称', id:'sectionName',name :'sectionName', width : 50, sortable : false, align: 'left'},
+						{display: '杂志名称',id:'magazineName', name :'magazineName', width : 100, sortable : false, align: 'left'},
 						{display: '允许评论',id:'commentState', name :'commentState', width : 50, sortable : false, align: 'left'},
-						{display: '显示序号',id:'seq', name :'seq', width : 50, sortable : false, align: 'left',hide:true},
-						{display: '文章图片',id:'articlePicture', name :'articlePicture', width : 150, sortable : false, align: 'left',hide:true},
+						{display: '显示序号',id:'seq', name :'seq', width : 50, sortable : false, align: 'left'},
+						{display: '文章图片',id:'articlePicture', name :'articlePicture', width : 100, sortable : false, align: 'left'},
 						{display: '文章描述',id:'articleDesc', name :'articleDesc', width : 150, sortable : false, align: 'left'},
 						{display: '推荐文章',id:'articleTop', name :'articleTop', width : 50, sortable : false, align: 'left'},
-						{display: '文章作者',id:'author', name :'author', width : 150, sortable : false, align: 'left'},
+						{display: '文章作者',id:'author', name :'author', width : 100, sortable : false, align: 'left'},
 						{display: '重磅推荐',id:'articleRecommend', name :'articleRecommend', width : 50, sortable : false, align: 'left'},
-						{display: '栏目ID', id:'sectionId',name :'sectionId', width : 150, sortable : false, align: 'left',hide:true}
-						
-						],
+						{display: '栏目ID', id:'sectionId',name :'sectionId', width : 50, sortable : false, align: 'left',hide:true},
+						{display: '微博分享链接', id:'shareLink',name :'shareLink', width : 150, sortable : false, align: 'left',hide:true}
+					],
 					buttons : [{
 						name :'新增',
 						bclass :'add',
@@ -165,6 +166,7 @@
 				"&articleTop="+data[8]+
 				"&author="+data[9];
 				"&articleRecommend="+data[10];
+				"&shareLink="+data[11];
 			}	
 			
 			function deleteArticle(){
