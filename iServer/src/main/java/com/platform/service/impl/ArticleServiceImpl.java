@@ -364,6 +364,7 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("</news_link>\n");
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
 			sb.append("<news_source>");sb.append(article.getSection().getSectionName());sb.append("</news_source>\n");
+			sb.append("<share_link>");sb.append("http://wwww.baidu.com");sb.append("</share_link>\n");
 			
 			sb.append("<news_mag>");sb.append(article.getSection().getMagazine().getMagazineName());sb.append("</news_mag>\n");
 			sb.append("<news_author>");sb.append(article.getAuthor());sb.append("</news_author>\n");
