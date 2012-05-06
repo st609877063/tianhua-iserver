@@ -124,7 +124,7 @@ public class MagazineServiceImpl implements MagazineService {
 	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
 				" where m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
-				" order by CREATE_DATE DESC limit "+start+","+limit; 
+				" order by PHASE DESC, CREATE_DATE DESC limit "+start+","+limit; 
 		/*
 		String sql = " select m.magazine_id, m.magazine_name, m.magazine_picture, IFNULL(se.section_id, -1) as section_id "+
 					" from magazine_class mc,  magazine m left join section se on se.magazine_id=m.magazine_id and se.section_name='重磅推荐' " +
