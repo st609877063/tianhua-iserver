@@ -104,6 +104,7 @@ public class ArticleServiceImpl implements ArticleService {
 					object.put("author",rs.getString("author"));
 					object.put("articleTop",rs.getInt("Article_Top")==1?"是":"否");
 					object.put("articleRecommend",rs.getInt("Article_Recommend")==1?"是":"否");
+					object.put("shareLink",rs.getString("share_link"));
 					jarray.put(object);
 				}
 			} catch (SQLException e) {
@@ -364,7 +365,7 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("</news_link>\n");
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
 			sb.append("<news_source>");sb.append(article.getSection().getSectionName());sb.append("</news_source>\n");
-			sb.append("<share_link>");sb.append("http://wwww.baidu.com");sb.append("</share_link>\n");
+			sb.append("<share_link>");sb.append(article.getShareLink());sb.append("</share_link>\n");
 			
 			sb.append("<news_mag>");sb.append(article.getSection().getMagazine().getMagazineName());sb.append("</news_mag>\n");
 			sb.append("<news_author>");sb.append(article.getAuthor());sb.append("</news_author>\n");

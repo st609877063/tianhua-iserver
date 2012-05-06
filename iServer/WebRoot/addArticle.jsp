@@ -13,6 +13,7 @@
 <c:set var="articleTop" value="${param.articleTop}"/>
 <c:set var="articleRecommend" value="${param.articleRecommend}"/>
 <c:set var="author" value="${param.author}"/>
+<c:set var="shareLink" value="${param.shareLink}"/>
 <c:set var="method" value="${param.method}"/>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%
@@ -202,6 +203,7 @@
 				$("#seq").val("${seq}");
 				$("#articlePicture").val("${articlePicture}");
 				$("#author").val("${author}");
+				$("#shareLink").val("${shareLink}");
 				getArticleById(articleId);
 		}
 		
@@ -230,6 +232,7 @@
 				var articleContent = encodeStr(article.getData());
 				var articlePicture = $("#articlePicture").val();
 				var author = $("#author").val();
+				var shareLink = $("#shareLink").val();
 				var articleName = $("#articleName").val();
 				var commentState = $("#commentState").val();
 				var articleDesc = $("#articleDesc").val();
@@ -250,6 +253,9 @@
 					return false;
 				}else if(author==""){
 					alert("文章作者不能为空!");
+					return false;
+				}else if(shareLink==""){
+					alert("文章分享链接不能为空!");
 					return false;
 				}else if(seq==""||seq.length==0){
 					alert("显示序号不能为空!");
@@ -367,6 +373,15 @@
 								<input id="btnCancel"  type="hidden" style="display:none" value=""  disabled="disabled" >
 								<input type="button"  id="viewArticlePicture" name="viewArticlePicture" value="预览图片" onclick=viewArticle() >
 								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="left">
+								<span style="font-size: 12pt; font-weight: bold; color: #3666AA">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</td>
+							<td align="left" valign="bottom">		
+								文章微博分享链接:
+								<input type="text" id="shareLink" name="shareLink" size="90" />
 							</td>
 						</tr>
 					</table>

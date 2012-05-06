@@ -74,6 +74,9 @@ public class Article implements Serializable{
 	@Column(updatable = true)  
 	private String author;
 	
+	@Column(updatable = true)  
+	private String shareLink;
+	
 	public String getArticleId() {
 		return articleId;
 	}
@@ -176,6 +179,14 @@ public class Article implements Serializable{
 
 	public void setArticleRecommend(int articleRecommend) {
 		this.articleRecommend = articleRecommend;
+	}
+
+	public String getShareLink() {
+		return shareLink;
+	}
+
+	public void setShareLink(String shareLink) {
+		this.shareLink = shareLink;
 	}
    
 }
