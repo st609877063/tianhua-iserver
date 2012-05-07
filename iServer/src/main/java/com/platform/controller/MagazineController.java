@@ -1,5 +1,6 @@
 package com.platform.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -177,7 +179,7 @@ public class MagazineController {
 		writer = response.getWriter();
 		boolean flag = false;
 		boolean flag2 = false;
-		System.out.println(magazine.getMagazineName());
+		//System.out.println(magazine.getMagazineName());
 		//String magazineName =request.getParameter("magazineName");
 		//if(magazineName!=null && !magazineName.equals("")) {
 		//	magazineName = new String(magazineName.getBytes("iso-8859-1"), "utf-8"); 
@@ -208,10 +210,24 @@ public class MagazineController {
 	}
 	
 	@RequestMapping(value="/upload",method = RequestMethod.POST)
-	public void uploadMagazine(HttpServletRequest request,HttpServletResponse response){
+	public void uploadMagazine(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String timestamp = (String)request.getParameter("timestamp");
 		//System.out.println("timestamp====="+timestamp);
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
+		
+		/*
+		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
+		String tfileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_t"; //temp
+		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
+		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
+		File sourceFile = new File(fileName);
+		File tFile = new File(tfileName);
+		File sFile = new File(sFileName);
+		File bFile = new File(bFileName);
+		FileUtils.copyFile(sourceFile, tFile);
+		//FileUtils.copyFile(sourceFile, sFile);
+		//FileUtils.copyFile(sourceFile, bFile);
+		 */
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)

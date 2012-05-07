@@ -67,7 +67,7 @@ public class SectionController {
 		try {
 			writer = response.getWriter();
 			String str = sectionService.getIphoneSections(magazineId,startRow, pagesize,sortorder);
-			System.out.println(str);
+			//System.out.println(str);
 			writer.write(str);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

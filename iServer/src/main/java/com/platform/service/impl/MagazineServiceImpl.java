@@ -150,7 +150,7 @@ public class MagazineServiceImpl implements MagazineService {
 					sb.append("</data>");
 				}
 				sb.append("</root>\n");
-				System.out.println("magazine list:"+sb.toString());
+				//System.out.println("magazine list:"+sb.toString());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -188,7 +188,7 @@ public class MagazineServiceImpl implements MagazineService {
 				}
 				sb.append("</channel>\n");
 				sb.append("</rss>\n");
-				System.out.println("magazine:"+sb.toString());
+				//System.out.println("magazine:"+sb.toString());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
