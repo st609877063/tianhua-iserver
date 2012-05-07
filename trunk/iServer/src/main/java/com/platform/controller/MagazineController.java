@@ -210,7 +210,7 @@ public class MagazineController {
 	@RequestMapping(value="/upload",method = RequestMethod.POST)
 	public void uploadMagazine(HttpServletRequest request,HttpServletResponse response){
 		String timestamp = (String)request.getParameter("timestamp");
-		System.out.println("timestamp====="+timestamp);
+		//System.out.println("timestamp====="+timestamp);
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 	}
 	
