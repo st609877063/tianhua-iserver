@@ -215,7 +215,6 @@ public class MagazineController {
 		//System.out.println("timestamp====="+timestamp);
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 		
-		/*
 		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
 		String tfileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_t"; //temp
 		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
@@ -227,7 +226,6 @@ public class MagazineController {
 		FileUtils.copyFile(sourceFile, tFile);
 		//FileUtils.copyFile(sourceFile, sFile);
 		//FileUtils.copyFile(sourceFile, bFile);
-		 */
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
