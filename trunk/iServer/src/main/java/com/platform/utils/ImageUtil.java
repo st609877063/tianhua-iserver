@@ -1,111 +1,75 @@
 package com.platform.utils;
 
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
-
 public class ImageUtil{
 
-	/**
-	 * 
-	 * @param basepath
-	 * @param tempimage
-	 * @param sourceFile
-	 * @param fileType
-	 *            文件类型
-	 * @return
-	 */
-	public boolean bigZoomImage(String basepath, String tempimage, File sourceFile) {
-		try {
+	public static void saveResizeImage( String sourceFilePath, String saveFilePath, int width, int hight) throws Exception {
+		
+		File sourceFile = new File(sourceFilePath);
+		BufferedImage srcImage = ImageIO.read(sourceFile);
 
-			String fileUrl = basepath + "uploadimage/" + tempimage;
-			String newUrl_b = basepath + "uploadimage/b_" + tempimage;
-			BufferedImage image = ImageIO.read(sourceFile);
-
-			int imgWidth = image.getWidth();
-			int imgHeight = image.getHeight();
-			if (imgWidth > imgHeight) {// 宽>高,长图
-				Double bigzomm = imgWidth / 452.0;
-				if (bigzomm > 1) {
-					ZoomImage zimg = new ZoomImage();
-					Double realheight = (imgHeight / bigzomm);
-
-					//zimg.ZoomTheImage(fileUrl, newUrl_b, 452, realheight.intValue());
-				}
-				else {
-					ZoomImage zimg = new ZoomImage();
-					//zimg.ZoomTheImage(fileUrl, newUrl_b, imgWidth, imgHeight);
-				}
-			}
-			else {// 高>宽,高图
-				//modified by mayq
-				//暂时将高度放宽到2000以上，再对宽度进行处理
-				if (imgHeight > 2000) {
-					if (imgWidth >= 452) {
-						Double bigzomm = imgWidth / 452.0;
-						ZoomImage zimg = new ZoomImage();
-						Double realheight = 0.0;
-						// 大图
-						realheight = (imgHeight / bigzomm);
-						if (realheight > 2500) {
-							bigzomm = (imgHeight / 2500.0);
-							Double realwidth = (imgWidth / bigzomm);
-							//zimg.ZoomTheImage(fileUrl, newUrl_b, realwidth.intValue(), 2500);
-						}
-						else {
-							//zimg.ZoomTheImage(fileUrl, newUrl_b, 452, realheight.intValue());
-						}
-					}
-					else {
-						Double bigzomm = imgHeight / 500.0;
-						ZoomImage zimg = new ZoomImage();
-						Double realwidth = 0.0;
-						// 大图
-						realwidth = (imgWidth / bigzomm);
-
-						//zimg.ZoomTheImage(fileUrl, newUrl_b, imgWidth, imgHeight);
-					}
-				}
-				else {
-					if (imgWidth >= 452) {
-						Double bigzomm = imgWidth / 452.0;
-						ZoomImage zimg = new ZoomImage();
-						Double realheight = 0.0;
-						// 大图
-						realheight = (imgHeight / bigzomm);
-
-						//zimg.ZoomTheImage(fileUrl, newUrl_b, 452, realheight.intValue());
-					}
-					else {//
-						// 大图
-						ZoomImage zimg = new ZoomImage();
-
-						//zimg.ZoomTheImage(fileUrl, newUrl_b, imgWidth, imgHeight);
-					}
-				}
-			}
-
-			return true;
-			
-		} catch (IOException e) {
-			return false;
+		if (width > 0 || hight > 0) {
+			srcImage = resize(srcImage, width, hight);
 		}
-
+		
+		File saveFile = new File(saveFilePath);
+		ImageIO.write(srcImage, "JPEG", saveFile);
 	}
 
+	public static BufferedImage resize(BufferedImage srcBufImage, int width, int height) {
 
+		BufferedImage bufTarget = null;
+
+		int type = srcBufImage.getType();
+		double sx = (double) width / srcBufImage.getWidth();
+		double sy = (double) height / srcBufImage.getHeight();
+
+		//这里想实现在targetW，targetH范围内实现等比缩放。如果不需要等比缩放
+        //则将下面的if else语句注释即可
+        if(sx > sy) {
+            sx = sy;
+            width = (int)(sx * srcBufImage.getWidth());
+        } else{
+            sy = sx;
+            height = (int)(sy * srcBufImage.getHeight());
+        }
+		
+		if (type == BufferedImage.TYPE_CUSTOM) {
+			ColorModel cm = srcBufImage.getColorModel();
+			WritableRaster raster = cm.createCompatibleWritableRaster(width, height);
+			boolean alphaPremultiplied = cm.isAlphaPremultiplied();
+			bufTarget = new BufferedImage(cm, raster, alphaPremultiplied, null);
+		} else
+			bufTarget = new BufferedImage(width, height, type);
+
+		Graphics2D g = bufTarget.createGraphics();
+		g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+		g.drawRenderedImage(srcBufImage, AffineTransform.getScaleInstance(sx, sy));
+		g.dispose();
+		return bufTarget;
+	}
+	
 	/*******************************************************************/
 	public static void main(String[] args) {
-		ImageUtil mcm = new ImageUtil();
-		// mcm.getAddressByIp("22018111186");
-		String basepath = "G:\\MyEclipse\\workspace\\microblog-v2\\WebRoot\\";
-		String tempimage = "chenwen15.jpg";
-		File sourceFile = new File("G:\\MyEclipse\\workspace\\microblog-v2\\WebRoot\\uploadimage\\chenwen15.jpg");
-		String fileType = "JPG";
-		//mcm.bigZoomImage(basepath, tempimage, sourceFile, fileType);
+		String filePath = "E:\\1s.jpg"; //160*210
+		String filePath2 = "E:\\1b.jpg"; //2492*3201
+		
+		String saveFilePath = "E:\\test.jpg";
+		try {
+			ImageUtil.saveResizeImage(filePath, saveFilePath, 1600, 2100);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
