@@ -19,11 +19,11 @@ import com.framework.util.DateTime;
 import com.platform.database.GlobalVariables;
 import com.platform.domain.Magazine;
 import com.platform.domain.MagazineClass;
-import com.platform.domain.Section;
 import com.platform.domain.User;
 import com.platform.service.MagazineService;
 import com.platform.service.SectionService;
 import com.platform.service.UserService;
+import com.platform.utils.ImageUtil;
 import com.platform.utils.UploadFile;
 
 @Controller
@@ -216,16 +216,14 @@ public class MagazineController {
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 		
 		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
-		String tfileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_t"; //temp
 		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
 		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
-		File sourceFile = new File(fileName);
-		File tFile = new File(tfileName);
-		File sFile = new File(sFileName);
-		File bFile = new File(bFileName);
-		FileUtils.copyFile(sourceFile, tFile);
-		//FileUtils.copyFile(sourceFile, sFile);
-		//FileUtils.copyFile(sourceFile, bFile);
+		try {
+			ImageUtil.saveResizeImage(fileName, sFileName, 160, 210, "COVER"); //iphone 图片生成:封面：160*210
+			ImageUtil.saveResizeImage(fileName, bFileName, 1600, 2100, "COVER"); //ipad 图片生成
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
