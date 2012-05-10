@@ -106,6 +106,8 @@ public class MagazineServiceImpl implements MagazineService {
 					object.put("downloadCounter",rs.getString("DOWNLOAD_COUNTER"));
 					object.put("createDate",rs.getString("CREATE_DATE"));
 					object.put("magazinePicture",rs.getString("MAGAZINE_PICTURE"));
+					//object.put("showStatus",rs.getString("SHOW_STATUS"));
+					object.put("showStatus",rs.getInt("SHOW_STATUS")==0?"否":"是");
 					jarray.put(object);
 				}
 			} catch (SQLException e) {
@@ -123,7 +125,7 @@ public class MagazineServiceImpl implements MagazineService {
 	@Transactional(readOnly = true)
 	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
-				" where m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
+				" where m.show_status = 1 and m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
 				" order by PHASE DESC, CREATE_DATE DESC limit "+start+","+limit; 
 		/*
 		String sql = " select m.magazine_id, m.magazine_name, m.magazine_picture, IFNULL(se.section_id, -1) as section_id "+
