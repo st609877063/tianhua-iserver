@@ -215,6 +215,7 @@ public class MagazineController {
 		//System.out.println("timestamp====="+timestamp);
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 		
+		/*
 		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
 		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
 		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
@@ -224,6 +225,7 @@ public class MagazineController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)

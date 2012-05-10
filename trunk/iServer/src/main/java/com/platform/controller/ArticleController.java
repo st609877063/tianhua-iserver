@@ -1,5 +1,6 @@
 package com.platform.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -24,6 +25,7 @@ import com.platform.service.ArticleService;
 import com.platform.service.MagazineService;
 import com.platform.service.SectionService;
 import com.platform.service.UserService;
+import com.platform.utils.ImageUtil;
 import com.platform.utils.UploadFile;
 
 @Controller
@@ -241,6 +243,18 @@ public class ArticleController {
 	public void uploadMagazine(HttpServletRequest request,HttpServletResponse response){
 		String timestamp = (String)request.getParameter("timestamp");
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
+		
+		/*
+		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
+		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
+		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
+		try {
+			ImageUtil.saveResizeImage(fileName, sFileName, 400, 400, "ARTICLE"); //iphone 图片生成
+			ImageUtil.saveResizeImage(fileName, bFileName, 1000, 1000, "ARTICLE"); //ipad 图片生成
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 */
 	}
 	
 	public void setUserService(UserService userService) {

@@ -1,26 +1,55 @@
 package com.platform.utils;
 
+import java.awt.Container;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
+import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 import org.apache.commons.io.FileUtils;
 
 public class ImageUtil{
 
 	//type:"COVER"按width,height缩放。"ARTICLE"按width和原图等比例缩放
-	public static void saveResizeImage( String sourceFilePath, String saveFilePath, int width, int hight, String type) throws Exception {
-		
+	public static void saveResizeImage( String sourceFilePath, String saveFilePath, int width, int hight, String type) throws IOException{
 		File sourceFile = new File(sourceFilePath);
-		BufferedImage srcImage = ImageIO.read(sourceFile);
-		int srcWidth = srcImage.getWidth();
+		BufferedImage srcImage;
+		int srcWidth = 0;
+		try {
+			srcImage = ImageIO.read(sourceFile); //CMYK模式则会报错。需转换成RGB
+		} catch (Exception e) {
+			//这两句代码，是处理cmyk类型的图片，需要ImageMagick的支持
+			try {
+				ThumbnailConvert tc = new ThumbnailConvert();
+				tc.setCMYK_COMMAND(sourceFile.getPath());
+				Image image = null;
+				image = Toolkit.getDefaultToolkit().getImage(sourceFile.getPath());
+				MediaTracker mediaTracker = new MediaTracker(new Container());
+				mediaTracker.addImage(image, 0);
+				mediaTracker.waitForID(0);
+				image.getWidth(null);
+				image.getHeight(null);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
 		
+		srcImage = ImageIO.read(sourceFile);
+		srcWidth = srcImage.getWidth();
 		if (srcWidth > width) { //原图大于要修的标准
 			srcImage = resize(srcImage, width, hight, type);
 			File saveFile = new File(saveFilePath);
@@ -77,8 +106,11 @@ public class ImageUtil{
 		String filePath = "E:\\107961502.jpg"; //160*210
 		String saveFilePath = "E:\\test.jpg";
 		try {
-			ImageUtil.saveResizeImage(filePath, saveFilePath, 400, 210, "ARTICLE");
+			//ImageUtil.saveResizeImage(filePath, saveFilePath, 400, 210, "ARTICLE");
+			ImageUtil.saveResizeImage(filePath, saveFilePath, 160, 210, "COVER"); //iphone 图片生成:封面：160*210
 		} catch (Exception e) {
+			e.printStackTrace();
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		

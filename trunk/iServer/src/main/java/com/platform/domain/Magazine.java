@@ -66,6 +66,9 @@ public class Magazine implements Serializable{
 	@Column(updatable = false)  
 	private int cost = 0;//收费接口
 	
+	@Column(updatable = true)  
+	private int showStatus = 0;
+	
 	public String getMagazineId() {
 		return magazineId;
 	}
@@ -134,6 +137,12 @@ public class Magazine implements Serializable{
 	}
 	public void setMagazineClass(MagazineClass magazineClass) {
 		this.magazineClass = magazineClass;
+	}
+	public int getShowStatus() {
+		return showStatus;
+	}
+	public void setShowStatus(int showStatus) {
+		this.showStatus = showStatus;
 	}
 
 }
