@@ -85,7 +85,7 @@
 				//progress.setStatus("上传完成.");
 				//progress.toggleCancel(false);
 				//$("#magazinePicture").val(decodeURIComponent(timestamp+file.name));
-				$("#magazinePicture").val(decodeURIComponent(timestamp));
+				$("#magazinePicture").val(decodeURIComponent(timestamp+".jpg"));
 				alert("文件上传成功");
 			} catch (ex) { this.debug(ex); } 
 		} 
@@ -98,7 +98,6 @@
 					{
 						$("#mt").html(result);
 						NFInit();
-						
   					},
 					error:function()
 					{
@@ -112,12 +111,13 @@
 				colModel : [
 					{display: '杂志ID', id:'magazineId',name :'magazineId', width : 100, sortable : false, align: 'left',hide:true},
 					{display: '杂志名称', id:'magazineName',name :'magazineName', width : 150, sortable : false, align: 'left'},
-					{display: '杂志类型', id:'magazineClass.magazineClassName',name :'magazineClassName', width : 150, sortable : false, align: 'left'},
-					{display: '杂志期数',id:'phase', name :'phase', width : 150, sortable : true, align: 'left'},
-					{display: '浏览次数',id:'viewCounter', name :'viewCounter', width : 150, sortable : false, align: 'left'},
-					{display: '下载次数',id:'downloadCounter', name :'downloadCounter', width : 150, sortable : false, align: 'left'},
-					{display: '创建时间',id:'createDate', name :'createDate', width : 150, sortable : false, align: 'left'},
-					{display: '封面图片',id:'magazinePicture', name :'magazinePicture', width : 150, sortable : false, align: 'left',hide:true}
+					{display: '杂志类型', id:'magazineClass.magazineClassName',name :'magazineClassName', width : 100, sortable : false, align: 'left'},
+					{display: '杂志期数',id:'phase', name :'phase', width : 100, sortable : true, align: 'left'},
+					{display: '浏览次数',id:'viewCounter', name :'viewCounter', width : 50, sortable : false, align: 'left'},
+					{display: '下载次数',id:'downloadCounter', name :'downloadCounter', width : 50, sortable : false, align: 'left'},
+					{display: '创建时间',id:'createDate', name :'createDate', width : 100, sortable : false, align: 'left'},
+					{display: '封面图片',id:'magazinePicture', name :'magazinePicture', width : 200, sortable : false, align: 'left'},
+					{display: '是否显示',id:'showStatus', name :'showStatus', width : 50, sortable : false, align: 'left'}
 					],
 				buttons : [ {
 					name :'新增',
@@ -247,6 +247,7 @@
 		    $('#saveMagazines select[name="magazineClassId"]').val(data[2]);
 		    $('#saveMagazines input[name="phase"]').val(data[3]);
 		    $('#saveMagazines input[name="magazinePicture"]').val(data[7]);
+		    $('#saveMagazines input[name="showStatus"]').val(data[8]);
 		    $("#magazines").jqmShow();
 	}
 	
@@ -433,7 +434,7 @@
 			<div class="close" ></div>
 		</div>
 		<div  style="align:center">
-			<img id="showImage" src="" width="350" height="255" >
+			<img id="showImage" src="" width="300" height="350" >
 		</div>
 	</div>
 	
@@ -446,57 +447,45 @@
 		<form id="saveMagazines" name="saveMagazines" class="niceform"  >
 			<input type="hidden" name="magazineId" id="magazineId" >
 			<input type="hidden" name="userId" id="userId" value="${userId}" >
-				<fieldset >
-				<dl>
-					<dt>
-						<label for="magazineName">
-							杂志名称:
-						</label>
-					</dt>
-					<dd>
-						<input type="text" name="magazineName" id="magazineName" >
-					</dd>
-				</dl>
-				
-				<dl>
-					<dt>
-						<label for="mt">
-							杂志类型:
-						</label>
-					</dt>
-					<dd id="mt"></dd>
-				</dl>
-				
-				<dl>
-					<dt>
-						<label for="phase">
-							杂志期数:
-						</label>
-					</dt>
-					<dd><input type="text" name="phase" id="phase" ></dd>
-				</dl>
-				
-				<dl>
-					<dt>
-						<label >
-							杂志封面:
-						</label>
-					</dt>
-					<dd>
-						<div id="fsUploadProgress"></div>
-		 				<div>
-						<span><input type="text" width="100" readonly="readonly" name="magazinePicture" id="magazinePicture"></span>
-						<span id="spanButtonPlaceHolder"></span>
-						<input id="btnCancel"  type="hidden" style="display:none" value=""  disabled="disabled"/>
-						</div>
-					</dd>
-				</dl>
-			
-			<dl class="submit">	
-				<input type="button" id="submit" class="input-button" value="提交" onclick="return check();"/>
-				<input type="reset" class="input-button" value="重置" />
+			<fieldset>
+			<dl>
+				<dt><label for="magazineName">杂志名称:</label></dt>
+				<dd><input type="text" name="magazineName" id="magazineName" ></dd>
 			</dl>
-			</fieldset>
+			<dl>
+				<dt><label for="mt">杂志类型:</label></dt>
+				<dd id="mt"></dd>
+			</dl>
+			<dl>
+				<dt><label for="phase">杂志期数:</label></dt>
+				<dd><input type="text" name="phase" id="phase" ></dd>
+			</dl>
+			<dl>
+				<dt><label >杂志封面:</label></dt>
+				<dd>
+					<div id="fsUploadProgress"></div>
+	 				<div>
+					<span><input type="text" width="100" readonly="readonly" name="magazinePicture" id="magazinePicture"></span>
+					<span id="spanButtonPlaceHolder"></span>
+					<input id="btnCancel"  type="hidden" style="display:none" value=""  disabled="disabled"/>
+					</div>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="showStatus">显示状态:</label></dt>
+				<dd>
+					<select id="showStatus" name="showStatus" size="1">
+						<option value="1" >是</option>
+						<option value="0" >否</option>
+					</select>
+				</dd>
+			</dl>
+		
+		<dl class="submit">	
+			<input type="button" id="submit" class="input-button" value="提交" onclick="return check();"/>
+			<input type="reset" class="input-button" value="重置" />
+		</dl>
+		</fieldset>
 		</form>
 		</div>
 	</div>

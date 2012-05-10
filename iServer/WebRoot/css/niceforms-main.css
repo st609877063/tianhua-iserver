@@ -8,8 +8,8 @@ padding:0px 0 0 0px;
 }
 .main_form{
 width:350px;
-height:250px;
-background:url(../images/login_bg.png) no-repeat center top;
+height:330px;
+background:url(../images/login_bg.png) repeat center top;
 margin:0px 0 0 0px;
 float:left;
 padding:0px 0 0 0px;

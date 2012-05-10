@@ -101,6 +101,12 @@
 					debug: false
 				});		
 				
+				function uploadError(file, result) { 
+					try {
+						alert("文件上传失败.");
+					} catch (ex) { this.debug(ex); } 
+				} 
+					
 				function uploadSuccess(file, result) { 
 					try {
 						//var progress = new FileProgress(file, this.customSettings.progressTarget);
@@ -108,7 +114,7 @@
 						//progress.setStatus("上传完成.");
 						//progress.toggleCancel(false);
 						//$("#articlePicture").val(decodeURIComponent(timestamp+file.name));
-						$("#articlePicture").val(decodeURIComponent(timestamp));
+						$("#articlePicture").val(decodeURIComponent(timestamp+".jpg"));
 						alert("文件上传成功.");
 					} catch (ex) { this.debug(ex); } 
 				} 
@@ -381,7 +387,8 @@
 							</td>
 							<td align="left" valign="bottom">		
 								文章微博分享链接:
-								<input type="text" id="shareLink" name="shareLink" size="90" />
+								<input type="text" id="shareLink" name="shareLink" size="80" />
+								图片上传后，请务必“预览图片”来检查
 							</td>
 						</tr>
 					</table>
