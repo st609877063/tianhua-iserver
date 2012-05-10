@@ -32,10 +32,17 @@ public class UploadFile {
 			List<?> items = upload.parseRequest(request);
 			FileItem item = null;
 			String fileName = null;
+			String suffixStr = null;
 			for (int i = 0 ;i < items.size(); i++){
 				item = (FileItem) items.get(i);
 //				fileName = uri+base + File.separator + timestamp+item.getName();
-				fileName = uri+base + File.separator + timestamp;
+				suffixStr = item.getName();
+				if(suffixStr != null && suffixStr.length()>0 && suffixStr.lastIndexOf(".") != 0) {
+					suffixStr = suffixStr.substring(suffixStr.lastIndexOf("."));
+				} else {
+					suffixStr = ".jpg";
+				}
+				fileName = uri+base + File.separator + timestamp+suffixStr;
 				// 保存文件
 				if (!item.isFormField() && item.getName().length() > 0) {
 					item.write(new File(fileName));
