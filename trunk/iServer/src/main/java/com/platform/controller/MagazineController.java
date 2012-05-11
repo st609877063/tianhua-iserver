@@ -8,7 +8,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -34,11 +33,14 @@ public class MagazineController {
 	SectionService sectionService ;
 	UserService userService ;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public void getMagazines(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
+	/**************客户端请求接口begin*********************/
+	// http://localhost:8080/iServer/magazine/iphone/class?type=#
+	@RequestMapping(value ="/iphone/class",method = RequestMethod.GET)
+	public void getIphoneMagazinesByClass(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
+		String magazineClass = request.getParameter("type");
 		String sortorder = request.getParameter("sortorder");
 		String rp        = request.getParameter("rp");
 		String pageNo    = request.getParameter("page");
@@ -47,10 +49,9 @@ public class MagazineController {
 		int startRow = (page_no - 1)*pagesize;
 		try {
 			writer = response.getWriter();
-			String str = magazineService.getMagazines(startRow, pagesize,sortorder);
+			String str = magazineService.getIphoneMagazinesByClass(magazineClass, startRow, pagesize, sortorder);
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -73,32 +74,10 @@ public class MagazineController {
 			sb.append("</rss>\n");
 			writer.write(sb.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	@RequestMapping(value ="/iphone/class",method = RequestMethod.GET)
-	public void getIphoneMagazinesByClass(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter writer = null;
-		String magazineClass = request.getParameter("type");
-		String sortorder = request.getParameter("sortorder");
-		String rp        = request.getParameter("rp");
-		String pageNo    = request.getParameter("page");
-		int pagesize = (rp == null || rp.equals(""))?10:Integer.parseInt(rp);
-		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
-		int startRow = (page_no - 1)*pagesize;
-		try {
-			writer = response.getWriter();
-			String str = magazineService.getIphoneMagazinesByClass(magazineClass,startRow, pagesize,sortorder);
-			writer.write(str);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	@RequestMapping(value ="/iphone",method = RequestMethod.GET)
 	public void getIphoneMagazines(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -115,7 +94,29 @@ public class MagazineController {
 			String str = magazineService.getIphoneMagazines(startRow, pagesize,sortorder);
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**************客户端请求接口end***********************/
+	
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public void getMagazines(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter writer = null;
+		String sortorder = request.getParameter("sortorder");
+		String rp        = request.getParameter("rp");
+		String pageNo    = request.getParameter("page");
+		int pagesize = (rp == null || rp.equals(""))?10:Integer.parseInt(rp);
+		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
+		int startRow = (page_no - 1)*pagesize;
+		try {
+			writer = response.getWriter();
+			String str = magazineService.getMagazines(startRow, pagesize,sortorder);
+			writer.write(str);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -142,7 +143,6 @@ public class MagazineController {
 			sb.append("</select>");
 			writer.write(sb.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -166,7 +166,6 @@ public class MagazineController {
 			sb.append("</select>");
 			writer.write(sb.toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -215,17 +214,15 @@ public class MagazineController {
 		//System.out.println("timestamp====="+timestamp);
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 		
-		/*
-		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
-		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
-		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
+		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + ".jpg";
+		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "s_" + timestamp + ".jpg"; //iphone使用small
+		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "b_" + timestamp +".jpg";; //ipad使用big
 		try {
 			ImageUtil.saveResizeImage(fileName, sFileName, 160, 210, "COVER"); //iphone 图片生成:封面：160*210
 			ImageUtil.saveResizeImage(fileName, bFileName, 1600, 2100, "COVER"); //ipad 图片生成
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		*/
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)

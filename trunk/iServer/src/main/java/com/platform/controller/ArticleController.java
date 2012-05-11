@@ -3,7 +3,6 @@ package com.platform.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.framework.util.DateTime;
 import com.platform.database.GlobalVariables;
 import com.platform.domain.Article;
-import com.platform.domain.Magazine;
-import com.platform.domain.MagazineClass;
 import com.platform.domain.Section;
-import com.platform.domain.User;
 import com.platform.service.ArticleService;
 import com.platform.service.MagazineService;
 import com.platform.service.SectionService;
@@ -37,29 +33,29 @@ public class ArticleController {
 	ArticleService articleService ;
 	UserService userService ;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public void getArticles(HttpServletRequest request ,HttpServletResponse response,Article article) {
+	/**************客户端请求接口begin*********************/
+	//    http://localhost:8080/iServer/article/iphone/recommend/top?magazineId=#
+	//重磅推荐(置顶)
+	@RequestMapping(value ="/iphone/recommend/top",method = RequestMethod.GET)
+	public void getRecommendTopArticle(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
-		String sortorder = request.getParameter("sortorder");
-		String rp        = request.getParameter("rp");
-		String pageNo    = request.getParameter("page");
-		int pagesize = (rp == null || rp.equals(""))?10:Integer.parseInt(rp);
-		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
-		int startRow = (page_no - 1)*pagesize;
 		String magazineId = request.getParameter("magazineId");
-		String sectionId = request.getParameter("sectionId");
 		try {
 			writer = response.getWriter();
-			String str = articleService.getArticles(magazineId,sectionId,startRow, pagesize,sortorder);
+			String str = articleService.getRecommendTopArticle(magazineId);
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	//    http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#
+	//    http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#&newsId=#
+	//    http://localhost:8080/iServer/section/iphone?magazineId=#&rp=100
+	//    http://localhost:8080/iServer/article/iphone?cid=#
+	//    http://localhost:8080/iServer/article/iphone?cid=#&newsId=#
 	@RequestMapping(value ="/iphone",method = RequestMethod.GET)
 	public void getIphoneArticles(HttpServletRequest request ,HttpServletResponse response,Article article) {
 		response.setContentType("text/xml;charset=UTF-8");
@@ -83,10 +79,11 @@ public class ArticleController {
 			String str = articleService.getIphoneArticles(magazineId,sectionId,articleId,startRow, pagesize,sortorder, isRecommend);
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	//    http://localhost:8080/iServer/article/iphone/top?cid=#
 	@RequestMapping(value ="/iphone/top",method = RequestMethod.GET)
 	public void getTopArticle(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -98,29 +95,30 @@ public class ArticleController {
 			String str = articleService.getTopArticle(cid);
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	//重磅推荐(置顶)
-	@RequestMapping(value ="/iphone/recommend/top",method = RequestMethod.GET)
-	public void getRecommendTopArticle(HttpServletRequest request ,HttpServletResponse response) {
-		response.setContentType("text/html;charset=UTF-8");
+	//    http://localhost:8080/iServer/article/name/iphone?nid=#
+	@RequestMapping(value ="/name/iphone",method = RequestMethod.GET)
+	public void getIphoneArticleContent(HttpServletRequest request ,HttpServletResponse response) {
+		response.setContentType("text/xml;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
-		String magazineId = request.getParameter("magazineId");
+
+		String articleId = request.getParameter("nid");
+		String url = request.getRequestURL().toString()+"?nid="+articleId;
 		try {
 			writer = response.getWriter();
-			String str = articleService.getRecommendTopArticle(magazineId);
+			String str = articleService.getIphoneArticle(articleId);
 			writer.write(str);
+//			System.out.println("getIphoneArticleContent>>\n"+url+"\n"+str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	
+
 	@RequestMapping(value ="/name",method = RequestMethod.GET)
 	public void getArticleContent(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -136,30 +134,33 @@ public class ArticleController {
 			}
 			writer.write(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	@RequestMapping(value ="/name/iphone",method = RequestMethod.GET)
-	public void getIphoneArticleContent(HttpServletRequest request ,HttpServletResponse response) {
-		response.setContentType("text/xml;charset=UTF-8");
+	/**************客户端请求接口end***********************/
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public void getArticles(HttpServletRequest request ,HttpServletResponse response,Article article) {
+		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
-
-		String articleId = request.getParameter("nid");
-		String url = request.getRequestURL().toString()+"?nid="+articleId;
+		String sortorder = request.getParameter("sortorder");
+		String rp        = request.getParameter("rp");
+		String pageNo    = request.getParameter("page");
+		int pagesize = (rp == null || rp.equals(""))?10:Integer.parseInt(rp);
+		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
+		int startRow = (page_no - 1)*pagesize;
+		String magazineId = request.getParameter("magazineId");
+		String sectionId = request.getParameter("sectionId");
 		try {
 			writer = response.getWriter();
-			String str = articleService.getIphoneArticle(articleId);
+			String str = articleService.getArticles(magazineId,sectionId,startRow, pagesize,sortorder);
 			writer.write(str);
-//			System.out.println("getIphoneArticleContent>>\n"+url+"\n"+str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public void saveArticle(HttpServletRequest request,HttpServletResponse response,Article article) throws JSONException, IOException {
@@ -244,17 +245,15 @@ public class ArticleController {
 		String timestamp = (String)request.getParameter("timestamp");
 		UploadFile.upload(request,GlobalVariables.uri,GlobalVariables.fileLocation,timestamp);
 		
-		/*
-		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp;
-		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_s"; //iphone使用small
-		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + "_b"; //ipad使用big
+		String fileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + timestamp + ".jpg";
+		String sFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "s_" + timestamp + ".jpg"; //iphone使用small
+		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "b_" + timestamp +".jpg";; //ipad使用big
 		try {
 			ImageUtil.saveResizeImage(fileName, sFileName, 400, 400, "ARTICLE"); //iphone 图片生成
 			ImageUtil.saveResizeImage(fileName, bFileName, 1000, 1000, "ARTICLE"); //ipad 图片生成
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		 */
 	}
 	
 	public void setUserService(UserService userService) {

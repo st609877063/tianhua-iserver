@@ -20,6 +20,7 @@ import com.framework.util.DateTime;
 import com.platform.database.GlobalVariables;
 import com.platform.domain.Article;
 import com.platform.service.ArticleService;
+import com.platform.utils.FileUtil;
 @Service("articleService")
 public class ArticleServiceImpl implements ArticleService {
 	private PersistenceManager pm;
@@ -155,50 +156,55 @@ public class ArticleServiceImpl implements ArticleService {
 		sb.append("<rss version=\"2.0\">\n");
 		sb.append("<channel>\n");
 		RowSet rs = jqm.getRowSet(sql);
-			try {
-				while (rs.next()) {
-					if(rs.isFirst()){
-						sb.append("<title>文章列表</title>\n");
-						sb.append("<link>http://xkzz.chinaxiaokang.com</link>\n");
-						sb.append("<description>"+rs.getString("SECTION_NAME")+"</description>\n");
-						sb.append("<lastBuildDate>"+DateTime.getCurrentDatetimeByString()+"</lastBuildDate>\n");
-						sb.append("<language>cn</language>\n");
-					}
-					String pic = rs.getString("article_picture");
-					if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
-						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-						pic="";
-					} else {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
-					}
-					String pubDate = "";
-					if(rs.getString("CREATE_DATE") != null && !rs.getString("CREATE_DATE").equals("") && rs.getString("CREATE_DATE").length() > 10) {
-						pubDate = rs.getString("CREATE_DATE").substring(0,10);
-					} else if (rs.getString("UPDATE_DATE") != null && !rs.getString("UPDATE_DATE").equals("") && rs.getString("UPDATE_DATE").length() > 10) {
-						pubDate = rs.getString("UPDATE_DATE").substring(0,10);
-					}
-					
-					sb.append("<item>\n");
-					sb.append("<news_id><![CDATA[");sb.append(rs.getString("Article_ID"));sb.append("]]></news_id>\n");
-					sb.append("<title><![CDATA[");sb.append(rs.getString("Article_NAME"));sb.append("]]></title>\n");
-					sb.append("<news_pic><![CDATA[");sb.append(pic);sb.append("]]></news_pic>\n");
-					//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
-					//具体的时候IP变更
-					sb.append("<news_link>");
-					sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"/article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
-					sb.append("</news_link>\n");
-					sb.append("<pubDate>");sb.append(pubDate);sb.append("</pubDate>\n");
-					sb.append("<description><![CDATA[ ");
-					sb.append(rs.getString("ARTICLE_CONTENT"));
-					sb.append("]]></description>\n");
-					sb.append("</item>\n");
+		String pic = null;
+		
+		try {
+			while (rs.next()) {
+				if(rs.isFirst()){
+					sb.append("<title>文章列表</title>\n");
+					sb.append("<link>http://xkzz.chinaxiaokang.com</link>\n");
+					sb.append("<description>"+rs.getString("SECTION_NAME")+"</description>\n");
+					sb.append("<lastBuildDate>"+DateTime.getCurrentDatetimeByString()+"</lastBuildDate>\n");
+					sb.append("<language>cn</language>\n");
 				}
-				sb.append("</channel>\n");
-				sb.append("</rss>\n");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				pic = rs.getString("article_picture");
+				if(pic==null || "".equals(pic)) {
+					pic = "";
+				}
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+				} else {
+					pic="";
+				}
+				
+				String pubDate = "";
+				if(rs.getString("CREATE_DATE") != null && !rs.getString("CREATE_DATE").equals("") && rs.getString("CREATE_DATE").length() > 10) {
+					pubDate = rs.getString("CREATE_DATE").substring(0,10);
+				} else if (rs.getString("UPDATE_DATE") != null && !rs.getString("UPDATE_DATE").equals("") && rs.getString("UPDATE_DATE").length() > 10) {
+					pubDate = rs.getString("UPDATE_DATE").substring(0,10);
+				}
+				
+				sb.append("<item>\n");
+				sb.append("<news_id><![CDATA[");sb.append(rs.getString("Article_ID"));sb.append("]]></news_id>\n");
+				sb.append("<title><![CDATA[");sb.append(rs.getString("Article_NAME"));sb.append("]]></title>\n");
+				sb.append("<news_pic><![CDATA[");sb.append(pic);sb.append("]]></news_pic>\n");
+				//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
+				//具体的时候IP变更
+				sb.append("<news_link>");
+				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"/article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
+				sb.append("</news_link>\n");
+				sb.append("<pubDate>");sb.append(pubDate);sb.append("</pubDate>\n");
+				sb.append("<description><![CDATA[ ");
+				sb.append(rs.getString("ARTICLE_CONTENT"));
+				sb.append("]]></description>\n");
+				sb.append("</item>\n");
 			}
+			sb.append("</channel>\n");
+			sb.append("</rss>\n");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return sb.toString();
 	}
 	
@@ -231,12 +237,15 @@ public class ArticleServiceImpl implements ArticleService {
 
 		if(list != null && list.size()>0) {
 			Article article = list.get(0);
-			String pic = "";
-			if(article.getArticlePicture() == null || article.getArticlePicture().trim().equals("") || article.getArticlePicture().trim().indexOf(".") == -1) {
+			String pic = article.getArticlePicture();
+			if(pic==null || "".equals(pic)) {
+				pic = "";
+			}
+			if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
+			} else {
 				//置顶的必须要有图片
 				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-			} else {
-				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
 			}
 			
 			sb.append("<item>\n");
@@ -253,14 +262,19 @@ public class ArticleServiceImpl implements ArticleService {
 			//如果list为空，则取sectionId下的最新文章一篇
 			String sql = "select t.* from article t where t.section_id='"+sectionId+"' order by article_id asc limit 1";
 			RowSet rs = jqm.getRowSet(sql);
+			String pic = null;
 			try {
 				while (rs.next()) {
-					String pic = rs.getString("article_picture");
-					if(pic==null||"".equals(pic)) {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-					} else {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					pic = rs.getString("article_picture");
+					if(pic==null || "".equals(pic)) {
+						pic = "";
 					}
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					}
+					
 					sb.append("<item>\n");
 					sb.append("<news_id>");sb.append(rs.getString("article_id"));sb.append("</news_id>\n");
 					sb.append("<news_title><![CDATA[");sb.append(rs.getString("article_name"));sb.append("]]></news_title>\n");
@@ -297,15 +311,20 @@ public class ArticleServiceImpl implements ArticleService {
 				" order by a.article_id ASC limit 1";
 		
 		RowSet rs = jqm.getRowSet(sql);
+		String pic = null;
 		try {
 			while (rs.next()) {
-				String pic = rs.getString("article_picture");
-				if( pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
+				pic = rs.getString("article_picture");
+				if(pic==null || "".equals(pic)) {
+					pic = "";
+				}
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+				} else {
 					//置顶的必须要有图片
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-				} else {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 				}
+				
 				sb.append("<item>\n");
 				sb.append("<news_id>");sb.append(rs.getString("article_id"));sb.append("</news_id>\n");
 				sb.append("<news_title><![CDATA[");sb.append(rs.getString("article_name"));sb.append("]]></news_title>\n");
@@ -340,13 +359,17 @@ public class ArticleServiceImpl implements ArticleService {
 		if(list.size()>0){
 			sb.append("<item>\n");
 			Article article = list.get(0);
-			String pic="";
-			if(article.getArticlePicture() == null || article.getArticlePicture().trim().equals("") || article.getArticlePicture().trim().indexOf(".") == -1) {
+			String pic = article.getArticlePicture();
+			if(pic==null || "".equals(pic)) {
+				pic = "";
+			}
+			if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+			} else {
 				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
 				pic = "";
-			} else {
-				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
 			}
+			
 			String date = "";
 			if(article.getCreateDate() != null && !article.getCreateDate().equals("") && article.getCreateDate().length() > 10) {
 				date = article.getCreateDate().substring(0,10);

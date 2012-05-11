@@ -19,8 +19,8 @@ import com.framework.persistence.QueryManager;
 import com.platform.database.GlobalVariables;
 import com.platform.domain.Magazine;
 import com.platform.domain.MagazineClass;
-import com.platform.domain.Section;
 import com.platform.service.MagazineService;
+import com.platform.utils.FileUtil;
 @Service("magazineService")
 public class MagazineServiceImpl implements MagazineService {
 	private PersistenceManager pm;
@@ -81,7 +81,6 @@ public class MagazineServiceImpl implements MagazineService {
 	 * @return String 
 	 * @throws ServiceException
 	 */
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public String getMagazines(int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
@@ -115,62 +114,58 @@ public class MagazineServiceImpl implements MagazineService {
 			}
 			obj.put("rows", jarray);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return obj.toString();
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
 				" where m.show_status = 1 and m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
 				" order by PHASE DESC, CREATE_DATE DESC limit "+start+","+limit; 
-		/*
-		String sql = " select m.magazine_id, m.magazine_name, m.magazine_picture, IFNULL(se.section_id, -1) as section_id "+
-					" from magazine_class mc,  magazine m left join section se on se.magazine_id=m.magazine_id and se.section_name='重磅推荐' " +
-					" where m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
-					" order by CREATE_DATE DESC limit "+start+","+limit; 
-		 */
 		
-		int page = limit==0?1:(start/limit+1);
 		RowSet rs = jqm.getRowSet(sql);
-		int size = getMagazinesList().size();
 		StringBuffer sb = new StringBuffer();
-		
+		String pic = null;
 		try {
 			sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 			sb.append("<root>\n");
-				while (rs.next()) {				
-					String pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+rs.getString("MAGAZINE_PICTURE");
-					sb.append("<data>");
-					sb.append("<magId>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</magId>");
-					sb.append("<magName>");sb.append(rs.getString("MAGAZINE_NAME"));sb.append("</magName>");
-					sb.append("<magPicture>");sb.append(pic);sb.append("</magPicture>");
-					sb.append("<bigSectionId>");sb.append("-1");sb.append("</bigSectionId>"); //每期杂志的重磅推荐
-					sb.append("</data>");
+			while (rs.next()) {
+				pic = rs.getString("MAGAZINE_PICTURE");
+				if(pic==null || "".equals(pic)) {
+					pic = "";
 				}
-				sb.append("</root>\n");
-				//System.out.println("magazine list:"+sb.toString());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+				} else {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+				}
+				sb.append("<data>");
+				sb.append("<magId>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</magId>");
+				sb.append("<magName>");sb.append(rs.getString("MAGAZINE_NAME"));sb.append("</magName>");
+				sb.append("<magPicture>");sb.append(pic);sb.append("</magPicture>");
+				sb.append("<bigSectionId>");sb.append("-1");sb.append("</bigSectionId>"); //每期杂志的重磅推荐
+				sb.append("</data>");
 			}
+			sb.append("</root>\n");
+			//System.out.println("magazine list:"+sb.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return sb.toString();
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public String getIphoneMagazines(int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
 				" where m.magazine_class_id = mc.magazine_class_id" +
 				" order by CREATE_DATE DESC limit "+start+","+limit; 
-		int page = limit==0?1:(start/limit+1);
+//		int page = limit==0?1:(start/limit+1);
+//		int size = getMagazinesList().size();
 		RowSet rs = jqm.getRowSet(sql);
-		int size = getMagazinesList().size();
 		StringBuffer sb = new StringBuffer();
-		
+		String pic = null;
 		try {
 			sb.append("<rss version=\"2.0\">\n");
 			sb.append("<channel>\n");
@@ -178,10 +173,16 @@ public class MagazineServiceImpl implements MagazineService {
 			sb.append("<description></description>\n");
 			sb.append("<lastBuildDate></lastBuildDate>\n");
 			sb.append("<language>cn</language>\n>");
-				while (rs.next()) {				
-					String pic = rs.getString("magazine_picture");
-					if(pic==null||"".equals(pic))
+				while (rs.next()) {	
+					pic = rs.getString("MAGAZINE_PICTURE");
+					if(pic==null || "".equals(pic)) {
+						pic = "";
+					}
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					}
 					sb.append("<item>");
 					sb.append("<magazine_id>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</magazine_id>");
 					sb.append("<title><![CDATA[");sb.append(rs.getString("MAGAZINE_NAME"));sb.append("]]></title>>");
@@ -192,7 +193,6 @@ public class MagazineServiceImpl implements MagazineService {
 				sb.append("</rss>\n");
 				//System.out.println("magazine:"+sb.toString());
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return sb.toString();
@@ -237,7 +237,6 @@ public class MagazineServiceImpl implements MagazineService {
 			else maxId = "1";
 			System.out.println(maxId);
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return maxId;
