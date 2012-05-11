@@ -133,13 +133,14 @@ public class MagazineServiceImpl implements MagazineService {
 			sb.append("<root>\n");
 			while (rs.next()) {
 				pic = rs.getString("MAGAZINE_PICTURE");
-				if(pic==null || "".equals(pic)) {
-					pic = "";
-				}
-				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
 				} else {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
+					}
 				}
 				sb.append("<data>");
 				sb.append("<magId>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</magId>");
@@ -175,13 +176,14 @@ public class MagazineServiceImpl implements MagazineService {
 			sb.append("<language>cn</language>\n>");
 				while (rs.next()) {	
 					pic = rs.getString("MAGAZINE_PICTURE");
-					if(pic==null || "".equals(pic)) {
-						pic = "";
-					}
-					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
 					} else {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+						if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+						} else {
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
+						}
 					}
 					sb.append("<item>");
 					sb.append("<magazine_id>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</magazine_id>");
