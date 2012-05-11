@@ -134,12 +134,12 @@ public class MagazineServiceImpl implements MagazineService {
 			while (rs.next()) {
 				pic = rs.getString("MAGAZINE_PICTURE");
 				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_defaultCover.jpg";
 				} else {
 					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"defaultCover.jpg";
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_defaultCover.jpg";
 					}
 				}
 				sb.append("<data>");
