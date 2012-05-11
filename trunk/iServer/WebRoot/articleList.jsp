@@ -164,9 +164,9 @@
 				"&articlePicture="+data[6]+
 				"&articleDesc="+data[7]+
 				"&articleTop="+data[8]+
-				"&author="+data[9];
-				"&articleRecommend="+data[10];
-				"&shareLink="+data[11];
+				"&author="+data[9]+
+				"&articleRecommend="+data[10]+
+				"&shareLink="+data[12];
 			}	
 			
 			function deleteArticle(){
