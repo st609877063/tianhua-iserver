@@ -46,6 +46,15 @@ public class FileUtil {
         return str;
     }
     
+    public static boolean fileExist(String filePath) {
+    	File file = new File(filePath);
+    	if(file.exists()) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 	public static File mkdir(String path) {
 		File dirFile = null;
 		try {
@@ -118,7 +127,7 @@ public class FileUtil {
 	
 	public static void main(String[] args){
 		try {
-			resize(new File("d:/2.jpg"),new File("d:/22.jpg"),800,1.0f);
+			resize(new File("E:/111.jpg"),new File("E:/test.jpg"),400,1.0f);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
