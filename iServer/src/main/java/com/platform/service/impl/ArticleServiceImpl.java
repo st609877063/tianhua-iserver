@@ -168,13 +168,14 @@ public class ArticleServiceImpl implements ArticleService {
 					sb.append("<language>cn</language>\n");
 				}
 				pic = rs.getString("article_picture");
-				if(pic==null || "".equals(pic)) {
+				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 					pic = "";
-				}
-				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 				} else {
-					pic="";
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
+						pic="";
+					}
 				}
 				
 				String pubDate = "";
@@ -238,14 +239,16 @@ public class ArticleServiceImpl implements ArticleService {
 		if(list != null && list.size()>0) {
 			Article article = list.get(0);
 			String pic = article.getArticlePicture();
-			if(pic==null || "".equals(pic)) {
-				pic = "";
-			}
-			if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
-			} else {
+			if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 				//置顶的必须要有图片
 				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+			} else {
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
+				} else {
+					//置顶的必须要有图片
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+				}
 			}
 			
 			sb.append("<item>\n");
@@ -266,13 +269,15 @@ public class ArticleServiceImpl implements ArticleService {
 			try {
 				while (rs.next()) {
 					pic = rs.getString("article_picture");
-					if(pic==null || "".equals(pic)) {
-						pic = "";
-					}
-					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
+						//置顶的必须要有图片
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
 					} else {
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+						if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+						} else {
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+						}
 					}
 					
 					sb.append("<item>\n");
@@ -315,14 +320,16 @@ public class ArticleServiceImpl implements ArticleService {
 		try {
 			while (rs.next()) {
 				pic = rs.getString("article_picture");
-				if(pic==null || "".equals(pic)) {
-					pic = "";
-				}
-				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
-				} else {
+				if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 					//置顶的必须要有图片
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+				} else {
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
+						//置顶的必须要有图片
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					}
 				}
 				
 				sb.append("<item>\n");
@@ -360,14 +367,15 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("<item>\n");
 			Article article = list.get(0);
 			String pic = article.getArticlePicture();
-			if(pic==null || "".equals(pic)) {
+			if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 				pic = "";
-			}
-			if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
-				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 			} else {
-				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-				pic = "";
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+				} else {
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+					pic = "";
+				}
 			}
 			
 			String date = "";
