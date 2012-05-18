@@ -241,7 +241,7 @@
 		    $('.trSelected td', grid).each(function(i) {
 			        data[i] = $(this).children('div').text();
 		    });
-
+			
 		    $('#saveMagazines input[name="magazineId"]').val(data[0]).attr("readonly","readonly");
 		    $('#saveMagazines input[name="magazineName"]').val(data[1]);
 		    $('#saveMagazines select[name="magazineClassId"]').val(data[2]);
@@ -342,6 +342,7 @@
 		var classid = $("#magazineClassId").val();
 		var magazinePicture = $("#magazinePicture").val();
 		var userId = $("#userId").val();
+		var showStatus = $("#showStatus").val();
 		var options ;		
 		if(name==""||name.length==0){
 			alert("杂志名称不能为空!");
@@ -369,7 +370,8 @@
 					'&phase='+phase+
 					'&magazineClassId='+classid+
 					'&userId='+userId+
-					'&magazinePicture='+magazinePicture,
+					'&magazinePicture='+magazinePicture+
+					'&showStatus='+showStatus,
 					dataType:"json", 
 					success:function(json){ 					
 						$("#magazines").jqmHide();
