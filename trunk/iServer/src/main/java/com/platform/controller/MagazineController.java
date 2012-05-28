@@ -34,7 +34,7 @@ public class MagazineController {
 	UserService userService ;
 	
 	/**************客户端请求接口begin*********************/
-	// http://localhost:8080/iServer/magazine/iphone/class?type=#
+	// NEWS_MAG_URL:	http://localhost:8080/iServer/magazine/iphone/class?type=#
 	@RequestMapping(value ="/iphone/class",method = RequestMethod.GET)
 	public void getIphoneMagazinesByClass(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
 		response.setContentType("text/html;charset=UTF-8");

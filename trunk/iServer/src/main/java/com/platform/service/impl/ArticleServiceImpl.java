@@ -125,17 +125,23 @@ public class ArticleServiceImpl implements ArticleService {
 	 * @param start 开始记录,limit 显示总数, sortorder 排序方式
 	 * @return String 
 	 * @throws ServiceException
+	 * 
+	 * NEWS_RECOMMEND_URL   		http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#
+	 * NEWS_RECOMMEND_NEXT_URL    	http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#&newsId=#
+	 * NEWS_KIND_URL   				http://localhost:8080/iServer/section/iphone?magazineId=#&rp=100
+	 * NEWS_KIND_DETAIL_URL   		http://localhost:8080/iServer/article/iphone?cid=#
+	 * NEWS_KIND_DETAIL_NEXT_URL   	http://localhost:8080/iServer/article/iphone?cid=#&newsId=#
 	 */
 	public String getIphoneArticles(String magazineId,String sectionId,String articleId,int start,int limit,String sortorder, String isRecommend) throws ServiceException{
 		StringBuffer sb = new StringBuffer();
 		String sql = "";
-		if(sectionId!=null && !"".endsWith(sectionId)){
+		if(sectionId!=null && !"".endsWith(sectionId)){  //NEWS_KIND_DETAIL_URL & NEWS_KIND_DETAIL_NEXT_URL
 			sql = "select m.MAGAZINE_NAME,s.SECTION_NAME,a.* from magazine m,section s,article a " +
 					" where s.section_id ='" + sectionId+"'"+
 					" and m.magazine_id = s.magazine_id " +
 					" and s.section_id = a.section_id ";
 			if(articleId!=null && !"".endsWith(articleId)) {
-				sql = sql + " and a.article_id <"+articleId;
+				sql = sql + " and a.article_id <"+articleId;  //NEWS_KIND_DETAIL_NEXT_URL
 			}
 			sql = sql + " order by a.article_id desc limit "+start+","+limit; 
 		}
@@ -144,7 +150,7 @@ public class ArticleServiceImpl implements ArticleService {
 					" where m.magazine_id = '"+magazineId+"' " +
 					" and m.magazine_id = s.magazine_id " +
 					" and s.section_id = a.section_id ";
-			if(isRecommend != null && isRecommend.equals("1")) {
+			if(isRecommend != null && isRecommend.equals("1")) {  //NEWS_RECOMMEND_URL
 				sql = sql + " and a.article_recommend=1 and a.article_top != 1 ";
 			}
 			if(articleId!=null&&!"".endsWith(articleId)) {
@@ -313,7 +319,7 @@ public class ArticleServiceImpl implements ArticleService {
 				" and s.section_id = a.section_id " +
 				" and a.article_recommend=1 and a.article_top = 1 " +
 				" and m.magazine_id = '" + magazineId + "' "+
-				" order by a.article_id ASC limit 1";
+				" order by a.article_id DESC limit 1";
 		
 		RowSet rs = jqm.getRowSet(sql);
 		String pic = null;

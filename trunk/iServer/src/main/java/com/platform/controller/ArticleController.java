@@ -34,7 +34,7 @@ public class ArticleController {
 	UserService userService ;
 	
 	/**************客户端请求接口begin*********************/
-	//    http://localhost:8080/iServer/article/iphone/recommend/top?magazineId=#
+	// NEWS_RECOMMEND_TOP_URL   http://localhost:8080/iServer/article/iphone/recommend/top?magazineId=#
 	//重磅推荐(置顶)
 	@RequestMapping(value ="/iphone/recommend/top",method = RequestMethod.GET)
 	public void getRecommendTopArticle(HttpServletRequest request ,HttpServletResponse response) {
@@ -51,11 +51,11 @@ public class ArticleController {
 		}
 	}
 	
-	//    http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#
-	//    http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#&newsId=#
-	//    http://localhost:8080/iServer/section/iphone?magazineId=#&rp=100
-	//    http://localhost:8080/iServer/article/iphone?cid=#
-	//    http://localhost:8080/iServer/article/iphone?cid=#&newsId=#
+	// NEWS_RECOMMEND_URL   		http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#
+	// NEWS_RECOMMEND_NEXT_URL    	http://localhost:8080/iServer/article/iphone?isRecommend=1&magazineId=#&newsId=#
+	// NEWS_KIND_URL   				http://localhost:8080/iServer/section/iphone?magazineId=#&rp=100
+	// NEWS_KIND_DETAIL_URL   		http://localhost:8080/iServer/article/iphone?cid=#
+	// NEWS_KIND_DETAIL_NEXT_URL   	http://localhost:8080/iServer/article/iphone?cid=#&newsId=#
 	@RequestMapping(value ="/iphone",method = RequestMethod.GET)
 	public void getIphoneArticles(HttpServletRequest request ,HttpServletResponse response,Article article) {
 		response.setContentType("text/xml;charset=UTF-8");
@@ -83,7 +83,7 @@ public class ArticleController {
 		}
 	}
 	
-	//    http://localhost:8080/iServer/article/iphone/top?cid=#
+	// NEWS_KIND_DETAIL_TOP_URL   http://localhost:8080/iServer/article/iphone/top?cid=#
 	@RequestMapping(value ="/iphone/top",method = RequestMethod.GET)
 	public void getTopArticle(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -99,7 +99,7 @@ public class ArticleController {
 		}
 	}
 	
-	//    http://localhost:8080/iServer/article/name/iphone?nid=#
+	//  NEWS_KIND_DETAIL_CONTENT_URL  http://localhost:8080/iServer/article/name/iphone?nid=#
 	@RequestMapping(value ="/name/iphone",method = RequestMethod.GET)
 	public void getIphoneArticleContent(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/xml;charset=UTF-8");
@@ -112,7 +112,7 @@ public class ArticleController {
 			writer = response.getWriter();
 			String str = articleService.getIphoneArticle(articleId);
 			writer.write(str);
-//			System.out.println("getIphoneArticleContent>>\n"+url+"\n"+str);
+			//System.out.println("getIphoneArticleContent>>\n"+url+"\n"+str);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
