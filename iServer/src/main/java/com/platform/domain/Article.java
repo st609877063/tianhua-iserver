@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NamedQueries({
 	@NamedQuery(name="getArticles",query="select t from Article t"),
 	@NamedQuery(name="getArticlesBySectionId",query="select t from Article t where t.section.sectionId=?"),
-	@NamedQuery(name="getTopArticleBySectionId",query="select t from Article t where t.section.sectionId=? and t.articleTop=1 order by t.seq asc"),
+	@NamedQuery(name="getTopArticleBySectionId",query="select t from Article t where t.section.sectionId=? and t.articleTop=1 order by t.seq desc"),
 	@NamedQuery(name="getArticlesByMagazineId",query="select t from Article t where t.section.magazine.magazineId=?"),
 	@NamedQuery(name="getArticleById",query="select t from Article t where t.articleId=?"),
 	@NamedQuery(name="getArticleContentById",query="select t from Section s,Article t where s.sectionId = t.section.sectionId and t.articleId=?")

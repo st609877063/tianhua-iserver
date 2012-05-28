@@ -123,7 +123,7 @@ public class MagazineServiceImpl implements MagazineService {
 	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
 				" where m.show_status = 1 and m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
-				" order by PHASE DESC, CREATE_DATE DESC limit "+start+","+limit; 
+				" order by PHASE DESC, CREATE_DATE DESC "; 
 		
 		RowSet rs = jqm.getRowSet(sql);
 		StringBuffer sb = new StringBuffer();
