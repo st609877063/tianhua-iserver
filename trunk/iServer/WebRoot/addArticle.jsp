@@ -123,36 +123,35 @@
 				articleId = '${articleId}';
 				method= '${method}';
 				$.ajax({
-				method:'GET',
-				url:'magazine/name?_method=get&magazineId='+magazineId,
-				dataType:'text',
-				success:function(result)
-				{
-					
-					$("#magazineList").html(result);	
-					$.ajax({
 					method:'GET',
-					url:'section/name?_method=get&magazineId='+magazineId,
+					url:'magazine/name?_method=get&magazineId='+magazineId,
 					dataType:'text',
 					success:function(result)
 					{
-						$("#sectionList").html(result);		
-										
-						if(method=="put"){
-							getArticle();
+						$("#magazineList").html(result);	
+						$.ajax({
+						method:'GET',
+						url:'section/name?_method=get&magazineId='+magazineId,
+						dataType:'text',
+						success:function(result)
+						{
+							$("#sectionList").html(result);		
+											
+							if(method=="put"){
+								getArticle();
+							}
+				
+		 				},
+						error:function()
+						{
+							alert("警告:服务器繁忙请稍候再试!");
 						}
-			
+						});					
 	 				},
 					error:function()
 					{
 						alert("警告:服务器繁忙请稍候再试!");
 					}
-					});					
- 				},
-				error:function()
-				{
-					alert("警告:服务器繁忙请稍候再试!");
-				}
 				});
 				
 				$("#articleImage").jqm({
@@ -210,6 +209,7 @@
 				$("#articlePicture").val("${articlePicture}");
 				$("#author").val("${author}");
 				$("#shareLink").val("${shareLink}");
+				$("#seq").val("${seq}");
 				getArticleById(articleId);
 		}
 		
@@ -291,10 +291,10 @@
 							url:'article/put?_method=post'+
 							'&magazineId='+magazineId+
 							'&sectionId='+sectionId+
+							//'&seq='+seq+
 							'&articleId='+"${articleId}",							
 							//'&articleName='+articleName+
 							//'&commentState='+commentState+
-							//'&seq='+seq+
 							//'&articleDesc='+articleDesc+
 							//'&articleTop='+articleTop+
 							//'&articlePicture='+articlePicture+
@@ -319,7 +319,6 @@
 	<body id="MasterPagebody">
 	<form id="articleForm"  >
 		<input type="hidden" name="articleContent"  id="articleCont"  > 
-		<input type="hidden" id="seq" name="seq" size=5 value="0">
 		<table class="user_border" cellSpacing="0" cellPadding="0" 
 			align=center style="width: 98%;" border="0" id="table1">
 			<tr>
@@ -387,8 +386,10 @@
 							</td>
 							<td align="left" valign="bottom">		
 								文章微博分享链接:
-								<input type="text" id="shareLink" name="shareLink" size="80" />
-								图片上传后，请务必“预览图片”来检查
+								<input type="text" id="shareLink" name="shareLink" size="70" />
+								显示序号:
+								<input type="text" id="seq" name="seq" size="5" value="0"/>
+								图片上传后，请务必“预览图片”
 							</td>
 						</tr>
 					</table>
