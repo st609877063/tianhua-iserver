@@ -176,20 +176,27 @@ public class ArticleServiceImpl implements ArticleService {
 				pic = rs.getString("article_picture");
 				
 				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
-					pic = "";
+					//pic = "";
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				} else {
+					String pic2 = "";
 					if(isIpad != null && isIpad.equals("0")) { //iphone
-						pic = "s_"+pic;
+						pic2 = "s_"+pic;
 					} else if(isIpad != null && isIpad.equals("1")) { //ipad
-						pic = "b_"+pic;
+						pic2 = "b_"+pic;
 					} else {
-						pic = "b_"+pic;
+						pic2 = "b_"+pic;
 					}
 					
-					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+					} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {
-						pic="";
+						//pic="";
+						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 					}
 				}
 				
@@ -256,23 +263,26 @@ public class ArticleServiceImpl implements ArticleService {
 			String pic = article.getArticlePicture();
 			if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 				//置顶的必须要有图片
-				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 			} else {
+				String pic2 = "";
 				if(isIpad != null && isIpad.equals("0")) { //iphone
-					pic = "s_"+pic;
+					pic2 = "s_"+pic;
 				} else if(isIpad != null && isIpad.equals("1")) { //ipad
-					pic = "b_"+pic;
+					pic2 = "b_"+pic;
 				} else {
-					pic = "b_"+pic;
+					pic2 = "b_"+pic;
 				}
 				
-				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+				} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
 				} else {
 					//置顶的必须要有图片
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				}
 			}
 			
@@ -296,22 +306,25 @@ public class ArticleServiceImpl implements ArticleService {
 					pic = rs.getString("article_picture");
 					if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 						//置顶的必须要有图片
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 					} else {
+						String pic2 = "";
 						if(isIpad != null && isIpad.equals("0")) { //iphone
-							pic = "s_"+pic;
+							pic2 = "s_"+pic;
 						} else if(isIpad != null && isIpad.equals("1")) { //ipad
-							pic = "b_"+pic;
+							pic2 = "b_"+pic;
 						} else {
-							pic = "b_"+pic;
+							pic2 = "b_"+pic;
 						}
 						
-						if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+						} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 						} else {
-							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-							//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+							//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 						}
 					}
 					
@@ -358,23 +371,26 @@ public class ArticleServiceImpl implements ArticleService {
 				
 				if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 					//置顶的必须要有图片
-					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				} else {
+					String pic2 = "";
 					if(isIpad != null && isIpad.equals("0")) { //iphone
-						pic = "s_"+pic;
+						pic2 = "s_"+pic;
 					} else if(isIpad != null && isIpad.equals("1")) { //ipad
-						pic = "b_"+pic;
+						pic2 = "b_"+pic;
 					} else {
-						pic = "b_"+pic;
+						pic2 = "b_"+pic;
 					}
 					
-					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+					} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {
 						//置顶的必须要有图片
-						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
-						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
+						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 					}
 				}
 				
@@ -414,21 +430,27 @@ public class ArticleServiceImpl implements ArticleService {
 			Article article = list.get(0);
 			String pic = article.getArticlePicture();
 			if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
-				pic = "";
+				//pic = "";
+				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 			} else {
+				String pic2 = "";
 				if(isIpad != null && isIpad.equals("0")) { //iphone
-					pic = "s_"+pic;
+					pic2 = "s_"+pic;
 				} else if(isIpad != null && isIpad.equals("1")) { //ipad
-					pic = "b_"+pic;
+					pic2 = "b_"+pic;
 				} else {
-					pic = "b_"+pic;
+					pic2 = "b_"+pic;
 				}
 				
-				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+				} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 				} else {
+					//pic = "";
 					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
-					pic = "";
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				}
 			}
 			
