@@ -28,7 +28,7 @@ public interface ArticleService {
 	 * @return String 
 	 * @throws ServiceException
 	 */
-	public String getIphoneArticles(String magazineId,String sectionId,String articleId,int start,int limit,String sortorder, String isRecommend) throws ServiceException;
+	public String getIphoneArticles(String magazineId,String sectionId,String articleId,int start,int limit,String sortorder, String isRecommend, String  isIpad, String magazineClass) throws ServiceException;
 	/**
 	 * 返回文章内容
 	 * @param articleId 文章ID
@@ -42,16 +42,16 @@ public interface ArticleService {
 	 * @return Article 
 	 * @throws ServiceException
 	 */
-	public String getTopArticle(String articleId) throws ServiceException;
+	public String getTopArticle(String articleId, String  isIpad, String magazineClass) throws ServiceException;
 
-	public String getRecommendTopArticle(String magazineId) throws ServiceException;
+	public String getRecommendTopArticle(String magazineId, String  isIpad, String magazineClass) throws ServiceException;
 	/**
 	 * 返回文章内容
 	 * @param articleId 文章ID
 	 * @return Xml 
 	 * @throws ServiceException
 	 */
-	public String getIphoneArticle(String articleId) throws ServiceException;
+	public String getIphoneArticle(String articleId, String  isIpad, String magazineClass) throws ServiceException;
 	
 	public String getMaxArticleId() throws ServiceException;
 	/**

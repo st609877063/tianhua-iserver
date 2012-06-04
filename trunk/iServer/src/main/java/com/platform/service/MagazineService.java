@@ -41,7 +41,7 @@ public interface MagazineService {
 	 * @return String 
 	 * @throws ServiceException
 	 */
-	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException;
+	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder, String isIpad) throws ServiceException;
 	/**
 	 * 返回iphone杂志列表
 	 * @param start 开始记录,limit 显示总数, sortorder 排序方式

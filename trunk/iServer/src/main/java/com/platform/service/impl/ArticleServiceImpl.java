@@ -132,7 +132,7 @@ public class ArticleServiceImpl implements ArticleService {
 	 * NEWS_KIND_DETAIL_URL   		http://localhost:8080/iServer/article/iphone?cid=#
 	 * NEWS_KIND_DETAIL_NEXT_URL   	http://localhost:8080/iServer/article/iphone?cid=#&newsId=#
 	 */
-	public String getIphoneArticles(String magazineId,String sectionId,String articleId,int start,int limit,String sortorder, String isRecommend) throws ServiceException{
+	public String getIphoneArticles(String magazineId,String sectionId,String articleId,int start,int limit,String sortorder, String isRecommend, String  isIpad, String magazineClass) throws ServiceException{
 		StringBuffer sb = new StringBuffer();
 		String sql = "";
 		if(sectionId!=null && !"".endsWith(sectionId)){  //NEWS_KIND_DETAIL_URL & NEWS_KIND_DETAIL_NEXT_URL
@@ -174,9 +174,18 @@ public class ArticleServiceImpl implements ArticleService {
 					sb.append("<language>cn</language>\n");
 				}
 				pic = rs.getString("article_picture");
+				
 				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 					pic = "";
 				} else {
+					if(isIpad != null && isIpad.equals("0")) { //iphone
+						pic = "s_"+pic;
+					} else if(isIpad != null && isIpad.equals("1")) { //ipad
+						pic = "b_"+pic;
+					} else {
+						pic = "b_"+pic;
+					}
+					
 					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {
@@ -235,7 +244,7 @@ public class ArticleServiceImpl implements ArticleService {
 	 * @return Article 
 	 * @throws ServiceException
 	 */
-	public String getTopArticle(String sectionId) throws ServiceException{
+	public String getTopArticle(String sectionId, String  isIpad, String magazineClass) throws ServiceException{
 		List<Article> list = qm.findByNamedQuery("getTopArticleBySectionId", sectionId);
 		
 		StringBuffer sb = new StringBuffer();
@@ -248,12 +257,22 @@ public class ArticleServiceImpl implements ArticleService {
 			if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 				//置顶的必须要有图片
 				pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+				//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 			} else {
+				if(isIpad != null && isIpad.equals("0")) { //iphone
+					pic = "s_"+pic;
+				} else if(isIpad != null && isIpad.equals("1")) { //ipad
+					pic = "b_"+pic;
+				} else {
+					pic = "b_"+pic;
+				}
+				
 				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+article.getArticlePicture();
 				} else {
 					//置顶的必须要有图片
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				}
 			}
 			
@@ -278,11 +297,21 @@ public class ArticleServiceImpl implements ArticleService {
 					if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 						//置顶的必须要有图片
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/default.jpg";
+						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 					} else {
+						if(isIpad != null && isIpad.equals("0")) { //iphone
+							pic = "s_"+pic;
+						} else if(isIpad != null && isIpad.equals("1")) { //ipad
+							pic = "b_"+pic;
+						} else {
+							pic = "b_"+pic;
+						}
+						
 						if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 						} else {
 							pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+							//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 						}
 					}
 					
@@ -308,7 +337,7 @@ public class ArticleServiceImpl implements ArticleService {
 		
 	}
 	
-	public String getRecommendTopArticle(String magazineId) throws ServiceException{
+	public String getRecommendTopArticle(String magazineId, String  isIpad, String magazineClass) throws ServiceException{
 		StringBuffer sb = new StringBuffer();
 		sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
 		sb.append("<rss version=\"2.0\">\n");
@@ -326,15 +355,26 @@ public class ArticleServiceImpl implements ArticleService {
 		try {
 			while (rs.next()) {
 				pic = rs.getString("article_picture");
+				
 				if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 					//置顶的必须要有图片
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+					//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 				} else {
+					if(isIpad != null && isIpad.equals("0")) { //iphone
+						pic = "s_"+pic;
+					} else if(isIpad != null && isIpad.equals("1")) { //ipad
+						pic = "b_"+pic;
+					} else {
+						pic = "b_"+pic;
+					}
+					
 					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {
 						//置顶的必须要有图片
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+"default.jpg";
+						//pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_validimg.jpg";
 					}
 				}
 				
@@ -364,7 +404,7 @@ public class ArticleServiceImpl implements ArticleService {
 	 * @return Xml 
 	 * @throws ServiceException
 	 */
-	public String getIphoneArticle(String articleId) throws ServiceException{
+	public String getIphoneArticle(String articleId, String  isIpad, String magazineClass) throws ServiceException{
 		List<Article> list = qm.findByNamedQuery("getArticleContentById", articleId);		
 		StringBuffer sb = new StringBuffer();
 		sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
@@ -376,6 +416,14 @@ public class ArticleServiceImpl implements ArticleService {
 			if(pic==null || "".equals(pic)  || pic.trim().indexOf(".") == -1) {
 				pic = "";
 			} else {
+				if(isIpad != null && isIpad.equals("0")) { //iphone
+					pic = "s_"+pic;
+				} else if(isIpad != null && isIpad.equals("1")) { //ipad
+					pic = "b_"+pic;
+				} else {
+					pic = "b_"+pic;
+				}
+				
 				if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 				} else {
