@@ -109,12 +109,12 @@ public class ArticleServiceImpl implements ArticleService {
 					jarray.put(object);
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			obj.put("rows", jarray);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return obj.toString();
@@ -214,7 +214,9 @@ public class ArticleServiceImpl implements ArticleService {
 				//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 				//具体的时候IP变更
 				sb.append("<news_link>");
-				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"/article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
+				//sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
+				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
+				sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(rs.getString("Article_ID"));
 				sb.append("</news_link>\n");
 				sb.append("<pubDate>");sb.append(pubDate);sb.append("</pubDate>\n");
 				sb.append("<description><![CDATA[ ");
@@ -225,7 +227,6 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("</channel>\n");
 			sb.append("</rss>\n");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return sb.toString();
@@ -468,7 +469,8 @@ public class ArticleServiceImpl implements ArticleService {
 			//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 			//具体的时候IP变更
 			sb.append("<news_link>");
-			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type="+magazineClass+"&isIpad="+isIpad+"&nid="+article.getArticleId());
+			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
+			sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(article.getArticleId());
 			sb.append("</news_link>\n");
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
 			sb.append("<news_source>");sb.append(article.getSection().getSectionName());sb.append("</news_source>\n");
@@ -480,7 +482,7 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("<news_content><![CDATA[");
 			sb.append(article.getArticleContent());
 			sb.append("]]></news_content>\n");
-			sb.append("</item>\n");;
+			sb.append("</item>\n");
 		}
 		sb.append("</rss>\n");
 		return sb.toString();
@@ -497,7 +499,6 @@ public class ArticleServiceImpl implements ArticleService {
 			}
 			else maxId = "1";
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return maxId;
