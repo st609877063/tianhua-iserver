@@ -468,7 +468,7 @@ public class ArticleServiceImpl implements ArticleService {
 			//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 			//具体的时候IP变更
 			sb.append("<news_link>");
-			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(article.getArticleId());
+			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type="+magazineClass+"&isIpad="+isIpad+"&nid="+article.getArticleId());
 			sb.append("</news_link>\n");
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
 			sb.append("<news_source>");sb.append(article.getSection().getSectionName());sb.append("</news_source>\n");
