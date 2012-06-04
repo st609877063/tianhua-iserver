@@ -120,7 +120,7 @@ public class MagazineServiceImpl implements MagazineService {
 	}
 	
 	@Transactional(readOnly = true)
-	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder) throws ServiceException{
+	public String getIphoneMagazinesByClass(String magazineClass,int start,int limit,String sortorder, String isIpad) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
 				" where m.show_status = 1 and m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
 				" order by PHASE DESC, CREATE_DATE DESC "; 
@@ -136,6 +136,14 @@ public class MagazineServiceImpl implements MagazineService {
 				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
 					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_defaultCover.jpg";
 				} else {
+					if(isIpad != null && isIpad.equals("0")) { //iphone
+						pic = "s_"+pic;
+					} else if(isIpad != null && isIpad.equals("1")) { //ipad
+						pic = "b_"+pic;
+					} else {
+						pic = "b_"+pic;
+					}
+					
 					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
 						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
 					} else {

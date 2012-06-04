@@ -47,9 +47,15 @@ public class MagazineController {
 		int pagesize = (rp == null || rp.equals(""))?10:Integer.parseInt(rp);
 		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
 		int startRow = (page_no - 1)*pagesize;
+		
+		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		if(isIpad == null || !isIpad.equals("1")) {
+			isIpad = "0";
+		}
+		
 		try {
 			writer = response.getWriter();
-			String str = magazineService.getIphoneMagazinesByClass(magazineClass, startRow, pagesize, sortorder);
+			String str = magazineService.getIphoneMagazinesByClass(magazineClass, startRow, pagesize, sortorder, isIpad);
 			writer.write(str);
 		} catch (IOException e) {
 			e.printStackTrace();

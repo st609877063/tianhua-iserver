@@ -42,9 +42,19 @@ public class ArticleController {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
 		String magazineId = request.getParameter("magazineId");
+		
+		String magazineClass = request.getParameter("type");
+		if(magazineClass == null) {
+			magazineClass = "1";
+		}
+		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		if(isIpad == null || !isIpad.equals("1")) {
+			isIpad = "0";
+		}
+		
 		try {
 			writer = response.getWriter();
-			String str = articleService.getRecommendTopArticle(magazineId);
+			String str = articleService.getRecommendTopArticle(magazineId, isIpad, magazineClass);
 			writer.write(str);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -74,9 +84,19 @@ public class ArticleController {
 		if(isRecommend == null) {
 			isRecommend = "0";
 		}
+		
+		String magazineClass = request.getParameter("type");
+		if(magazineClass == null) {
+			magazineClass = "1";
+		}
+		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		if(isIpad == null || !isIpad.equals("1")) {
+			isIpad = "0";
+		}
+		
 		try {
 			writer = response.getWriter();
-			String str = articleService.getIphoneArticles(magazineId,sectionId,articleId,startRow, pagesize,sortorder, isRecommend);
+			String str = articleService.getIphoneArticles(magazineId,sectionId,articleId,startRow, pagesize,sortorder, isRecommend, isIpad, magazineClass);
 			writer.write(str);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -90,9 +110,19 @@ public class ArticleController {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = null;
 		String cid = request.getParameter("cid");
+
+		String magazineClass = request.getParameter("type");
+		if(magazineClass == null) {
+			magazineClass = "1";
+		}
+		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		if(isIpad == null || !isIpad.equals("1")) {
+			isIpad = "0";
+		}
+		
 		try {
 			writer = response.getWriter();
-			String str = articleService.getTopArticle(cid);
+			String str = articleService.getTopArticle(cid, isIpad, magazineClass);
 			writer.write(str);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -108,9 +138,19 @@ public class ArticleController {
 
 		String articleId = request.getParameter("nid");
 		String url = request.getRequestURL().toString()+"?nid="+articleId;
+
+		String magazineClass = request.getParameter("type");
+		if(magazineClass == null) {
+			magazineClass = "1";
+		}
+		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		if(isIpad == null || !isIpad.equals("1")) {
+			isIpad = "0";
+		}
+		
 		try {
 			writer = response.getWriter();
-			String str = articleService.getIphoneArticle(articleId);
+			String str = articleService.getIphoneArticle(articleId, isIpad, magazineClass);
 			writer.write(str);
 			//System.out.println("getIphoneArticleContent>>\n"+url+"\n"+str);
 		} catch (IOException e) {
