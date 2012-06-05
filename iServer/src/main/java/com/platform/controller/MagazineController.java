@@ -48,7 +48,7 @@ public class MagazineController {
 		int page_no  = (pageNo == null || pageNo.equals(""))?1:Integer.parseInt(pageNo);
 		int startRow = (page_no - 1)*pagesize;
 		
-		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}

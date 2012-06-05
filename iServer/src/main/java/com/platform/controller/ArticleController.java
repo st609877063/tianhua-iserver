@@ -47,7 +47,7 @@ public class ArticleController {
 		if(magazineClass == null) {
 			magazineClass = "1";
 		}
-		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
@@ -89,7 +89,7 @@ public class ArticleController {
 		if(magazineClass == null) {
 			magazineClass = "1";
 		}
-		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
@@ -115,7 +115,7 @@ public class ArticleController {
 		if(magazineClass == null) {
 			magazineClass = "1";
 		}
-		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
@@ -143,7 +143,7 @@ public class ArticleController {
 		if(magazineClass == null) {
 			magazineClass = "1";
 		}
-		String isIpad = request.getParameter("ipad"); //判断是iphone还是ipad，取不一样的图
+		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
