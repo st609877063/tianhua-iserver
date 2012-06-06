@@ -77,28 +77,28 @@ http://ip:port//iServer/comment?_method=post&data=xml&name=yourname&clientId=SNe
 
 /***********************************************************/
 #define NEWS_MAG_URL
-http://118.145.16.102:8080/iServer/magazine/iphone/class?type=1
+http://118.145.16.102:8080/iServer/magazine/iphone/class?type=1&isIpad=0
 
 #define NEWS_RECOMMEND_TOP_URL 
-http://118.145.16.102:8080/iServer/article/iphone/recommend/top?magazineId=
+http://118.145.16.102:8080/iServer/article/iphone/recommend/top?type=1&isIpad=0&magazineId=
 
 #define NEWS_RECOMMEND_URL 
-http://118.145.16.102:8080/iServer/article/iphone?isRecommend=1&magazineId=
+http://118.145.16.102:8080/iServer/article/iphone?type=1&isIpad=0&isRecommend=1&magazineId=
 
 #define NEWS_RECOMMEND_NEXT_URL 
-http://118.145.16.102:8080/iServer/article/iphone?isRecommend=1&magazineId=%@&newsId=%@
+http://118.145.16.102:8080/iServer/article/iphone?type=1&isIpad=0&isRecommend=1&magazineId=%@&newsId=%@
 
 #define NEWS_KIND_URL
-http://118.145.16.102:8080/iServer/section/iphone?magazineId=%@&rp=100
+http://118.145.16.102:8080/iServer/section/iphone?type=1&isIpad=0&magazineId=%@&rp=100
 
 #define NEWS_KIND_DETAIL_TOP_URL
-http://118.145.16.102:8080/iServer/article/iphone/top?cid=%@
+http://118.145.16.102:8080/iServer/article/iphone/top?type=1&isIpad=0&cid=%@
 
 #define NEWS_KIND_DETAIL_URL 
-http://118.145.16.102:8080/iServer/article/iphone?cid=%@
+http://118.145.16.102:8080/iServer/article/iphone?type=1&isIpad=0&cid=%@
 
 #define NEWS_KIND_DETAIL_NEXT_URL 
-http://118.145.16.102:8080/iServer/article/iphone?cid=%@&newsId=%@
+http://118.145.16.102:8080/iServer/article/iphone?type=1&isIpad=0&cid=%@&newsId=%@
 
 #define NEWS_KIND_DETAIL_CONTENT_URL 
-http://118.145.16.102:8080/iServer/article/name/iphone?nid=%@
+http://118.145.16.102:8080/iServer/article/name/iphone?type=1&isIpad=0&nid=%@
