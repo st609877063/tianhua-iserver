@@ -215,9 +215,15 @@ public class ArticleServiceImpl implements ArticleService {
 				//具体的时候IP变更
 				sb.append("<news_link>");
 				//sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
+				/******
 				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
 				sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(rs.getString("Article_ID"));
+				 */
+				//20120626BUG暂时解决之法
+				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?mixparam=");
+				sb.append(magazineClass);sb.append("|");sb.append(isIpad);sb.append("|");sb.append(rs.getString("Article_ID"));
 				sb.append("</news_link>\n");
+				
 				sb.append("<pubDate>");sb.append(pubDate);sb.append("</pubDate>\n");
 				sb.append("<description><![CDATA[ ");
 				sb.append(rs.getString("ARTICLE_CONTENT"));
@@ -469,9 +475,15 @@ public class ArticleServiceImpl implements ArticleService {
 			//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 			//具体的时候IP变更
 			sb.append("<news_link>");
+			/**
 			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
 			sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(article.getArticleId());
+			 */
+			//20120626BUG暂时解决之法
+			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?mixparam=");
+			sb.append(magazineClass);sb.append("|");sb.append(isIpad);sb.append("|");sb.append(article.getArticleId());
 			sb.append("</news_link>\n");
+			
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
 			sb.append("<news_source>");sb.append(article.getSection().getSectionName());sb.append("</news_source>\n");
 			sb.append("<share_link>");sb.append(article.getShareLink());sb.append("</share_link>\n");
