@@ -137,8 +137,6 @@ public class ArticleController {
 		PrintWriter writer = null;
 
 		String articleId = request.getParameter("nid");
-		String url = request.getRequestURL().toString()+"?nid="+articleId;
-
 		String magazineClass = request.getParameter("type");
 		if(magazineClass == null) {
 			magazineClass = "1";
@@ -147,6 +145,19 @@ public class ArticleController {
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
+		
+		
+		//20120626BUG暂时解决之法
+		String mixparam = request.getParameter("mixparam"); //type|isIpad|nid
+		if(mixparam != null) {
+			String[] array = mixparam.split("|");
+			if(array != null && array.length == 3) {
+				magazineClass = array[0];
+				isIpad =  array[1];
+				articleId =  array[2];
+			}
+		}
+		
 		
 		try {
 			writer = response.getWriter();
