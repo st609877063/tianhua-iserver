@@ -115,7 +115,7 @@ public class SectionServiceImpl implements SectionService {
 				" where m.magazine_id = '"+magazineId+"'" +
 				" and m.magazine_id = s.magazine_id " +
 				" and a.section_id = s.section_id  " +
-				" order by s.seq asc limit "+start+","+limit;  
+				" order by s.seq asc ";  
 		RowSet rs = jqm.getRowSet(sql);
 		StringBuffer sb = new StringBuffer();		
 			try {
