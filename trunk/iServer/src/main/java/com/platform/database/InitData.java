@@ -67,7 +67,7 @@ public class InitData extends HttpServlet {
 		GlobalVariables.thumbLocation = cp.getProperty("thumbLocation");
 		GlobalVariables.serverName = cp.getProperty("serverName");
 		GlobalVariables.serverLink = cp.getProperty("serverLink"); 
-		//System.out.println(GlobalVariables.uri);
+		System.out.println("jdbcUrl==="+GlobalVariables.jdbcUrl);
 		ControlDatabase.init(GlobalVariables.driverClass,GlobalVariables.jdbcUrl,GlobalVariables.user,GlobalVariables.password);
 		logger.info("database initialization success!");
 	}
