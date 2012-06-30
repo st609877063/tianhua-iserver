@@ -93,12 +93,10 @@ public class SectionServiceImpl implements SectionService {
 					jarray.put(object);
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			obj.put("rows", jarray);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return obj.toString();
@@ -140,7 +138,6 @@ public class SectionServiceImpl implements SectionService {
 				}
 				sb.append("</rss>\n");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return sb.toString();
@@ -171,7 +168,6 @@ public class SectionServiceImpl implements SectionService {
 			}
 			else maxId = "1";
 		}catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -190,29 +186,31 @@ public class SectionServiceImpl implements SectionService {
 		return true;
 	}
 	
+	
+	// 小康：卷首语、封面故事、人物、国际、指数、特别报道、社会、财经、县域、评论、文化、城市、往事、专栏、书评、聊斋、月报、读者俱乐部。
 	public boolean saveXKSections(Magazine magazine) throws ServiceException{
 		Section section1 = new Section();
-		section1.setSectionName("卷首");
+		section1.setSectionName("卷首语");
 		section1.setSeq(1);
 		section1.setMagazine(magazine);
 		saveSection(section1);
 		Section section2 = new Section();
-		section2.setSectionName("月览天下");
+		section2.setSectionName("封面故事");
 		section2.setSeq(2);
 		section2.setMagazine(magazine);
 		saveSection(section2);
 		Section section3 = new Section();
-		section3.setSectionName("封面故事");
+		section3.setSectionName("人物");
 		section3.setSeq(3);
 		section3.setMagazine(magazine);
 		saveSection(section3);
 		Section section4 = new Section();
-		section4.setSectionName("指数");
+		section4.setSectionName("国际");
 		section4.setSeq(4);
 		section4.setMagazine(magazine);
 		saveSection(section4);
 		Section section5 = new Section();
-		section5.setSectionName("国际");
+		section5.setSectionName("指数");
 		section5.setSeq(5);
 		section5.setMagazine(magazine);
 		saveSection(section5);
@@ -222,53 +220,70 @@ public class SectionServiceImpl implements SectionService {
 		section6.setMagazine(magazine);
 		saveSection(section6);
 		Section section7 = new Section();
-		section7.setSectionName("论坛报道");
+		section7.setSectionName("社会");
 		section7.setSeq(7);
 		section7.setMagazine(magazine);
 		saveSection(section7);
 		Section section8 = new Section();
-		section8.setSectionName("时政");
+		section8.setSectionName("财经");
 		section8.setSeq(8);
 		section8.setMagazine(magazine);
 		saveSection(section8);
 		Section section9 = new Section();
-		section9.setSectionName("文化");
+		section9.setSectionName("县域"); 
 		section9.setSeq(9);
 		section9.setMagazine(magazine);
 		saveSection(section9);
 		Section section10 = new Section();
-		section10.setSectionName("月报");
+		section10.setSectionName("评论");
 		section10.setSeq(10);
 		section10.setMagazine(magazine);
 		saveSection(section10);
 		Section section11 = new Section();
-		section11.setSectionName("往事");
+		section11.setSectionName("文化");
 		section11.setSeq(11);
 		section11.setMagazine(magazine);
 		saveSection(section11);
 		Section section12 = new Section();
-		section12.setSectionName("评论");
+		section12.setSectionName("城市");
 		section12.setSeq(12);
 		section12.setMagazine(magazine);
 		saveSection(section12);
 		Section section13 = new Section();
-		section13.setSectionName("专栏");
+		section13.setSectionName("往事");
 		section13.setSeq(13);
 		section13.setMagazine(magazine);
 		saveSection(section13);
 		Section section14 = new Section();
-		section14.setSectionName("书评");
+		section14.setSectionName("专栏");
 		section14.setSeq(14);
 		section14.setMagazine(magazine);
 		saveSection(section14);
 		Section section15 = new Section();
-		section15.setSectionName("聊斋");
+		section15.setSectionName("书评");
 		section15.setSeq(15);
 		section15.setMagazine(magazine);
 		saveSection(section15);
+		Section section16 = new Section();
+		section16.setSectionName("聊斋");
+		section16.setSeq(16);
+		section16.setMagazine(magazine);
+		saveSection(section16);
+		Section section17 = new Section();
+		section17.setSectionName("月报");
+		section17.setSeq(17);
+		section17.setMagazine(magazine);
+		saveSection(section17);
+		Section section18 = new Section();
+		section18.setSectionName("读者俱乐部");
+		section18.setSeq(18);
+		section18.setMagazine(magazine);
+		saveSection(section18);
 		return true;
 	}
 	
+	
+	// 财智：卷首语、特别策划、财智观察、人物、财星、公司产业、汽车、理财、财智学院、财智生活、收藏、专题报道、资讯、财富测试。
 	public boolean saveCZSections(Magazine magazine) throws ServiceException{
 		Section section1 = new Section();
 		section1.setSectionName("卷首语");
@@ -276,27 +291,27 @@ public class SectionServiceImpl implements SectionService {
 		section1.setMagazine(magazine);
 		saveSection(section1);
 		Section section2 = new Section();
-		section2.setSectionName("资讯");
+		section2.setSectionName("特别策划");
 		section2.setSeq(2);
 		section2.setMagazine(magazine);
 		saveSection(section2);
 		Section section3 = new Section();
-		section3.setSectionName("特别策划");
+		section3.setSectionName("财智观察");
 		section3.setSeq(3);
 		section3.setMagazine(magazine);
 		saveSection(section3);
 		Section section4 = new Section();
-		section4.setSectionName("财智观察");
+		section4.setSectionName("人物");
 		section4.setSeq(4);
 		section4.setMagazine(magazine);
 		saveSection(section4);
 		Section section5 = new Section();
-		section5.setSectionName("人物");
+		section5.setSectionName("财星");
 		section5.setSeq(5);
 		section5.setMagazine(magazine);
 		saveSection(section5);
 		Section section6 = new Section();
-		section6.setSectionName("投资");
+		section6.setSectionName("公司产业");
 		section6.setSeq(6);
 		section6.setMagazine(magazine);
 		saveSection(section6);
@@ -306,40 +321,40 @@ public class SectionServiceImpl implements SectionService {
 		section7.setMagazine(magazine);
 		saveSection(section7);
 		Section section8 = new Section();
-		section8.setSectionName("公司产业");
+		section8.setSectionName("理财");
 		section8.setSeq(8);
 		section8.setMagazine(magazine);
 		saveSection(section8);
 		Section section9 = new Section();
-		section9.setSectionName("理财");
+		section9.setSectionName("财智学院");
 		section9.setSeq(9);
 		section9.setMagazine(magazine);
 		saveSection(section9);
 		Section section10 = new Section();
-		section10.setSectionName("财智学院");
+		section10.setSectionName("财智生活");
 		section10.setSeq(10);
 		section10.setMagazine(magazine);
 		saveSection(section10);
 		Section section11 = new Section();
-		section11.setSectionName("财智生活");
+		section11.setSectionName("收藏");
 		section11.setSeq(11);
 		section11.setMagazine(magazine);
 		saveSection(section11);
 		Section section12 = new Section();
-		section12.setSectionName("书斋");
+		section12.setSectionName("专题报道");
 		section12.setSeq(12);
 		section12.setMagazine(magazine);
 		saveSection(section12);
 		Section section13 = new Section();
-		section13.setSectionName("财富测试");
+		section13.setSectionName("资讯");
 		section13.setSeq(13);
 		section13.setMagazine(magazine);
 		saveSection(section13);
-//		Section section14 = new Section();
-//		section14.setSectionName("书评");
-//		section14.setSeq(14);
-//		section14.setMagazine(magazine);
-//		saveSection(section14);
+		Section section14 = new Section();
+		section14.setSectionName("财富测试");
+		section14.setSeq(14);
+		section14.setMagazine(magazine);
+		saveSection(section14);
 //		Section section15 = new Section();
 //		section15.setSectionName("聊斋");
 //		section15.setSeq(15);
