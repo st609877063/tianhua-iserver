@@ -54,6 +54,9 @@ public interface ArticleService {
 	public String getIphoneArticle(String articleId, String  isIpad, String magazineClass) throws ServiceException;
 	
 	public String getMaxArticleId() throws ServiceException;
+	
+	public String getMagazineClassByArticleId(String articleId) throws ServiceException;
+	
 	/**
 	 * 保存文章
 	 * @param section 栏目内容

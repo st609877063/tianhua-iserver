@@ -214,14 +214,11 @@ public class ArticleServiceImpl implements ArticleService {
 				//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 				//具体的时候IP变更
 				sb.append("<news_link>");
-				//sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
-				/******
+				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(rs.getString("Article_ID"));
+				/**
 				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
 				sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(rs.getString("Article_ID"));
 				 */
-				//20120626BUG暂时解决之法
-				sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?mixparam=");
-				sb.append(magazineClass);sb.append("|");sb.append(isIpad);sb.append("|");sb.append(rs.getString("Article_ID"));
 				sb.append("</news_link>\n");
 				
 				sb.append("<pubDate>");sb.append(pubDate);sb.append("</pubDate>\n");
@@ -471,17 +468,14 @@ public class ArticleServiceImpl implements ArticleService {
 			sb.append("<news_id>");sb.append(article.getArticleId());sb.append("</news_id>\n");
 			sb.append("<title><![CDATA[");sb.append(article.getArticleName());sb.append("]]></title>\n");
 			sb.append("<news_pic>");sb.append(pic);sb.append("</news_pic>\n");
-			//sb.append("<news_link>");sb.append("");sb.append("</news_link>\n");
 			//news_link为详细的URL+id。http://192.168.1.100:8080/iServer/article/name/iphone?nid=ab818189330c0c6a01330c0e635e0001
 			//具体的时候IP变更
 			sb.append("<news_link>");
-			/**
+			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?nid=");sb.append(article.getArticleId());
+			/***
 			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?type=");
 			sb.append(magazineClass);sb.append("&amp;isIpad=");sb.append(isIpad);sb.append("&amp;nid=");sb.append(article.getArticleId());
-			 */
-			//20120626BUG暂时解决之法
-			sb.append(GlobalVariables.urlLocation+GlobalVariables.serverName+"article/name/iphone?mixparam=");
-			sb.append(magazineClass);sb.append("|");sb.append(isIpad);sb.append("|");sb.append(article.getArticleId());
+			*/
 			sb.append("</news_link>\n");
 			
 			sb.append("<news_date>");sb.append(date);sb.append("</news_date>\n");
@@ -498,6 +492,22 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		sb.append("</rss>\n");
 		return sb.toString();
+	}
+	
+	public String getMagazineClassByArticleId(String articleId) throws ServiceException {
+		String sql = "select m.magazine_class_id from article t, section s, magazine m " +
+				" where t.section_id=s.section_id and s.magazine_id=m.magazine_id and t.article_id="+articleId;
+		String magazineClass ="";
+		try {
+			RowSet rs = jqm.getRowSet(sql);
+			if(rs.next() && rs.getString(1)!=null) {
+				magazineClass = rs.getString(1);
+			}
+			else magazineClass = "1";
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return magazineClass;
 	}
 	
 	public String getMaxArticleId(){
