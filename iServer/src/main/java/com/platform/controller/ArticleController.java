@@ -139,25 +139,17 @@ public class ArticleController {
 		String articleId = request.getParameter("nid");
 		String magazineClass = request.getParameter("type");
 		if(magazineClass == null) {
-			magazineClass = "1";
+			//根据nid来获取magazineClass
+			if(articleId != null) {
+				magazineClass = articleService.getMagazineClassByArticleId(articleId);
+			} else {
+				magazineClass = "1";
+			}
 		}
 		String isIpad = request.getParameter("isIpad"); //判断是iphone还是ipad，取不一样的图
 		if(isIpad == null || !isIpad.equals("1")) {
 			isIpad = "0";
 		}
-		
-		
-		//20120626BUG暂时解决之法
-		String mixparam = request.getParameter("mixparam"); //type|isIpad|nid
-		if(mixparam != null) {
-			String[] array = mixparam.split("|");
-			if(array != null && array.length == 3) {
-				magazineClass = array[0];
-				isIpad =  array[1];
-				articleId =  array[2];
-			}
-		}
-		
 		
 		try {
 			writer = response.getWriter();
