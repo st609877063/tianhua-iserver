@@ -1,0 +1,23 @@
+教育经历_国内学习经历_导入
+教育经历_国境外学习_导入
+教育经历_培训经历_导入
+人才培养_指导专业_导入 ZdzyAfterImportBiz
+
+--教学工作
+工作经历_导入 GzjlAfterImportBiz.java
+人才培养_任课情况_导入 RkqkAfterImportBiz.java
+人才培养_指导学生_导入 ZdxsAfterImportBiz.java
+grid:{w:1200;h:600}
+人才培养_教改项目_导入 jgxm
+人才培养_教学获奖_导入 jxhj
+
+----科研项
+科研情况_科研项目_导入 kyxm
+科研情况_学术论文_导入 xslw
+科研情况_学术著作_导入 xszz
+科研情况_专利信息_导入 zlxx
+科研情况_其他成果_导入 qtcg
+科研情况_成果获奖_导入 cghj
+科研情况_研究报告_导入 yjbg
+国际化情况_导入
+家庭成员_导入
