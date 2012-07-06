@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_lightbox" extends="struts-default">
+		<action name="gift_lightbox_*" class="com.gift.action.gift_lightbox.Gift_lightboxAction" method="{1}">
+			<result name="selectP">/jsp/gift_lightbox_select.jsp</result>
+			<result name="selectsuccess" type="chain">gift_lightbox_showP</result>
+			<result name="showP">/jsp/gift_lightbox_show.jsp</result>
+			<result name="showsuccess">/jsp/gift_lightbox_show.jsp</result>
+		</action>
+	</package>
+</struts>

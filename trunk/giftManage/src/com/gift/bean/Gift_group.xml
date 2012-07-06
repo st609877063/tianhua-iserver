@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_group">
+
+	<select id="findAllGift_group" resultType="Gift_group">
+        <![CDATA[
+           select * from  gift_group
+       ]]>
+	</select>
+	
+	<select id="findAllGift_group_count" resultType="Integer">
+        <![CDATA[
+           select count(g.group_id) from  gift_group g 
+       ]]>
+	</select>
+	
+
+	<select id="findGift_groupByGroup_id" parameterType="Integer"
+		resultType="Gift_group">
+       <![CDATA[
+            select group_id,group_name,group_parent,group_desc,create_time,add_user_id from  gift_group where group_id=#{group_id}
+       ]]>
+	</select>
+	
+	<select id="findGift_groupByGroup_name" parameterType="String"
+		resultType="Gift_group">
+       <![CDATA[
+            select group_id,group_name,group_parent,group_desc,create_time,add_user_id from  gift_group where group_name=#{group_name}
+       ]]>
+	</select>
+
+	<delete id="removeGift_group" parameterType="Gift_group">
+        <![CDATA[
+            delete from gift_group where group_id=#{group_id}
+        ]]>
+	</delete>
+
+	<insert id="saveGift_group" parameterType="Gift_group">
+       <![CDATA[
+            insert into gift_group(group_name,group_parent,group_desc,create_time,add_user_id) values (#{group_name},#{group_parent},#{group_desc},#{create_time},#{add_user_id})
+       ]]>
+		<selectKey resultType="Integer" keyProperty="group_id">
+         <![CDATA[SELECT LAST_INSERT_ID() AS group_id ]]>
+		</selectKey>
+	</insert>
+	<update id="updateGift_group" parameterType="Gift_group">
+       <![CDATA[
+           update gift_group set group_name=#{group_name},group_parent=#{group_parent},group_desc=#{group_desc}
+           where group_id=#{group_id}
+       ]]>
+	</update>
+
+	<parameterMap type="java.util.HashMap" id="pm_seach_Gift_group">
+		<parameter property="keyword" />
+	</parameterMap>
+	<select id="findGift_groupByKeyword" parameterMap="pm_seach_Gift_group" resultType="Gift_group">
+		<![CDATA[
+		select g1.*,g2.group_name as 'group_parent_name',u.user_name as 'add_user_name' from  gift_group g1 left join gift_group g2 on g1.group_parent = g2.group_id left join gift_user u on g1.add_user_id=u.user_id
+		     
+		where g1.group_name like CONCAT('%',#{keyword},'%') 
+		or g2.group_name like CONCAT('%',#{keyword},'%') 
+		or g1.group_desc like CONCAT('%',#{keyword},'%') 
+		]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="pm_seach_Gift_group_count">
+		<parameter property="keyword" />
+	</parameterMap>
+	<select id="findGift_groupByKeyword_count" parameterMap="pm_seach_Gift_group_count" resultType="Integer">
+		<![CDATA[
+		select count(g1.group_id) from  gift_group g1 left join gift_group g2 on g1.group_parent=g2.group_id
+		     
+		where g1.group_name like CONCAT('%',#{keyword},'%') 
+		or g2.group_name like CONCAT('%',#{keyword},'%') 
+		or g1.group_desc like CONCAT('%',#{keyword},'%') 
+		]]>
+	</select>
+</mapper>

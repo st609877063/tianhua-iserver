@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_group_operation" extends="struts-default">
+		<action name="gift_group_operation_*" class="gift_group_operationAction"
+			method="{1}">
+			<result name="list">/gift_group_operationlist.jsp</result>
+			<result name="listsuccess">/gift_group_operationlist.jsp</result>
+
+			<result name="saveP">/gift_group_operationsave.jsp</result>
+			<result name="savesuccess" type="chain">gift_group_operation_listByGroup_id
+			</result>
+			<result name="saveerror">/gift_group_operationsave.jsp</result>
+
+			<result name="updateP">/gift_group_operationupdate.jsp</result>
+			<result name="updatesuccess" type="chain">gift_group_operation_listByGroup_id
+			</result>
+			<result name="updateerror">/gift_group_operationupdate.jsp</result>
+
+			<result name="input">/gift_group_operation{1}.jsp</result>
+
+			<result name="removesuccess" type="chain">gift_group_operation_listByGroup_id
+			</result>
+
+			<result name="listByGroup_id">/gift_group_operationlist.jsp</result>
+
+			<result name="generateExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="Gift_group_operationRecords.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

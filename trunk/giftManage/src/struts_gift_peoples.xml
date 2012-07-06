@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_peoples" extends="gift">
+		<!-- 默认拦截器 -->
+		<!-- <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
+
+		<action name="gift_peoples_*" class="com.gift.action.gift_peoples.Gift_peoplesAction" method="{1}">
+			<result name="saveP">/jsp/gift_peoples_save.jsp</result>
+			<result name="savesuccess" type="redirect">/gift_peoples_list.action?gift_peoples.p_flag=${gift_peoples.p_flag}</result>
+			<result name="saveerror">/jsp/gift_peoples_save.jsp</result>
+			<result name="updateP">/jsp/gift_peoples_update.jsp</result>
+			<result name="updatesuccess" type="redirect">/gift_peoples_list.action?gift_peoples.p_flag=${gift_peoples.p_flag}</result>
+			<result name="input">/jsp/gift_peoples_{1}.jsp</result>
+			<result name="removesuccess" type="redirect">/gift_peoples_list.action?gift_peoples.p_flag=${gift_peoples.p_flag}</result>
+			<result name="list">/jsp/gift_peoples_list.jsp</result>
+			<result name="listsuccess">/jsp/gift_peoples_list.jsp</result>
+		</action>
+	</package>
+</struts>

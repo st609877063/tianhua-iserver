@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_code" extends="struts-default">
+		<action name="gift_code_*" class="com.gift.action.gift_code.Gift_codeAction"
+			method="{1}">
+			<result name="list">/gift_codelist.jsp</result>
+			<result name="listsuccess">/gift_codelist.jsp</result>
+
+			<result name="saveP">/gift_codesave.jsp</result>
+			<result name="savesuccess" type="chain">gift_code_listByName</result>
+			<result name="saveerror">/gift_codesave.jsp</result>
+
+			<result name="updateP">/gift_codeupdate.jsp</result>
+			<result name="updatesuccess" type="chain">gift_code_listByName</result>
+			<result name="updateerror">/gift_codeupdate.jsp</result>
+
+			<result name="input">/gift_code{1}.jsp</result>
+
+			<result name="removesuccess" type="chain">gift_code_listByName</result>
+
+			<result name="listByName">/gift_codelist.jsp</result>
+
+			<result name="generateExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="Gift_codeRecords.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>

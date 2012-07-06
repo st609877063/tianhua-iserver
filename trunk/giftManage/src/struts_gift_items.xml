@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_items" extends="struts-default">
+		<action name="gift_items_*" class="com.gift.action.gift_Items.Gift_itemsAction" method="{1}">
+		
+			<result name="list">/jsp/gift_items_list.jsp</result>
+			<result name="listsuccess">/jsp/gift_items_list.jsp</result>
+
+			<result name="saveP">/jsp/gift_items_save.jsp</result>
+			<result name="savesuccess" type="chain">gift_items_listByID</result>
+			<result name="saveerror">/jsp/gift_items_save.jsp</result>
+			<result name="savetofujian">/jsp/gift_fujian_save.jsp</result>
+
+			<result name="updateP">/jsp/gift_items_update.jsp</result>
+			<result name="updatesuccess" type="chain">gift_items_list</result>
+			<result name="updateerror">/gift_detailupdate.jsp</result>
+
+			<result name="genQrcodeSuccess" type="chain">gift_items_updateP</result>
+			
+			<result name="input">/gift_detail{1}.jsp</result>
+
+			<result name="listByID">/items/list.jsp</result>
+
+			<result name="generateExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="Gift_detailRecords.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

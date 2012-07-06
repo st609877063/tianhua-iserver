@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_items">
+	<select id="findAllGiftItems" resultType="Gift_items">
+		<![CDATA[ select * from gift_items ]]>
+	</select>
+	
+
+	<select id="findItemsCountByKeyword" parameterType="java.util.HashMap" resultType="Integer">
+		select count(*) from gift_items
+		where 1=1
+		<if test="itemNo != null and itemNo != '' ">
+		and i_no like CONCAT('%',#{itemNo},'%')
+		</if>
+		<if test="itemName != null and itemName != '' ">
+		and i_name like CONCAT('%',#{itemName},'%')
+		</if>
+	</select>
+	
+	<select id="findItemsByKeyword" parameterType="java.util.HashMap" resultType="Gift_items">
+		select * from gift_items 
+		where 1=1
+		<if test="itemNo != null and itemNo != '' ">
+		and i_no like CONCAT('%',#{itemNo},'%')
+		</if>
+		<if test="itemName != null and itemName != '' ">
+		and i_name like CONCAT('%',#{itemName},'%')
+		</if>
+	</select>
+	
+	
+	<select id="findGiftItemsByItemNo" parameterType="String" resultType="Gift_items">
+		<![CDATA[ select * from gift_items where i_no=#{i_no} ]]>
+	</select>
+	
+	<select id="findGiftItemsBySlr" parameterType="list" resultType="Gift_items">
+		<![CDATA[ select * from gift_items where i_slr in ]]>
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	
+	
+	<select id="findGiftItemsById" parameterType="int" resultType="Gift_items">
+		<![CDATA[ select * from gift_items where i_id=#{i_id} ]]>
+	</select>
+	
+	
+	<delete id="removeGiftItems" parameterType="Gift_items">
+		<![CDATA[delete from gift_items where i_id=#{i_id}]]>
+	</delete>
+	
+	
+	<insert id="saveGiftItems" parameterType="Gift_items">
+		<![CDATA[
+		 insert into gift_items 
+		 (i_no, i_name, i_zlr, i_slr, i_sztime, i_unit, i_num, i_zhidi, i_type, 
+		 i_chandi, i_status, i_gongyi, i_background, i_desc, i_memo, i_attribute1, 
+		 i_attribute2, i_attribute3, i_attribute4, i_attribute5, i_createtime, i_adduser, i_qrcode)
+		 values 
+		 (#{i_no}, #{i_name}, #{i_zlr}, #{i_slr}, #{i_sztime}, #{i_unit}, #{i_num}, #{i_zhidi},
+		 #{i_type}, #{i_chandi}, #{i_status}, #{i_gongyi}, #{i_background}, #{i_desc}, #{i_memo},
+		 #{i_attribute1}, #{i_attribute2}, #{i_attribute3}, #{i_attribute4}, #{i_attribute5}, #{i_createtime}, #{i_adduser}, #{i_qrcode})
+		]]>
+		<selectKey resultType="int" keyProperty="i_id"> SELECT LAST_INSERT_ID() AS i_id</selectKey>
+	</insert>
+	
+	
+	<update id="updateGiftItems" parameterType="Gift_items">
+		<![CDATA[
+		update gift_items set 
+		i_name=#{i_name}, i_zlr=#{i_zlr}, i_slr=#{i_slr}, i_sztime=#{i_sztime},
+		i_unit=#{i_unit}, i_num=#{i_num}, i_zhidi=#{i_zhidi}, i_type=#{i_type},
+		i_chandi=#{i_chandi}, i_status=#{i_status}, i_gongyi=#{i_gongyi},
+		i_background=#{i_background}, i_desc=#{i_desc}, i_memo=#{i_memo},
+		i_attribute1=#{i_attribute1}, i_attribute2=#{i_attribute2},
+		i_attribute3=#{i_attribute3}, i_attribute4=#{i_attribute4},
+		i_attribute5=#{i_attribute5}, i_createtime=#{i_createtime},
+		i_adduser=#{i_adduser}, i_qrcode=#{i_qrcode} 
+		where 
+		i_no=#{i_no}
+		]]>
+	</update>
+</mapper>

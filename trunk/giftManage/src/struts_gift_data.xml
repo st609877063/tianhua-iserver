@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_data" extends="struts-default">
+		<action name="gift_data_page" class="com.gift.action.gift_data.Gift_dataAction" method="exportXMLPage">
+			<result name="success">/jsp/gift_data.jsp</result>
+		</action>
+		<action name="gift_data_export" class="com.gift.action.gift_data.Gift_dataAction" method="exportXML">
+			<result name="success" type="stream">
+				<param name="contentType">text/xml</param>
+				<param name="contentDisposition">attachment;filename="data.xml"</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<!-- <result name="error">/jsp/gift_data.jsp</result> -->
+		</action>
+		<action name="gift_data_import" class="com.gift.action.gift_data.Gift_dataAction" method="importXML">
+			<result name="success">/jsp/gift_data.jsp</result>
+			<result name="error">/jsp/gift_data.jsp</result>
+		</action>
+	</package>
+</struts>

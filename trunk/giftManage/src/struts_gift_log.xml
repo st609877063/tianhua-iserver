@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_log" extends="struts-default">
+		<action name="gift_log_*" class="gift_logAction" method="{1}">
+			<result name="list">/gift_loglist.jsp</result>
+
+			<result name="saveP">/gift_logsave.jsp</result>
+			<result name="savesuccess" type="chain">gift_log_listByLog_content
+			</result>
+			<result name="saveerror">/gift_logsave.jsp</result>
+
+			<result name="updateP">/gift_logupdate.jsp</result>
+			<result name="updatesuccess" type="chain">gift_log_listByLog_content</result>
+			<result name="updateerror">/gift_logupdate.jsp</result>
+
+			<result name="input">/gift_log{1}.jsp</result>
+
+			<result name="removesuccess" type="chain">gift_log_listByLog_content
+			</result>
+
+			<result name="listByLog_content">/gift_loglist.jsp</result>
+			<result name="listsuccess">/gift_loglist.jsp</result>
+
+			<result name="generateExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="Gift_logRecords.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

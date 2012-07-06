@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+    	http://www.springframework.org/schema/beans  
+    	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd   
+    	http://www.springframework.org/schema/tx   
+    	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd  
+    	http://www.springframework.org/schema/aop   
+    	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
+    	http://www.springframework.org/schema/context   
+    	http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+    	http://www.springframework.org/schema/jdbc   
+    	http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
+
+	<!-- 开启注解配置 -->
+	<context:annotation-config />
+
+	<!-- 扫描层 -->
+	<context:component-scan base-package="com.gift.action" />
+	<context:component-scan base-package="com.gift.bean" />
+	<context:component-scan base-package="com.gift.dao" />
+	<context:component-scan base-package="com.gift.service" />
+
+	<!-- 数据库连接资源文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 定义使用C3P0连接池的数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 指定连接数据库的JDBC驱动 -->
+		<property name="driverClass">
+			<value>${driverClass}</value>
+		</property>
+		<!-- 连接数据库所用的URL -->
+		<property name="jdbcUrl">
+			<value>${jdbcUrl}</value>
+		</property>
+		<!-- 连接数据库的用户名 -->
+		<property name="user">
+			<value>${user}</value>
+		</property>
+		<!-- 连接数据库的密码 -->
+		<property name="password">
+			<value>${password}</value>
+		</property>
+		<!-- 设置数据库连接池的最大连接数 -->
+		<property name="maxPoolSize">
+			<value>20</value>
+		</property>
+		<!-- 设置数据库连接池的最小连接数 -->
+		<property name="minPoolSize">
+			<value>2</value>
+		</property>
+		<!-- 设置数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize">
+			<value>2</value>
+		</property>
+		<!-- 设置数据库连接池的连接的最大空闲时间,单位为秒 -->
+		<property name="maxIdleTime">
+			<value>20</value>
+		</property>
+	</bean>
+
+	<!-- 创建SqlSessionFactory，同时指定数据源-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<!-- <property name="mapperLocations"><list><value>classpath:com/gift/bean/**/*.xml</value></list></property> -->
+	</bean>
+
+	<!-- 数据库的事务管理器配置 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 使用annotation定义数据库事务，这样可以在类或方法中直接使用@Transactional注解来声明事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- dwr配置Bean -->
+	<bean id="giftCommonAjax" class="com.gift.ajax.GiftCommonAjax"></bean>
+	
+</beans>

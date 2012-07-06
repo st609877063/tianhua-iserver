@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_user" extends="gift">
+	
+		<action name="gift_user_*" class="com.gift.action.gift_user.Gift_userAction"
+			method="{1}">
+			<result name="saveP">/jsp/gift_user_save.jsp</result>
+			<result name="savesuccess" type="redirect">gift_user_list.action</result>
+			<result name="saveerror">/jsp/gift_user_save.jsp</result>
+			<result name="updateP">/jsp/gift_user_update.jsp</result>
+			<result name="updatesuccess" type="redirect">gift_user_list.action</result>
+			<result name="updateerror">/jsp/gift_user_update.jsp</result>
+			<result name="input">/jsp/gift_user_{1}.jsp</result>
+			<result name="removesuccess" type="redirect">gift_user_list.action</result>
+			<result name="list">/jsp/gift_user_list.jsp</result>
+			<result name="listsuccess">/jsp/gift_user_list.jsp</result>
+			<interceptor-ref name="authStack"></interceptor-ref>
+		</action>
+		
+	
+		
+		<!--用户登录 -->
+		<action name="tologin" class="com.gift.action.gift_user.Gift_userLoginAction" method="toLogin">
+			<result name="success">/jsp/login.jsp</result>
+		</action>
+		
+		<action name="login" class="com.gift.action.gift_user.Gift_userLoginAction" method="login">
+			<result name="input">/jsp/login.jsp</result>
+			<result name="success" type="redirect">/gift_peoples_list.action?gift_peoples.p_flag=1</result>
+		</action>
+		
+		<action name="logout" class="com.gift.action.gift_user.Gift_userLoginAction" method="logout">
+			<result name="input" type="redirect">/tologin.action</result>
+			<result name="success" type="redirect">/tologin.action</result>
+			<interceptor-ref name="authStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>
