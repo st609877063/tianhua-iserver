@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_cangku">
+
+	<select id="findAllGift_cangku" resultType="Gift_cangku">
+		<![CDATA[select * from gift_cangku,gift_items where gift_cangku.ck_i_no=gift_items.i_no group by gift_cangku.ck_id ORDER BY ck_kufang, ck_huojia, ck_ceng ]]>
+	</select>
+	
+	<select id="findAllGift_cangku_count" resultType="Integer">
+		<![CDATA[select count(*) from gift_cangku,gift_items where gift_cangku.ck_i_no=gift_items.i_no]]>
+	</select>
+	
+	<select id="findGift_cangkuById" parameterType="Integer" resultType="Gift_cangku">
+		<![CDATA[select * from gift_cangku,gift_items where gift_cangku.ck_i_no=gift_items.i_no and gift_cangku.ck_id=#{ck_id}]]>
+	</select>
+	
+	<select id="findGift_cangkuByItemNo" parameterType="String" resultType="Gift_cangku">
+		<![CDATA[select * from gift_cangku,gift_items where gift_cangku.ck_i_no=gift_items.i_no and gift_cangku.ck_i_no=#{item_no}]]>
+	</select>
+	
+	<select id="findCangkuCountByKeyword" parameterType="java.util.HashMap" resultType="Integer">
+		select count(1) from gift_cangku, gift_items 
+		where gift_cangku.ck_i_no = gift_items.i_no
+		<if test="ck_kufang != null and ck_kufang != '' ">
+		and gift_cangku.ck_kufang like CONCAT('%',#{ck_kufang},'%')
+		</if>
+		<if test="ck_huojia != null and ck_huojia != '' ">
+		and gift_cangku.ck_huojia like CONCAT('%',#{ck_huojia},'%')
+		</if>
+		<if test="ck_ceng != null and ck_ceng != '' ">
+		and gift_cangku.ck_ceng like CONCAT('%',#{ck_ceng},'%')
+		</if>
+		<if test="itemNo != null and itemNo != '' ">
+		and gift_cangku.ck_i_no like CONCAT('%',#{itemNo},'%')
+		</if>
+		<if test="itemName != null and itemName != '' ">
+		and gift_items.i_name like CONCAT('%',#{itemName},'%')
+		</if>
+	</select>
+	
+	<select id="findCangkuByKeyword" parameterType="java.util.HashMap" resultType="Gift_cangku">
+		select * from gift_cangku, gift_items 
+		where gift_cangku.ck_i_no = gift_items.i_no
+		<if test="ck_kufang != null and ck_kufang != '' ">
+		and gift_cangku.ck_kufang like CONCAT('%',#{ck_kufang},'%')
+		</if>
+		<if test="ck_huojia != null and ck_huojia != '' ">
+		and gift_cangku.ck_huojia like CONCAT('%',#{ck_huojia},'%')
+		</if>
+		<if test="ck_ceng != null and ck_ceng != '' ">
+		and gift_cangku.ck_ceng like CONCAT('%',#{ck_ceng},'%')
+		</if>
+		<if test="itemNo != null and itemNo != '' ">
+		and gift_cangku.ck_i_no like CONCAT('%',#{itemNo},'%')
+		</if>
+		<if test="itemName != null and itemName != '' ">
+		and gift_items.i_name like CONCAT('%',#{itemName},'%')
+		</if>
+		group by gift_cangku.ck_id
+		ORDER BY ck_kufang, ck_huojia, ck_ceng
+	</select>
+	
+	
+	<parameterMap type="java.util.HashMap" id="pm_seach_Gift_cangku">
+		<parameter property="keyword" />
+	</parameterMap>
+	<select id="findGift_cangkuByKeyword" parameterMap="pm_seach_Gift_cangku" resultType="Gift_cangku">
+		<![CDATA[
+		select * from gift_cangku,gift_items 
+		where gift_cangku.ck_i_no=gift_items.i_no 
+		and (gift_cangku.ck_i_no like CONCAT('%',#{keyword},'%') 
+		or gift_items.i_name like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_kufang like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_huojia like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_ceng like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute1 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute2 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute3 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute4 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute5 like CONCAT('%',#{keyword},'%')) 
+		group by gift_cangku.ck_id
+		]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="pm_seach_Gift_cangku_count">
+		<parameter property="keyword" />
+	</parameterMap>
+	<select id="findGift_cangkuByKeyword_count" parameterMap="pm_seach_Gift_cangku_count" resultType="Integer">
+		<![CDATA[
+		select count(*) from gift_cangku,gift_items 
+		where gift_cangku.ck_i_no=gift_items.i_no 
+		and (gift_cangku.ck_i_no like CONCAT('%',#{keyword},'%') 
+		or gift_items.i_name like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_kufang like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_huojia like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_ceng like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute1 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute2 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute3 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute4 like CONCAT('%',#{keyword},'%') 
+		or gift_cangku.ck_attribute5 like CONCAT('%',#{keyword},'%'))
+		]]>
+	</select>
+
+	<update id="updateGift_cangku" parameterType="Gift_cangku">
+		<![CDATA[
+		 update  gift_cangku 
+		 set 
+		 ck_kufang=#{ck_kufang},
+		 ck_huojia=#{ck_huojia},
+		 ck_ceng=#{ck_ceng},
+		 ck_attribute1=#{ck_attribute1},
+		 ck_attribute2=#{ck_attribute2},
+		 ck_attribute3=#{ck_attribute3},
+		 ck_attribute4=#{ck_attribute4},
+		 ck_attribute5=#{ck_attribute5},
+		 ck_createtime=#{ck_createtime},
+		 ck_adduser=#{ck_adduser}
+		 where 
+		 ck_id=#{ck_id}
+		]]>
+	</update>
+	
+	<insert id="saveGift_cangku" parameterType="Gift_cangku">
+		<![CDATA[
+		 insert into gift_cangku 
+		 (ck_i_no, ck_kufang, ck_huojia, ck_ceng, ck_attribute1, ck_attribute2, 
+		 ck_attribute3, ck_attribute4, ck_attribute5, ck_createtime, ck_adduser)
+		 values 
+		 (#{ck_i_no}, #{ck_kufang}, #{ck_huojia}, #{ck_ceng}, #{ck_attribute1}, #{ck_attribute2}, 
+		 #{ck_attribute3}, #{ck_attribute4}, #{ck_attribute5}, #{ck_createtime}, #{ck_adduser})
+		]]>
+		<selectKey resultType="int" keyProperty="ck_id"> SELECT LAST_INSERT_ID() AS ck_id</selectKey>
+	</insert>
+	
+	<delete id="removeGift_cangkuByItemNo" parameterType="Gift_cangku">
+        <![CDATA[delete from gift_cangku where ck_i_no=#{i_no}]]>
+	</delete>
+	
+	<delete id="removeGift_cangkuById" parameterType="Integer">
+        <![CDATA[delete from gift_cangku where ck_id=#{ck_id}]]>
+	</delete>
+</mapper>

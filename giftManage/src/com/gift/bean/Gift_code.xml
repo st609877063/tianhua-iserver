@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_code">
+
+	<select id="findAllGift_code" resultType="Gift_code">
+        <![CDATA[select pk_id,name,code,parent_code,create_time,add_user_id from  gift_code]]>
+	</select>
+
+	<select id="findGift_codeByPk_id" parameterType="Integer" resultType="Gift_code">
+       <![CDATA[select pk_id,name,code,parent_code,create_time,add_user_id from  gift_code where pk_id=#{pk_id}]]>
+	</select>
+
+	<delete id="removeGift_code" parameterType="Gift_code">
+        <![CDATA[delete from gift_code where pk_id=#{pk_id}]]>
+	</delete>
+
+	<insert id="saveGift_code" parameterType="Gift_code">
+       <![CDATA[insert into gift_code(name,code,parent_code,create_time,add_user_id) values (#{name},#{code},#{parent_code},#{create_time},#{add_user_id})]]>
+		<selectKey resultType="Integer" keyProperty="pk_id">
+         <![CDATA[SELECT LAST_INSERT_ID() AS pk_id ]]>
+		</selectKey>
+	</insert>
+	
+	<update id="updateGift_code" parameterType="Gift_code">
+       <![CDATA[update gift_code set name=#{name},code=#{code},parent_code=#{parent_code},create_time=#{create_time},add_user_id=#{add_user_id} where pk_id=#{pk_id}]]>
+	</update>
+	
+	<parameterMap type="java.util.HashMap" id="parameterGift_codemap_count">
+		<parameter property="name_c" />
+	</parameterMap>
+	<select id="findGift_codeByName_count" parameterMap="parameterGift_codemap_count" resultType="int">
+       <![CDATA[select count(1) from  gift_code where name=?]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="parameterGift_codemap">
+		<parameter property="name_c" />
+		<parameter property="sartRow" />
+		<parameter property="endRow" />
+	</parameterMap>
+	<select id="findGift_codeByName" parameterMap="parameterGift_codemap" resultType="Gift_code">
+       <![CDATA[select pk_id,name,code,parent_code,create_time,add_user_id from gift_code  where name=?  order by PK_ID limit ?,?]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="parameterGift_codemap_excel">
+		<parameter property="name_c" />
+	</parameterMap>
+	<select id="findGift_codeByName_excel" parameterMap="parameterGift_codemap_excel" resultType="Gift_code">
+       <![CDATA[select pk_id,name,code,parent_code,create_time,add_user_id from gift_code where name=?  order by PK_ID]]>
+	</select>
+
+</mapper>

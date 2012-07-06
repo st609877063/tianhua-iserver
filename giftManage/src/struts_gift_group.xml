@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_group" extends="gift">
+		<!-- 默认拦截器 -->	
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
+	
+	
+		<action name="gift_group_*" class="gift_groupAction" method="{1}">
+			<result name="saveP">/jsp/gift_group_save.jsp</result>
+			<result name="savesuccess" type="redirect">/gift_group_list.action</result>
+			<result name="saveerror">/jsp/gift_group_save.jsp</result>
+			<result name="updateP">/jsp/gift_group_update.jsp</result>
+			<result name="updatesuccess" type="redirect">/gift_group_list.action</result>
+			<result name="updateerror">/jsp/gift_group_update.jsp</result>
+			<result name="input">/jsp/gift_group_{1}.jsp</result>
+			<result name="removesuccess" type="redirect">/gift_group_list.action</result>
+			<result name="list">/jsp/gift_group_list.jsp</result>
+			<result name="listsuccess">/jsp/gift_group_list.jsp</result>
+		</action>
+	</package>
+</struts>
+

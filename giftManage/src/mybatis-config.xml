@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties>
+		<property name="dialect" value="mysql" />
+	</properties>
+	<typeAliases>
+		<typeAlias alias="Gift_cangku" type="com.gift.bean.Gift_cangku" />
+		<typeAlias alias="Gift_code" type="com.gift.bean.Gift_code" />
+		<typeAlias alias="Gift_fujian" type="com.gift.bean.Gift_fujian" />
+		<typeAlias alias="Gift_group" type="com.gift.bean.Gift_group" />
+		<typeAlias alias="Gift_group_operation" type="com.gift.bean.Gift_group_operation" />
+		<typeAlias alias="Gift_group_user" type="com.gift.bean.Gift_group_user" />
+		<typeAlias alias="Gift_items" type="com.gift.bean.Gift_items" />
+		<typeAlias alias="Gift_log" type="com.gift.bean.Gift_log" />
+		<typeAlias alias="Gift_operation" type="com.gift.bean.Gift_operation" />
+		<typeAlias alias="Gift_peoples" type="com.gift.bean.Gift_peoples" />
+		<typeAlias alias="Gift_user" type="com.gift.bean.Gift_user" />
+		<typeAlias alias="Gift_user_operation" type="com.gift.bean.Gift_user_operation" />
+	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.gift.interceptor.PaginationInterceptor" />
+	</plugins>
+	<mappers>
+		<mapper resource="com/gift/bean/Gift_cangku.xml" />
+		<mapper resource="com/gift/bean/Gift_code.xml" />
+		<mapper resource="com/gift/bean/Gift_fujian.xml" />
+		<mapper resource="com/gift/bean/Gift_group.xml" />
+		<mapper resource="com/gift/bean/Gift_group_operation.xml" />
+		<mapper resource="com/gift/bean/Gift_group_user.xml" />
+		<mapper resource="com/gift/bean/Gift_items.xml" />
+		<mapper resource="com/gift/bean/Gift_log.xml" />
+		<mapper resource="com/gift/bean/Gift_operation.xml" />
+		<mapper resource="com/gift/bean/Gift_peoples.xml" />
+		<mapper resource="com/gift/bean/Gift_user.xml" />
+		<mapper resource="com/gift/bean/Gift_user_operation.xml" />
+	</mappers>
+</configuration>

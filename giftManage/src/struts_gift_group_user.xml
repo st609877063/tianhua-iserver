@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"     "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_group_user" extends="struts-default">
+		<action name="gift_group_user_*" class="gift_group_userAction"
+			method="{1}">
+			<result name="list">/jsp/gift_group_userlist.jsp</result>
+
+			<result name="saveP">/jsp/gift_group_usersave.jsp</result>
+			<result name="savesuccess" type="redirect">/gift_group_user_list.action
+			</result>
+			<result name="saveerror">/jsp/gift_group_usersave.jsp</result>
+
+			<result name="updateP">/jsp/gift_group_userupdate.jsp</result>
+			<result name="updatesuccess" type="redirect">/gift_group_user_list.action
+			</result>
+			<result name="updateerror">/jsp/gift_group_userupdate.jsp</result>
+
+			<result name="input">/jsp/gift_group_user{1}.jsp</result>
+
+			<result name="removesuccess" type="redirect">/gift_group_user_list.action?list_user_id=${list_user_id}
+			</result>
+
+			<result name="listByGroup_id">/jsp/gift_group_userlist.jsp</result>
+			<result name="listsuccess">/jsp/gift_group_userlist.jsp</result>
+
+		</action>
+	</package>
+</struts>
+

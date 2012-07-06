@@ -1,0 +1,179 @@
+#skinlist {
+	display: block;
+	height: 11px;
+	margin-top: 10px;
+	overflow: hidden;
+	width: 86px;
+}
+
+#skin div {
+	float: left;
+}
+
+#skin li {
+	cursor: pointer;
+	float: left;
+	height: 11px;
+	width: 14px;
+}
+
+#def div,#s1 div,#s2 div,#s3 div,#s4 div {
+	background-image: url("../images/skinbutton.png");
+	background-repeat: no-repeat;
+}
+
+#s1 div {
+	background-position: 0 0px;
+}
+
+#s2 div {
+	background-position: 0 -11px;
+}
+
+#s3 div {
+	background-position: 0 -22px;
+}
+
+#s4 div {
+	background-position: 0 -33px;
+}
+
+#s1 div.sel {
+	background: url("../images/skinbutton.png") no-repeat scroll -14px top
+		transparent;
+}
+
+#s2 div.sel {
+	background: url("../images/skinbutton.png") no-repeat scroll -14px -11px
+		transparent;
+}
+
+#s3 div.sel {
+	background: url("../images/skinbutton.png") no-repeat scroll -14px -22px
+		transparent;
+}
+
+#s4 div.sel {
+	background: url("../images/skinbutton.png") no-repeat scroll -14px -33px
+		transparent;
+}
+
+div {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	padding: 0px;
+	margin: auto;
+	text-align: center;
+	background-color: #eff5ed;
+	background: url(../images/leftmenu_bg.gif);
+	padding-left: 3px;
+	overflow: scroll;
+	overflow-x: hidden;
+	scrollbar-face-color: #eff8e6;
+	scrollbar-shadow-color: #edf2e3;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-3dlight-color: #F2F2F2;
+	scrollbar-darkshadow-color: #bdbcbd;
+	scrollbar-arrow-color: #bdbcbd
+}
+
+dl.bitem {
+	clear: both;
+	width: 140px;
+	margin: 0px 0px 5px 12px;
+	background: url(../images/menunewbg.gif) repeat-x;
+}
+
+dl.bitem2 {
+	clear: both;
+	width: 140px;
+	margin: 0px 0px 5px 12px;
+	background: url(../images/menunewbg2.gif) repeat-x;
+}
+
+dl.bitem dt,dl.bitem2 dt {
+	height: 25px;
+	line-height: 25px;
+	padding-left: 35px;
+	cursor: pointer;
+}
+
+dl.bitem dt b,dl.bitem2 dt b {
+	color: #4D6C2F;
+}
+
+dl.bitem dd,dl.bitem2 dd {
+	padding: 3px 3px 3px 3px;
+	background-color: #fff;
+}
+
+div.items {
+	clear: both;
+	padding: 0px;
+	height: 0px;
+}
+
+.fllct {
+	float: left;
+	width: 85px;
+}
+
+.flrct {
+	padding-top: 3px;
+	float: left;
+}
+
+.sitemu li {
+	padding: 0px 0px 0px 18px;
+	line-height: 22px;
+	background: url(../images/arr4.gif) no-repeat 5px 9px;
+}
+
+ul {
+	padding-top: 3px;
+}
+
+li {
+	height: 22px;
+}
+
+a.mmac div {
+	background: url(../images/leftbg2.gif) no-repeat;
+	height: 37px !important;
+	height: 47px;
+	padding: 6px 4px 4px 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+	font-weight: bold;
+	color: #325304;
+}
+
+a.mm div {
+	background: url(../images/leftmbg1.gif) no-repeat;
+	height: 37px !important;
+	height: 47px;
+	padding: 6px 4px 4px 10px;
+	word-wrap: break-word;
+	word-break: break-all;
+	font-weight: bold;
+	color: #475645;
+	cursor: pointer;
+}
+
+a.mm:hover div {
+	background: url(../images/leftbg2.gif) no-repeat;
+	color: #4F7632;
+}
+
+.mmf {
+	height: 1px;
+	padding: 5px 7px 5px 7px;
+}
+
+#mainct {
+	padding-top: 8px;
+	background: url(../images/idnbg1.gif) repeat-y;
+}

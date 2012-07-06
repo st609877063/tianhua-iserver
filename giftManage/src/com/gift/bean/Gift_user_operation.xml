@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_user_operation">
+
+	<select id="findAllGift_user_operation" resultType="Gift_user_operation">
+        <![CDATA[
+           select uo_id,user_id,oper_id,add_time,add_user_id from  gift_user_operation
+       ]]>
+	</select>
+
+	<select id="findGift_user_operationByUo_id" parameterType="Integer"
+		resultType="Gift_user_operation">
+       <![CDATA[
+            select uo_id,user_id,oper_id,add_time,add_user_id from  gift_user_operation where uo_id=#{uo_id}
+       ]]>
+	</select>
+
+	<delete id="removeGift_user_operation" parameterType="Gift_user_operation">
+        <![CDATA[
+            delete from gift_user_operation where uo_id=#{uo_id}
+        ]]>
+	</delete>
+
+	<insert id="saveGift_user_operation" parameterType="Gift_user_operation">
+       <![CDATA[
+            insert into gift_user_operation(user_id,oper_id,add_time,add_user_id) values (#{user_id},#{oper_id},#{add_time},#{add_user_id})
+       ]]>
+		<selectKey resultType="Integer" keyProperty="uo_id">
+         <![CDATA[SELECT LAST_INSERT_ID() AS uo_id ]]>
+		</selectKey>
+	</insert>
+	<update id="updateGift_user_operation" parameterType="Gift_user_operation">
+       <![CDATA[
+           update gift_user_operation set user_id=#{user_id},oper_id=#{oper_id},add_time=#{add_time},add_user_id=#{add_user_id}
+           where uo_id=#{uo_id}
+       ]]>
+	</update>
+	<parameterMap type="java.util.HashMap" id="parameterGift_user_operationmap_count">
+		<parameter property="user_id_c" />
+	</parameterMap>
+	<select id="findGift_user_operationByUser_id_count"
+		parameterMap="parameterGift_user_operationmap_count" resultType="int">
+       <![CDATA[
+            select count(1) from  gift_user_operation where user_id=? 
+       ]]>
+	</select>
+	<parameterMap type="java.util.HashMap" id="parameterGift_user_operationmap">
+		<parameter property="user_id_c" />
+		<parameter property="sartRow" />
+		<parameter property="endRow" />
+	</parameterMap>
+	<select id="findGift_user_operationByUser_id" parameterMap="parameterGift_user_operationmap"
+		resultType="Gift_user_operation">
+       <![CDATA[
+              select uo_id,user_id,oper_id,add_time,add_user_id from gift_user_operation  where user_id=?  order by UO_ID limit ?,?
+       ]]>
+	</select>
+	<parameterMap type="java.util.HashMap" id="parameterGift_user_operationmap_excel">
+		<parameter property="user_id_c" />
+	</parameterMap>
+	<select id="findGift_user_operationByUser_id_excel"
+		parameterMap="parameterGift_user_operationmap_excel" resultType="Gift_user_operation">
+       <![CDATA[
+            select uo_id,user_id,oper_id,add_time,add_user_id from gift_user_operation where user_id=?  order by UO_ID
+       ]]>
+	</select>
+
+</mapper>
+

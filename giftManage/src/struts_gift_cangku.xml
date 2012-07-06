@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="gift_cangku" extends="struts-default">
+		<action name="gift_cangku_*" class="com.gift.action.gift_cangku.Gift_cangkuAction" method="{1}">
+
+			<result name="list">/jsp/gift_cangku_list.jsp</result>
+			<result name="listsuccess">/jsp/gift_cangku_list.jsp</result>
+			<result name="listByName">/jsp/gift_cangku_list.jsp</result>
+
+			<result name="saveP">/jsp/gift_codesave.jsp</result>
+			<!-- <result name="savesuccess" type="chain">gift_codelistByName</result> -->
+			<result name="saveerror">/jsp/gift_codesave.jsp</result>
+
+			<result name="updateP">/jsp/gift_cangku_update.jsp</result>
+			<result name="updatesuccess" type="chain">gift_cangku_listByName</result>
+			<result name="updatesuccessToItemList" type="chain">gift_items_list</result>
+			<result name="updateerror">/jsp/gift_cangku_update.jsp</result>
+
+			<result name="input">/gift_code{1}.jsp</result>
+
+			<result name="generateExcel" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">filename="Gift_codeRecords.xls"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>

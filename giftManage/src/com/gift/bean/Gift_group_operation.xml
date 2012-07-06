@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_group_operation">
+
+  <select id="findAllGift_group_operation" resultType="Gift_group_operation">
+        <![CDATA[
+           select go_id,group_id,oper_id,add_time,add_user_id from  gift_group_operation
+       ]]>
+  </select>
+
+  <select id="findGift_group_operationByGo_id"  parameterType="Integer" resultType="Gift_group_operation">
+       <![CDATA[
+            select go_id,group_id,oper_id,add_time,add_user_id from  gift_group_operation where go_id=#{go_id}
+       ]]>
+  </select>
+
+  <delete id="removeGift_group_operation" parameterType="Gift_group_operation">
+        <![CDATA[
+            delete from gift_group_operation where go_id=#{go_id}
+        ]]>
+  </delete>
+
+  <insert id="saveGift_group_operation" parameterType="Gift_group_operation">
+       <![CDATA[
+            insert into gift_group_operation(group_id,oper_id,add_time,add_user_id) values (#{group_id},#{oper_id},#{add_time},#{add_user_id})
+       ]]>
+       <selectKey resultType="Integer" keyProperty="go_id">
+         <![CDATA[SELECT LAST_INSERT_ID() AS go_id ]]>
+       </selectKey>
+  </insert>
+   <update id="updateGift_group_operation" parameterType="Gift_group_operation">
+       <![CDATA[
+           update gift_group_operation set group_id=#{group_id},oper_id=#{oper_id},add_time=#{add_time},add_user_id=#{add_user_id}
+           where go_id=#{go_id}
+       ]]>
+  </update>
+  <parameterMap type="java.util.HashMap" id="parameterGift_group_operationmap_count">
+      <parameter property="group_id_c"/>
+  </parameterMap>
+    <select id="findGift_group_operationByGroup_id_count"  parameterMap="parameterGift_group_operationmap_count" resultType="int">
+       <![CDATA[
+            select count(1) from  gift_group_operation where group_id=? 
+       ]]>
+  </select>
+  <parameterMap type="java.util.HashMap" id="parameterGift_group_operationmap">
+      <parameter property="group_id_c"/>
+      <parameter property="sartRow"/>
+      <parameter property="endRow"/>
+  </parameterMap>
+  <select id="findGift_group_operationByGroup_id" parameterMap="parameterGift_group_operationmap" resultType="Gift_group_operation">
+       <![CDATA[
+              select go_id,group_id,oper_id,add_time,add_user_id from gift_group_operation  where group_id=?  order by GO_ID limit ?,?
+       ]]>
+  </select>
+  <parameterMap type="java.util.HashMap" id="parameterGift_group_operationmap_excel">
+      <parameter property="group_id_c"/>
+  </parameterMap>
+  <select id="findGift_group_operationByGroup_id_excel"  parameterMap="parameterGift_group_operationmap_excel" resultType="Gift_group_operation">
+       <![CDATA[
+            select go_id,group_id,oper_id,add_time,add_user_id from gift_group_operation where group_id=?  order by GO_ID
+       ]]>
+  </select>
+
+ </mapper>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_fujian">
+
+	<select id="findAllGift_fujian" resultType="Gift_fujian">
+<![CDATA[
+ select
+ fj_id,
+ fj_i_no,
+ fj_name,
+ fj_path,
+ fj_type,
+ fj_desc,
+ fj_attribute1,
+ fj_attribute2,
+ fj_attribute3,
+ fj_attribute4,
+ fj_attribute5,
+ fj_createtime,
+ fj_adduser
+ from 
+ gift_fujian
+]]>
+	</select>
+
+	<select id="findGift_fujianListByGiftItemNo" parameterType="String" resultType="Gift_fujian">
+<![CDATA[
+ select
+ fj_id,
+ fj_i_no,
+ fj_name,
+ fj_path,
+ fj_type,
+ fj_desc,
+ fj_attribute1,
+ fj_attribute2,
+ fj_attribute3,
+ fj_attribute4,
+ fj_attribute5,
+ fj_createtime,
+ fj_adduser
+ from 
+ gift_fujian
+  where 
+ fj_i_no=#{item_no}
+]]>
+	</select>
+
+
+	<select id="findGift_fujianByID" parameterType="Integer" resultType="Gift_fujian">
+<![CDATA[
+ select 
+ fj_id,
+ fj_i_no,
+ fj_name,
+ fj_path,
+ fj_type,
+ fj_desc,
+ fj_attribute1,
+ fj_attribute2,
+ fj_attribute3,
+ fj_attribute4,
+ fj_attribute5,
+ fj_createtime,
+ fj_adduser
+ from 
+ gift_fujian 
+ where 
+ fj_id=#{fj_id}
+]]>
+	</select>
+
+	<delete id="removeGift_fujianByItemNo" parameterType="Gift_fujian">
+		<![CDATA[delete from gift_fujian where fj_id=#{fj_i_no}]]>
+	</delete>
+
+	<delete id="removeGift_fujianById" parameterType="Integer">
+		<![CDATA[delete from gift_fujian where fj_id=#{fj_id}]]>
+	</delete>
+
+	<insert id="saveGift_fujian" parameterType="Gift_fujian">
+<![CDATA[
+ insert into 
+ gift_fujian 
+ (fj_i_no,
+ fj_name,
+ fj_path,
+ fj_type,
+ fj_desc,
+ fj_attribute1,
+ fj_attribute2,
+ fj_attribute3,
+ fj_attribute4,
+ fj_attribute5,
+ fj_createtime,
+ fj_adduser) 
+ values 
+ (#{fj_i_no},
+ #{fj_name},
+ #{fj_path},
+ #{fj_type},
+ #{fj_desc},
+ #{fj_attribute1},
+ #{fj_attribute2},
+ #{fj_attribute3},
+ #{fj_attribute4},
+ #{fj_attribute5},
+ #{fj_createtime},
+ #{fj_adduser})
+]]>
+		<selectKey resultType="Integer" keyProperty="fj_id">
+			<![CDATA[SELECT LAST_INSERT_ID() AS fj_id ]]>
+		</selectKey>
+	</insert>
+	
+	<update id="updateGift_fujian" parameterType="Gift_fujian">
+<![CDATA[
+ update 
+ gift_fujian 
+ set 
+ fj_i_no=#{fj_i_no},
+ fj_name=#{fj_name},
+ fj_path=#{fj_path},
+ fj_type=#{fj_type},
+ fj_desc=#{fj_desc},
+ fj_attribute1=#{fj_attribute1},
+ fj_attribute2=#{fj_attribute2},
+ fj_attribute3=#{fj_attribute3},
+ fj_attribute4=#{fj_attribute4},
+ fj_attribute5=#{fj_attribute5},
+ fj_createtime=#{fj_createtime},
+ fj_adduser#{fj_adduser}
+ where 
+ fj_id=#{fj_id}
+]]>
+	</update>
+
+</mapper>

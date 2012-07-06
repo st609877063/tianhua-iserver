@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Gift_peoples">
+
+<select id="findAllGiftPeoples" resultType="Gift_peoples">
+<![CDATA[
+ select * from gift_peoples
+]]>
+	</select>
+<parameterMap type="java.util.HashMap" id="pm_seach_Gift_peoples_flag">
+		<parameter property="p_flag" />
+</parameterMap>
+	<select id="findGiftPeoplesByFlagPage" parameterMap="pm_seach_Gift_peoples_flag" resultType="Gift_peoples">
+<![CDATA[
+ select p.*,u.user_name as 'p_adduser_name'
+ from gift_peoples p left join  gift_user u on p.p_adduser = u.user_id where p_flag=#{p_flag} order by p_createtime desc
+]]>
+	</select>
+<parameterMap type="java.util.HashMap" id="pm_seach_Gift_peoples_flag_count">
+		<parameter property="p_flag" />
+</parameterMap>	
+<select id="findGiftPeoplesByFlagCount" parameterMap="pm_seach_Gift_peoples_flag_count" resultType="Integer">
+<![CDATA[
+ select
+ count(p_id)
+ from 
+ gift_peoples where p_flag = #{p_flag}
+]]>
+	</select>
+
+
+	<select id="findGiftPeoplesByID" parameterType="Integer" resultType="Gift_peoples">
+<![CDATA[
+ select 
+ p_id,
+ p_name,
+ p_flag,
+ p_type,
+ p_spouse,
+ p_country,
+ p_bm,
+ p_title,
+ p_attribute1,
+ p_attribute2,
+ p_attribute3,
+ p_attribute4,
+ p_attribute5,
+ p_createtime,
+ p_adduser
+ from 
+ gift_peoples 
+ where 
+ p_id=#{p_id}
+]]>
+	</select>
+
+	<delete id="removeGiftPeoples" parameterType="Gift_peoples">
+		<![CDATA[delete from gift_peoples where p_id=#{p_id}]]>
+	</delete>
+
+	<insert id="saveGiftPeoples" parameterType="Gift_peoples">
+<![CDATA[
+ insert into 
+ gift_peoples 
+ (p_name,
+ p_flag,
+ p_type,
+ p_spouse,
+ p_country,
+ p_bm,
+ p_title,
+ p_attribute1,
+ p_attribute2,
+ p_attribute3,
+ p_attribute4,
+ p_attribute5,
+ p_createtime,
+ p_adduser) 
+ values 
+ (#{p_name},
+ #{p_flag},
+ #{p_type},
+ #{p_spouse},
+ #{p_country},
+ #{p_bm},
+ #{p_title},
+ #{p_attribute1},
+ #{p_attribute2},
+ #{p_attribute3},
+ #{p_attribute4},
+ #{p_attribute5},
+ #{p_createtime},
+ #{p_adduser})
+]]>
+		<selectKey resultType="Integer" keyProperty="p_id">
+			<![CDATA[SELECT LAST_INSERT_ID() AS p_id ]]>
+		</selectKey>
+	</insert>
+	
+	<update id="updateGiftPeoples" parameterType="Gift_peoples">
+<![CDATA[
+ update 
+ gift_peoples 
+ set 
+ p_name=#{p_name},
+ p_flag=#{p_flag},
+ p_type=#{p_type},
+ p_spouse=#{p_spouse},
+ p_country=#{p_country},
+ p_bm=#{p_bm},
+ p_title=#{p_title},
+ p_attribute1=#{p_attribute1},
+ p_attribute2=#{p_attribute2},
+ p_attribute3=#{p_attribute3},
+ p_attribute4=#{p_attribute4},
+ p_attribute5=#{p_attribute5}
+ where 
+ p_id=#{p_id}
+]]>
+	</update>
+	<select id="findGiftPeoplesByFlag" parameterType="Integer" resultType="Gift_peoples">
+<![CDATA[
+ select 
+ p_id,
+ p_name,
+ p_flag,
+ p_type,
+ p_spouse,
+ p_country,
+ p_bm,
+ p_title,
+ p_attribute1,
+ p_attribute2,
+ p_attribute3,
+ p_attribute4,
+ p_attribute5,
+ p_createtime,
+ p_adduser
+ from 
+ gift_peoples 
+ where 
+ p_flag=#{p_flag}
+]]>
+	</select>
+	
+	<select id="findGiftPeoplesByName" parameterType="String" resultType="Gift_peoples">
+<![CDATA[
+ select 
+ p_id,
+ p_name,
+ p_flag,
+ p_type,
+ p_spouse,
+ p_country,
+ p_bm,
+ p_title,
+ p_attribute1,
+ p_attribute2,
+ p_attribute3,
+ p_attribute4,
+ p_attribute5,
+ p_createtime,
+ p_adduser
+ from 
+ gift_peoples 
+ where 
+ p_name=#{p_name}
+]]>
+	</select>
+	
+<parameterMap type="java.util.HashMap" id="pm_seach_Gift_peoples">
+		<parameter property="keyword" />
+		<parameter property="p_flag" />
+	</parameterMap>
+	<select id="findGiftPeoplesByKeyword" parameterMap="pm_seach_Gift_peoples" resultType="Gift_peoples">
+<![CDATA[
+select p.*,u.user_name as 'p_adduser_name' from gift_peoples p left join gift_user u on p.p_adduser = u.user_id
+where  p_flag=#{p_flag} and (p_name like CONCAT('%',#{keyword},'%') 
+or p_spouse like CONCAT('%',#{keyword},'%') 
+or p_country like CONCAT('%',#{keyword},'%') 
+or p_bm like CONCAT('%',#{keyword},'%') 
+or p_title like CONCAT('%',#{keyword},'%') 
+or p_attribute1 like CONCAT('%',#{keyword},'%') 
+or p_attribute2 like CONCAT('%',#{keyword},'%') 
+or p_attribute3 like CONCAT('%',#{keyword},'%') 
+or p_attribute4 like CONCAT('%',#{keyword},'%') 
+or p_attribute5 like CONCAT('%',#{keyword},'%'))
+]]>
+	</select>
+	
+	<parameterMap type="java.util.HashMap" id="pm_seach_Gift_peoples_count">
+		<parameter property="keyword" />
+		<parameter property="p_flag" />
+	</parameterMap>
+	<select id="findGiftPeoplesByKeywordCount" parameterMap="pm_seach_Gift_peoples_count" resultType="Integer">
+<![CDATA[
+select count(p_id) from gift_peoples
+where  p_flag=#{p_flag} and ( p_name like CONCAT('%',#{keyword},'%') 
+or p_spouse like CONCAT('%',#{keyword},'%') 
+or p_country like CONCAT('%',#{keyword},'%') 
+or p_bm like CONCAT('%',#{keyword},'%') 
+or p_title like CONCAT('%',#{keyword},'%') 
+or p_attribute1 like CONCAT('%',#{keyword},'%') 
+or p_attribute2 like CONCAT('%',#{keyword},'%') 
+or p_attribute3 like CONCAT('%',#{keyword},'%') 
+or p_attribute4 like CONCAT('%',#{keyword},'%') 
+or p_attribute5 like CONCAT('%',#{keyword},'%'))
+]]>
+	</select>
+</mapper>
