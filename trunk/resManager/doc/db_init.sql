@@ -9,7 +9,7 @@ CREATE TABLE res_items (
   i_money varchar(100) default NULL COMMENT '价格',
   i_desc varchar(100) DEFAULT NULL COMMENT '食品说明',
   i_memo varchar(1000) DEFAULT NULL COMMENT '食品备注',
-  i_type char(1) default '1' COMMENT '主副食品，1:主食 2：主副食品',
+  i_type char(1) default '1' COMMENT '主副食品，1:主食 2：副食',
   
   i_createtime int(10) DEFAULT NULL COMMENT '创建时间',
   i_adduser int(10) DEFAULT NULL COMMENT '创建人',
@@ -27,8 +27,49 @@ CREATE TABLE res_items_img (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS res_menus;
+CREATE TABLE res_menus (
+  pk_id 	int(11) NOT NULL auto_increment DEFAULT NULL COMMENT '主键ID',
+  i_id 		int(11) DEFAULT NULL COMMENT '食品ID',
+  i_no 		varchar(100) DEFAULT NULL COMMENT '食品编号',
+  m_money 	varchar(100) default NULL COMMENT '价格',
+  m_memo 	varchar(100) DEFAULT NULL COMMENT '食品备注',
+  m_date 	varchar(100) DEFAULT NULL COMMENT '时间',
+  
+  m_createtime int(10) DEFAULT NULL COMMENT '创建时间',
+  m_adduser int(10) DEFAULT NULL COMMENT '创建人',
+  PRIMARY KEY  (pk_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+
+DROP TABLE IF EXISTS res_orders;
+CREATE TABLE res_orders (
+  pk_id 	int(11) NOT NULL auto_increment DEFAULT NULL COMMENT '主键ID',
+  o_no 		int(11) DEFAULT NULL COMMENT '订单编号',
+  o_user 	varchar(100) DEFAULT NULL COMMENT '用户名',
+  o_phone 	int(11)  DEFAULT NULL COMMENT '用户手机号',
+  o_date 	varchar(100) DEFAULT NULL COMMENT '时间',
+  o_memo 	varchar(100) DEFAULT NULL COMMENT '备注',
+  o_fee 	varchar(100) DEFAULT NULL COMMENT '费用',
+  
+  o_createtime int(10) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY  (pk_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS res_order_menu;
+CREATE TABLE res_order_menu (
+  pk_id 	int(11) NOT NULL auto_increment DEFAULT NULL COMMENT '主键ID',
+  o_no 		int(11) DEFAULT NULL COMMENT '订单编号',
+  i_id 		int(11) DEFAULT NULL COMMENT '食品ID',
+  i_no 		varchar(100) DEFAULT NULL COMMENT '食品编号',
+  om_money 	varchar(100) default NULL COMMENT '价格',
+  om_num 	int(11) default NULL COMMENT '份数',
+  om_total 	varchar(100) default NULL COMMENT '价格',
+  
+  om_createtime int(10) DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY  (pk_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 -- ----------------------------

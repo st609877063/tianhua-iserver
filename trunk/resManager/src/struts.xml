@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<include file="struts-default.xml" />
+	
+	<package name="struts2" extends="struts-default">
+	
+		<interceptors>
+			<interceptor name="authInterceptor" class="com.res.interceptor.AuthorityInterceptor"></interceptor>		
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>				
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义全局result -->
+		<global-results>
+			<!-- 定义名为exception的全局result -->
+			<result name="exception">/exception.jsp</result>
+			<result name="input">/404.htm</result>
+			<result name="login" type="redirect">/tologin.action</result>
+		</global-results>
+
+		<!-- 定义全局异常映射 -->
+		<global-exception-mappings>
+			<!-- 捕捉到Exception异常(所有异常)时跳转到exception所命名的视图上 -->
+			<exception-mapping exception="java.lang.Exception"
+				result="exception" />
+		</global-exception-mappings>
+		
+		<action name="login" class="com.res.action.LoginAction" method="tologin">
+			<result name="success">/jsp/login.jsp</result>
+		</action>
+		
+		
+		<action name="resMenuShow" class="com.res.action.ResMenuAction" method="showMenu">
+			<result name="success">/jsp/resMenuShow.jsp</result>
+		</action>
+		
+	
+	</package>
+
+</struts>
