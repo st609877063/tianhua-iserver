@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN" "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+<dwr>
+	<!-- without allow, DWR isn't allowed to do anything -->
+	<allow>
+		 <!-- 
+		 <create creator="new" javascript="news"> 
+		 <param name="class">com.gift.util.UtilCommon</param> 
+		 </create>
+		<create javascript="studentService" creator="spring">
+			<param name="beanName" value="studentServiceImpl"/>
+		</create>
+		 -->
+		 
+	</allow>
+</dwr>

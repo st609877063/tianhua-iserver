@@ -1,0 +1,63 @@
+table {
+        border-collapse:collapse;
+        background:#EFF4FB url(tb.gif) repeat-x;
+        border-left:1px solid #686868;
+        border-right:1px solid #686868;
+        font:1.0em/110% 'Trebuchet MS',helvetica,arial,verdana;
+        color: #333;
+
+
+}
+
+td, th {
+        padding:5px;
+}
+
+caption {
+        padding: 0 0 .5em 0;
+        text-align: left;
+        font-size: 1.4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+        background: transparent;
+}
+
+
+table a {
+        color:#021763;
+        text-decoration:none;
+}
+
+table a:link {}
+
+table a:hover {
+        border-bottom: 1px dashed #bbb;
+        COLOR: #FF0000;
+}
+
+
+thead th, tfoot th, tfoot td {
+        background:#333 repeat-x;
+        color:#fff
+}
+
+tfoot td {
+        Text -Align: Right
+}
+
+tbody th, tbody td {
+        border-bottom: dotted 1px #333;
+}
+
+tbody th {
+        white-space: nowrap;
+}
+
+tbody th a {
+        color:#333;
+}
+.odd {}
+
+
+

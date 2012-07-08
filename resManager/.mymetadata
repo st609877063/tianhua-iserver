@@ -3,11 +3,11 @@
   type="WEB"
   name="resManager"
   id="myeclipse.1341278919968"
-  context-root="/dinner"
+  context-root="/res"
   j2ee-spec="5.0"
   archive="resManager.war">
   <attributes>
-    <attribute name="webrootdir" value="WebRoot" />
+    <attribute name="webrootdir" value="/WebRoot" />
   </attributes>
 </project-module>
 
