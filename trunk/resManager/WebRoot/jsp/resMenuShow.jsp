@@ -29,7 +29,7 @@
 
 <script type='text/javascript' src="<%=path %>/dwr/util.js"></script>
 <script type='text/javascript' src="<%=path %>/dwr/engine.js"></script>
-<script type='text/javascript' src="<%=path %>/dwr/interface/giftAjax.js"></script>
+<script type='text/javascript' src="<%=path %>/dwr/interface/resAjax.js"></script>
 
 <style type="text/css">
 </style>
@@ -37,7 +37,7 @@
 <script>
 	function deleteItem(Field, pkId) {
 		if (confirm("确定删除？")) {
-			giftAjax.deleteItemById(pkId, function(param) {
+			resAjax.deleteItemById(pkId, function(param) {
 				if (param == "SUCCESS") {
 					alert("删除成功");
 					var findex = getElementOrder(Field)+1;

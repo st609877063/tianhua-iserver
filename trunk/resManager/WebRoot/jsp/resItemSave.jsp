@@ -10,7 +10,7 @@
 
 <html>
 <head>
-<title>添加新礼品</title>
+<title>添加新菜品</title>
 <link href="css/menu_base.css" rel="stylesheet" type="text/css">
 <link href="css/frame.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 
 <script type='text/javascript' src="<%=path %>/dwr/util.js"></script>
 <script type='text/javascript' src="<%=path %>/dwr/engine.js"></script>
-<script type='text/javascript' src="<%=path %>/dwr/interface/giftAjax.js"></script>
+<script type='text/javascript' src="<%=path %>/dwr/interface/resAjax.js"></script>
 
 <script>
 $(function() {
@@ -43,14 +43,14 @@ function submitForm() {
 	
 	var itemNo = $("#giftItems_i_no").val();
 	//验证DB中是否存在
-	giftAjax.itemNoIsExist(itemNo, function(param) {
+	resAjax.itemNoIsExist(itemNo, function(param) {
 		if(param == "NOEXIST") {
 			//OK
 			//其他校验，开始
 			var itemNum = $("#giftItems_i_num").val(); //数量
 			if(itemNum!="" && !isDigit(itemNum)) {
 				obsubmit = false;
-				alert("《礼品数量》请填写数字");
+				alert("《菜品数量》请填写数字");
 				$("#giftItems_i_num").focus();
 				return false;
 			}
@@ -60,7 +60,7 @@ function submitForm() {
 			}
 			
 		} else if(param == "EXIST") {
-			alert("《礼品编号》重复");
+			alert("《菜品编号》重复");
 			$("#giftItems_i_no").focus();
 			return false;
 		}
@@ -87,14 +87,14 @@ function isDigit(s) {
 
 <div class="right">
 	<div class="main" align="center">
-	<form name="form1" action="gift_items_save.action" method="post">
-		<h2 align="center">添加新礼品</h2>
+	<form name="form1" action="resItemSave.action" method="post">
+		<h2 align="center">添加新菜品</h2>
 		<table border="0" cellpadding="2" cellspacing="1" width="98%">
 		<tbody>
 			<tr>
-				<td bgcolor="#FBFCE2" height="30">礼品编号:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品编号:</td>
 				<td height="30"><input type="text" name="giftItems.i_no" value="" id="giftItems_i_no" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品名称:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品名称:</td>
 				<td height="30"><input type="text" name="giftItems.i_name" value="" id="giftItems_i_name" /></td>
 				<td bgcolor="#FBFCE2" height="30">受礼人:</td>
 				<td height="30">
@@ -132,25 +132,25 @@ function isDigit(s) {
 				<td height="30"><input type="text" name="giftItems.i_unit" value="" id="giftItems_i_unit" /></td>
 				<td bgcolor="#FBFCE2" height="30">数　　量:</td>
 				<td height="30"><input type="text" name="giftItems.i_num" value="" id="giftItems_i_num" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品类型:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品类型:</td>
 				<td height="30"><input type="text" name="giftItems.i_type" value=""　id="giftItems_i_type" /></td>
 			</tr>
 			<tr>
-				<td bgcolor="#FBFCE2" height="30">礼品工艺:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品工艺:</td>
 				<td height="30"><input type="text" name="giftItems.i_gongyi" value=""　id="giftItems_i_gongyi" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品质地:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品质地:</td>
 				<td height="30"><input type="text" name="giftItems.i_zhidi" value="" id="giftItems_i_zhidi" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品产地:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品产地:</td>
 				<td height="30"><input type="text" name="giftItems.i_chandi" value="" id="giftItems_i_chandi" /></td>
 				<td bgcolor="#FBFCE2" height="30">赠送背景:</td>
 				<td height="30"><input type="text" name="giftItems.i_background" value="" id="giftItems_i_background" /></td>
 			</tr>
 			<tr>
-				<td bgcolor="#FBFCE2" height="30">礼品现状:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品现状:</td>
 				<td height="30"><input type="text" name="giftItems.i_status" value="" id="giftItems_i_status" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品说明:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品说明:</td>
 				<td height="30"><input type="text" name="giftItems.i_desc" value=""　id="giftItems_i_desc" /></td>
-				<td bgcolor="#FBFCE2" height="30">礼品备注:</td>
+				<td bgcolor="#FBFCE2" height="30">菜品备注:</td>
 				<td height="30"><input type="text" name="giftItems.i_memo" value=""　id="giftItems_i_memo" /></td>
 				<td bgcolor="#FBFCE2" height="30">额外属性:</td>
 				<td height="30"><input type="text" name="giftItems.i_attribute1" value=""　id="giftItems_i_attribute1" /></td>

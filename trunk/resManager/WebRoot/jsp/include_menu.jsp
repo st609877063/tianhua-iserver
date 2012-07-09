@@ -19,8 +19,8 @@
 						</dt>
 						<dd style="display:block;" class="sitem" id="items1_1">
 							<ul class="sitemu">
-								<li><a href="gift_items_list.action" >查询礼品</a></li>
-								<li><a href="gift_items_saveP.action" >添加礼品</a></li>
+								<li><a href="resItemsShow.action" >查询礼品</a></li>
+								<li><a href="toResItemSave.action" >添加礼品</a></li>
 							</ul>
 						</dd>
 					</dl>

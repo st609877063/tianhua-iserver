@@ -26,7 +26,7 @@
 <div class="right">
 	<div class="main" align="center">
 	<h2 align="center">添加附件失败</h2>
-	<a href="gift_items_list.action">返回主页</a>
+	<a href="resItemsShow.action">返回主页</a>
 	</div>
 </div>
 </body>

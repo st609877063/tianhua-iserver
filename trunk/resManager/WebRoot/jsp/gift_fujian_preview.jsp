@@ -22,11 +22,11 @@
 
 <script type='text/javascript' src="<%=path %>/dwr/util.js"></script>
 <script type='text/javascript' src="<%=path %>/dwr/engine.js"></script>
-<script type='text/javascript' src="<%=path %>/dwr/interface/giftAjax.js"></script>
+<script type='text/javascript' src="<%=path %>/dwr/interface/resAjax.js"></script>
 <script type="text/javascript">
 function deleteFujian(fjId) {
 	if(confirm("确定删除？")) {
-		giftAjax.deleteFujianById(fjId, function(param) {
+		resAjax.deleteFujianById(fjId, function(param) {
 			if(param == "SUCCESS") {
 				alert("删除成功");
 				document.getElementById("file_"+fjId).style.display="none";
