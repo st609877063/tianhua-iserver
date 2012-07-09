@@ -9,7 +9,7 @@
 <head>
 <title></title>
 <script language="javascript" type="text/javascript">
-window.location.href = 'resMenuShow.action';
+window.location.href = 'resItemsShow.action';
 </script>
 </head>
 <body></body>

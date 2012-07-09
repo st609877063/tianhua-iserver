@@ -73,7 +73,7 @@
 	</s:else>
 
 	<div align="center">
-		<a href="gift_items_list.action"  class="coolbg" style="font-size:20px">跳过添加附件</a>
+		<a href="resItemsShow.action"  class="coolbg" style="font-size:20px">跳过添加附件</a>
 	</div>
 	</div>
 </div>

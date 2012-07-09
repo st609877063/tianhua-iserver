@@ -34,6 +34,18 @@
 		</action>
 		
 		
+		<action name="resItemsShow" class="com.res.action.ResItemAction" method="showItems">
+			<result name="success">/jsp/resItemsShow.jsp</result>
+		</action>
+		<action name="toResItemSave" class="com.res.action.ResItemAction" method="toSaveItem">
+			<result name="success">/jsp/resItemSave.jsp</result>
+		</action>
+		<action name="resItemSave" class="com.res.action.ResItemAction" method="saveItems">
+			<result name="success" type="chain">resItemsShow.action</result>
+		</action>
+		
+		
+		
 		<action name="resMenuShow" class="com.res.action.ResMenuAction" method="showMenu">
 			<result name="success">/jsp/resMenuShow.jsp</result>
 		</action>
