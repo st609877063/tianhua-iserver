@@ -34,6 +34,26 @@
 		</action>
 		
 		
+		<!-- 图片 -->
+		<action name="resItemImgSave" class="com.res.action.ResItemAction" method="saveItemImg">
+			<interceptor-ref name="fileUploadStack"></interceptor-ref>
+			<result name="uploadSuccess" type="chain">resItemsShow</result>
+			<result name="uploadFailed">/jsp/resItemImgSaveFailed.jsp</result>
+		</action>
+		<action name="resItemImgPreview" class="com.res.action.ResItemAction" method="previewItemImg">
+			<result name="preview">/jsp/resItemImgPreview.jsp</result>
+			<result name="previewFailed" type="chain">resItemsShow</result>
+		</action>
+		<action name="resItemImgModify" class="com.res.action.ResItemAction" method="modifyItemImg">
+			<result name="success">/jsp/resItemImgSave.jsp</result>
+			<result name="failed" type="chain">resItemsShow</result>
+		</action>
+		<action name="imgDownloadAttach" class="com.res.action.ResItemAction" method="imgDownloadAttach">
+			<result name="failed" type="chain">resItemsShow</result>
+		</action>
+		
+		
+		<!-- 菜品 -->
 		<action name="resItemsShow" class="com.res.action.ResItemAction" method="showItems">
 			<result name="success">/jsp/resItemsShow.jsp</result>
 		</action>
@@ -41,15 +61,26 @@
 			<result name="success">/jsp/resItemSave.jsp</result>
 		</action>
 		<action name="resItemSave" class="com.res.action.ResItemAction" method="saveItems">
-			<result name="success" type="chain">resItemsShow.action</result>
+			<result name="savetofujian">/jsp/resItemImgSave.jsp</result>
+			<result name="failed" type="chain">resItemsShow</result>
+		</action>
+		<action name="toResItemUpdate" class="com.res.action.ResItemAction" method="toUpdateItem">
+			<result name="success">/jsp/resItemUpdate.jsp</result>
+			<result name="failed" type="chain">resItemsShow</result>
+		</action>
+		<action name="resItemUpdate" class="com.res.action.ResItemAction" method="updateItem">
+			<result name="success" type="chain">resItemsShow</result>
+			<result name="failed" type="chain">resItemsShow</result>
 		</action>
 		
-		
-		
+
+		<!-- 菜单 -->
 		<action name="resMenuShow" class="com.res.action.ResMenuAction" method="showMenu">
 			<result name="success">/jsp/resMenuShow.jsp</result>
 		</action>
-		
+		<action name="toResMenuSave" class="com.res.action.ResMenuAction" method="toSaveMenu">
+			<result name="success">/jsp/resMenuSave.jsp</result>
+		</action>
 	
 	</package>
 

@@ -6,6 +6,7 @@ CREATE TABLE res_items (
   i_no varchar(100) DEFAULT NULL COMMENT '食品编号',
   i_name varchar(100) DEFAULT NULL COMMENT '食品名称',
   i_img varchar(100) DEFAULT NULL COMMENT '食品图片',
+  i_imgpath varchar(100) DEFAULT NULL COMMENT '食品图片路径',
   i_money varchar(100) default NULL COMMENT '价格',
   i_desc varchar(100) DEFAULT NULL COMMENT '食品说明',
   i_memo varchar(1000) DEFAULT NULL COMMENT '食品备注',
@@ -23,6 +24,7 @@ CREATE TABLE res_items_img (
   i_id int(11) DEFAULT NULL COMMENT '食品ID',
   i_no varchar(100) DEFAULT NULL COMMENT '食品编号',
   i_img varchar(100) DEFAULT NULL COMMENT '食品图片',
+  i_imgpath varchar(100) DEFAULT NULL COMMENT '食品图片路径',
   PRIMARY KEY  (pk_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -35,6 +37,7 @@ CREATE TABLE res_menus (
   m_money 	varchar(100) default NULL COMMENT '价格',
   m_memo 	varchar(100) DEFAULT NULL COMMENT '食品备注',
   m_date 	varchar(100) DEFAULT NULL COMMENT '时间',
+  m_type 	char(1) default '1' COMMENT '1:午餐 2：晚餐 3：生食',
   
   m_createtime int(10) DEFAULT NULL COMMENT '创建时间',
   m_adduser int(10) DEFAULT NULL COMMENT '创建人',

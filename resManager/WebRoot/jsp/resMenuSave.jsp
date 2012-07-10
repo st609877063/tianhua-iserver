@@ -10,7 +10,7 @@
 
 <html>
 <head>
-<title>添加新菜品</title>
+<title>添加新菜单</title>
 <link href="css/menu_base.css" rel="stylesheet" type="text/css">
 <link href="css/frame.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@ function submitForm() {
 		if(param == "NOEXIST") {
 			form1.submit();
 		} else if(param == "EXIST") {
-			alert("菜品编号重复");
+			alert("菜单编号重复");
 			$("#resItemNo").focus();
 			return false;
 		}
@@ -49,6 +49,22 @@ function isDigit(s) {
 
 </script>
 
+<style type="text/css"> 
+.main li{
+	float: left;
+	border: #FBE8C0 1px solid;
+	width: 160px;
+	height: 300px;
+	text-align: left;
+	background: #FFFDE4;
+	margin-right: 2px;
+	margin-bottom: 5px;
+	-margin-bottom: 10px;
+	background: #FFFDE4;
+	overflow: hidden;
+}
+</style>
+
 </head>
 <body class="showmenu">
 <div style="display: none;" class="pagemask"></div>
@@ -62,36 +78,31 @@ function isDigit(s) {
 <div class="right">
 	<div class="main" align="center">
 	<form name="form1" action="resItemSave.action" method="post">
-		<h2 align="center">添加新菜品</h2>
+		<h2 align="center">添加新菜单</h2>
+		
+		
+		<div align="left">主食信息</div>
 		<table border="0" cellpadding="2" cellspacing="1" width="98%">
-		<tbody>
-			<tr>
-				<td bgcolor="#FBFCE2" height="30">菜品编号:</td>
-				<td height="30"><input type="text" name="resItem.itemNo" value="" id="resItemNo" /></td>
-				<td bgcolor="#FBFCE2" height="30">菜品名称:</td>
-				<td height="30"><input type="text" name="resItem.itemName" value="" id="resItemName" /></td>
-				<td bgcolor="#FBFCE2" height="30">菜品类型:</td>
-				<td height="30">
-					<select name="resItem.itemType">
-						<option value="1">主食</option>
-						<option value="2">副食</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-			<tr>
-				<td bgcolor="#FBFCE2" height="30">菜品价格:</td>
-				<td height="30"><input type="text" name="resItem.itemMoney" value=""　id="resItemMoney" /></td>
-				<td bgcolor="#FBFCE2" height="30">菜品描述:</td>
-				<td height="30"><input type="text" name="resItem.itemDesc" value=""　id="resItemDesc" /></td>
-				<td bgcolor="#FBFCE2" height="30">菜品备注:</td>
-				<td height="30"><input type="text" name="resItem.itemMemo" value="" id="resItemMemo" /></td>
-			</tr>
-		</tbody>
+		<tbody><tr><td>
+		<ul style="margin: 0px 0px 0px 5px;">
+			<s:iterator value="zhuItemsList">
+			<li>
+			<span><img src="<%=fujianPath %>/<s:property value="itemImg"/>" width="150" height="150"/></span><br/>
+			<div>编号：<s:property value="itemNo"/></div>
+			<div>菜名：<s:property value="itemName"/></div>
+			<div>价格：<s:property value="itemMoney"/></div>
+			<div>说明：<s:property value="itemDesc"/></div>
+			<div>外卖价格：<input type="text" name="" id="" value="<s:property value="itemMoney"/>" style="width:70px"></div>
+			<div align="center" style="margin:15px"><input type="checkbox" name="" id=""></div>
+			</li>
+			</s:iterator>
+		</ul>
+		</td></tr></tbody>
 		</table><br/>
 
+
 		<div align="center">
-			<a href="javascript:void(0)"  class="coolbg" onclick="submitForm()"  style="font-size:20px">保存基本信息，开始添加附件。</a>
+			<a href="javascript:void(0)"  class="coolbg" onclick="submitForm()"  style="font-size:20px">保存</a>
 		</div>
 
 	</form>

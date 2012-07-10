@@ -21,7 +21,11 @@ public class ResMenuManager{
 		Statement statement = null;
 		ResultSet resultSet = null;
 		ResMenus resMenus = null;
-		String sql = "select * from res_menus m, res_items i, res_items_img ii where 1=1";
+		String sql = "select * from res_menus m left join res_items i on m.i_id=i.i_id where 1=1 ";
+		if(date != null && !date.equals("")) {
+			sql = sql + " and m.m_date='"+date+"'";
+		}
+		sql = sql + " order by m.m_date desc";
 		
 		try {
 			conn = ConnectionManager2.getConnection();
@@ -29,6 +33,21 @@ public class ResMenuManager{
 			resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
 				resMenus = new ResMenus();
+				resMenus.setPkId(resultSet.getInt("pk_id"));
+				resMenus.setMenuMemo(resultSet.getString("m_memo"));
+				resMenus.setMenuMoney(resultSet.getString("m_money"));
+				resMenus.setMenuDate(resultSet.getString("m_date"));
+				resMenus.setMenuType(resultSet.getInt("m_type"));
+				
+				resMenus.setItemId(resultSet.getInt("i_id"));
+				resMenus.setItemNo(resultSet.getString("i_no"));
+				resMenus.setItemName(resultSet.getString("i_name"));
+				resMenus.setItemImg(resultSet.getString("i_img"));
+				resMenus.setItemImgpath(resultSet.getString("i_imgpath"));
+				resMenus.setItemMoney(resultSet.getString("i_money"));
+				resMenus.setItemDesc(resultSet.getString("i_desc"));
+				resMenus.setItemMemo(resultSet.getString("i_memo"));
+				resMenus.setItemType(resultSet.getInt("i_type"));
 				
 				rtnList.add(resMenus);
 			}
