@@ -41,6 +41,7 @@
 					alert("删除成功");
 					var findex = getElementOrder(Field)+1;
 					document.getElementById("itemsListTable").deleteRow(findex);
+					alert("效果实现，未真正删除");
 				}
 			});
 		}
@@ -108,7 +109,6 @@
 							<td width="5%"><div align="center">ID</div></td>
 							<td width="9%"><div align="center">菜品编号</div></td>
 							<td width="9%"><div align="center">菜品名称</div></td>
-							<td width="9%"><div align="center">图片</div></td>
 							<td width="9%"><div align="center">价格</div></td>
 							<td width="9%"><div align="center">说明</div></td>
 							<td width="9%"><div align="center">备注</div></td>
@@ -122,26 +122,22 @@
 							<td height="20" ><div align="center"><s:property value="itemId" /></div></td>
 							<td height="20" ><div align="center"><s:property value="itemNo"/></div></td>
 							<td height="20" ><div align="center"><s:property value="itemName"/></div></td>
-							<td height="20" ><div align="center"><s:property value="itemImg" /></div></td>
 							<td height="20" ><div align="center"><s:property value="itemMoney" /></div></td>
 							<td height="20" ><div align="center"><s:property value="itemDesc" /></div></td>
 							<td height="20" ><div align="center"><s:property value="itemMemo" /></div></td>
-							<td height="20" ><div align="center"><s:property value="itemType" /></div></td>
+							<td height="20" ><div align="center">
+								<s:if test="itemType==1">主食</s:if>
+								<s:if test="itemType==2">副食</s:if>
+							</div></td>
 							<td height="20" >
 								<div align="center">
-								[<a href='gift_fujian_preview.action?item_id=<s:property value="itemId" />' target="_blank">查看</a>]
-								[<a href='gift_fujian_add.action?item_id=<s:property value="itemId" />'>新增</a>]
+								[<a href='resItemImgPreview.action?itemId=<s:property value="itemId" />' target="_blank">查看</a>]
 								</div>
 							</td>
 							<td height="20" >
 								<div align="center">
 									<span><img src="image/037.gif" width="9" height="9" /></span>
-									<span class="STYLE1">[</span>
-									<s:url id="url_update_items" action="gift_items_updateP">
-										<s:param name="updateP_i_id"><s:property value="itemId" /></s:param>
-									</s:url>
-									<s:a href="%{url_update_items}">修改</s:a>
-									<span class="STYLE1">]</span>
+									<span class="STYLE1">[<a href='toResItemUpdate.action?itemId=<s:property value="itemId" />' target="_blank">修改</a>]</span>
 									<span><img src="image/010.gif" width="9" height="9" /></span>
 									<span class="STYLE1">[</span><a href="javascript:void(0)" name="deleteItemButton"  onclick="deleteItem(this, '<s:property value="itemId"/>')">删除</a><span class="STYLE1">]</span>
 								</div>

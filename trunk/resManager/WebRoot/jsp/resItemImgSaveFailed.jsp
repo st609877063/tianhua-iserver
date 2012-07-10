@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>添加附件失败</title>
+<title>添加菜品图片失败</title>
 <link href="css/menu_base.css" rel="stylesheet" type="text/css">
 <link href="css/frame.css" rel="stylesheet" type="text/css">
 <link href="css/main.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 
 <div class="right">
 	<div class="main" align="center">
-	<h2 align="center">添加附件失败</h2>
+	<h2 align="center">添加菜品图片失败</h2>
 	<a href="resItemsShow.action">返回主页</a>
 	</div>
 </div>
