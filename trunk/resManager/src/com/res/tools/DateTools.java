@@ -64,7 +64,28 @@ public class DateTools {
 		}
 	}
 	
+	public static Date stringToDate(String type, String dateStr) {
+		SimpleDateFormat format = new SimpleDateFormat(type);
+		Date date = null;
+		try {
+			date = format.parse(dateStr);
+		} catch (ParseException e) {
+		}
+		return date;
+	}
+	
+	/**
+	 * 获取时间字符串
+	 */
+	public static String dateToString(String type, Date date) {
+		SimpleDateFormat format = new SimpleDateFormat(type);
+		String dateStr = format.format(date);
+		return dateStr;
+	}
+	
+	
 	public static void main(String[] args) {
 		System.out.println(DateTools.getTimestamp());
+		System.out.println(DateTools.getDisplayTime(DateTools.getTimestamp()));
 	}
 }

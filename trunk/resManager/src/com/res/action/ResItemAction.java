@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 import org.apache.struts2.ServletActionContext;
 
 import com.res.bean.ResItems;
@@ -30,6 +31,24 @@ public class ResItemAction extends BaseAction {
 	// ----------关键字查询 start ----------
 	private String srhItemNo="";
 	// ----------关键字查询  start----------
+	
+	
+	public void validate() {
+		/**********检查fujian目录下是否有default.jpg存在********/
+		String fujianPath = ServletActionContext.getServletContext().getRealPath("/fujian");
+		if(!FileTools.fileExist(fujianPath)) {
+			FileTools.mkdir(fujianPath);
+		}
+		String fujianDefaultsavePath = ServletActionContext.getServletContext().getRealPath("/fujian")+ File.separator + "default.jpg";
+		if(!FileTools.fileExist(fujianDefaultsavePath)) {
+			String imgDefaultsavePath = ServletActionContext.getServletContext().getRealPath("/images")+ File.separator + "default.jpg";
+			File imgDefault = new File(imgDefaultsavePath);
+			File fujianDefault = new File(fujianDefaultsavePath);
+			FileTools.copy(imgDefault, fujianDefault);
+		}
+		/**********检查fujian目录下是否有default.jpg存在********/
+	}
+	
 	
 	public String showItems() throws Exception {
 		ResItemsManager manager = new ResItemsManager();

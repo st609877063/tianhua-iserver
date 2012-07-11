@@ -37,19 +37,19 @@
 		<!-- 图片 -->
 		<action name="resItemImgSave" class="com.res.action.ResItemAction" method="saveItemImg">
 			<interceptor-ref name="fileUploadStack"></interceptor-ref>
-			<result name="uploadSuccess" type="chain">resItemsShow</result>
+			<result name="uploadSuccess" type="redirect">/resItemsShow.action</result>
 			<result name="uploadFailed">/jsp/resItemImgSaveFailed.jsp</result>
 		</action>
 		<action name="resItemImgPreview" class="com.res.action.ResItemAction" method="previewItemImg">
 			<result name="preview">/jsp/resItemImgPreview.jsp</result>
-			<result name="previewFailed" type="chain">resItemsShow</result>
+			<result name="previewFailed" type="redirect">/resItemsShow.action</result>
 		</action>
 		<action name="resItemImgModify" class="com.res.action.ResItemAction" method="modifyItemImg">
 			<result name="success">/jsp/resItemImgSave.jsp</result>
-			<result name="failed" type="chain">resItemsShow</result>
+			<result name="failed" type="redirect">/resItemsShow.action</result>
 		</action>
 		<action name="imgDownloadAttach" class="com.res.action.ResItemAction" method="imgDownloadAttach">
-			<result name="failed" type="chain">resItemsShow</result>
+			<result name="failed" type="redirect">/resItemsShow.action</result>
 		</action>
 		
 		
@@ -62,26 +62,51 @@
 		</action>
 		<action name="resItemSave" class="com.res.action.ResItemAction" method="saveItems">
 			<result name="savetofujian">/jsp/resItemImgSave.jsp</result>
-			<result name="failed" type="chain">resItemsShow</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="toResItemUpdate" class="com.res.action.ResItemAction" method="toUpdateItem">
 			<result name="success">/jsp/resItemUpdate.jsp</result>
-			<result name="failed" type="chain">resItemsShow</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="resItemUpdate" class="com.res.action.ResItemAction" method="updateItem">
-			<result name="success" type="chain">resItemsShow</result>
-			<result name="failed" type="chain">resItemsShow</result>
+			<result name="success" type="redirect">/resItemsShow.action</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		
 
 		<!-- 菜单 -->
 		<action name="resMenuShow" class="com.res.action.ResMenuAction" method="showMenu">
 			<result name="success">/jsp/resMenuShow.jsp</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
+		</action>
+		<action name="resMenuDetail" class="com.res.action.ResMenuAction" method="showMenuDetail">
+			<result name="success">/jsp/resMenuDetail.jsp</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="toResMenuSave" class="com.res.action.ResMenuAction" method="toSaveMenu">
 			<result name="success">/jsp/resMenuSave.jsp</result>
 		</action>
-	
+		<action name="resMenuSave" class="com.res.action.ResMenuAction" method="saveMenu">
+			<result name="success" type="redirect">/resMenuShow.action</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
+		</action>
+		<action name="toResMenuUpdate" class="com.res.action.ResMenuAction" method="toUpdateMenu">
+			<result name="success">/jsp/resMenuUpdate.jsp</result>
+			<result name="failed">/jsp/resSaveFailed.jsp</result>
+		</action>
+		
+		
+		<!-- 订单 -->
+		<action name="resOrderMenu" class="com.res.action.ResOrderAction" method="showOrderMenu">
+			<result name="success">/jsp/resOrderMenu.jsp</result>
+			<result name="failed">/jsp/resOrderFailed.jsp</result>
+		</action>
+		<action name="resOrderSave" class="com.res.action.ResOrderAction" method="saveOrder">
+			<result name="success">/jsp/resOrderMenuResult.jsp</result>
+			<result name="failed">/jsp/resOrderMenuResult.jsp</result>
+		</action>
+		
+		
 	</package>
 
 </struts>
