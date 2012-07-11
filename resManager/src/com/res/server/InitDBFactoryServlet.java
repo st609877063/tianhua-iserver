@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+
+import com.res.tools.FileTools;
 
 /**
  * 初始化数据连接管理类
@@ -134,6 +137,7 @@ public class InitDBFactoryServlet extends HttpServlet {
 		
 		
 		ConnectionManager2.testTable();
+		
 	}
 
 }

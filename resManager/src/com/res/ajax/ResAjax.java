@@ -1,7 +1,11 @@
 package com.res.ajax;
 
+import java.util.List;
+
 import com.res.bean.ResItems;
+import com.res.bean.ResMenus;
 import com.res.manager.ResItemsManager;
+import com.res.manager.ResMenuManager;
 
 public class ResAjax{
 
@@ -23,5 +27,40 @@ public class ResAjax{
 		return "SUCCESS";
 	}
 	
+	
+	public String menuIsExist(String menuDate, String menuType) {
+		ResMenuManager menuManager = new ResMenuManager();
+		int mType = Integer.parseInt(menuType);
+		List<ResMenus> resMenu = menuManager.getResMenusByDateType(menuDate, mType);
+
+		if (resMenu != null && resMenu.size() >0 ) {
+			return "EXIST";
+		} else {
+			return "NOEXIST";
+		}
+	}
+	
+	
+	public String deleteMuenItemById(String idstr) {
+		int pkId = Integer.parseInt(idstr);
+		ResMenuManager menuManager = new ResMenuManager();
+		int result = menuManager.deleteResMuenByPkId(pkId);
+		if (result == 1) {
+			return "SUCCESS";
+		} else {
+			return "FAILED";
+		}
+	}
+	
+	public String updateMuenItemMoneyById(String idstr, String money) {
+		int pkId = Integer.parseInt(idstr);
+		ResMenuManager menuManager = new ResMenuManager();
+		int result = menuManager.updateMuenItemMoneyByPkId(pkId, money);
+		if (result == 1) {
+			return "SUCCESS";
+		} else {
+			return "FAILED";
+		}
+	}
 	
 }

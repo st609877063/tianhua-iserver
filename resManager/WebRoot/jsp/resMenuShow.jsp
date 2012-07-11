@@ -104,58 +104,32 @@
 							<td colspan="11" style="padding-left: 10px;" background="images/tbg.gif" height="24">菜单信息</td>
 						</tr>
 						<tr align="center" bgcolor="#FBFCE2" height="25">
-							<td width="5%"><div align="center">ID</div></td>
-							<td width="9%"><div align="center">菜单编号</div></td>
-							<td width="9%"><div align="center">菜单名称</div></td>
-							<td width="9%"><div align="center">受礼人</div></td>
-							<td width="9%"><div align="center">赠礼人</div></td>
-							<td width="9%"><div align="center">受赠时间</div></td>
-							<td width="9%"><div align="center">菜单数量</div></td>
-							<td width="9%"><div align="center">菜单类型</div></td>
-							<td width="9%"><div align="center">附件信息</div></td>
-							<td width="9%"><div align="center">仓库信息</div></td>
-							<td width="15%"><div align="center">管理</div></td>
+							<td width="10%"><div align="center">菜单日期</div></td>
+							<td width="10%"><div align="center">菜单类型</div></td>
+							<td width="70%"><div align="center">菜单内容</div></td>
+							<td width="10%"><div align="center">管理</div></td>
 						</tr>
 						<s:if test="rtnList !=null ">
-						<s:iterator value="rtnList" id="items">
+						<s:iterator value="rtnList">
 						<tr onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#FFFFFF';" align="center" bgcolor="#FFFFFF" height="22">
-							<td height="20" ><div align="center"><s:property value="#items.i_id" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_no" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_name" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_slr_name" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_zlr_name" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_sztime_show" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_num" /></div></td>
-							<td height="20" ><div align="center"><s:property value="#items.i_type" /></div></td>
-							<td height="20" >
+							<td height="30" ><div align="center"><s:property value="menuDate" /></div></td>
+							<td height="30" ><div align="center">
+								<s:if test="menuType==1">午餐</s:if>
+								<s:if test="menuType==2">晚餐</s:if>
+								<s:if test="menuType==3">生食</s:if>
+							</div></td>
+							<td height="30" ><div align="center"><s:property value="itemContent" /></div></td>
+							<td height="30" >
 								<div align="center">
-								[<a href='gift_fujian_preview.action?item_id=<s:property value="#items.i_id" />' target="_blank">查看</a>]
-								[<a href='gift_fujian_add.action?item_id=<s:property value="#items.i_id" />'>新增</a>]
-								</div>
-							</td>
-							<td height="20" >
-								<div align="center">
-									<span class="STYLE1">[</span><a href="gift_cangku_updateByItemId.action?item_id=<s:property value="#items.i_id"/>">查看</a><span class="STYLE1">]</span>
-								</div>
-							</td>
-							<td height="20" >
-								<div align="center">
-									<span><img src="image/037.gif" width="9" height="9" /></span>
-									<span class="STYLE1">[</span>
-									<s:url id="url_update_items" action="gift_items_updateP">
-										<s:param name="updateP_i_id"><s:property value="#items.i_id" /></s:param>
-									</s:url>
-									<s:a href="%{url_update_items}">修改</s:a>
-									<span class="STYLE1">]</span>
-									<span><img src="image/010.gif" width="9" height="9" /></span>
-									<span class="STYLE1">[</span><a href="javascript:void(0)" name="deleteItemButton"  onclick="deleteItem(this, '<s:property value="#items.i_id"/>')">删除</a><span class="STYLE1">]</span>
+								[<a href='resMenuDetail.action?showDate=<s:property value="menuDate"/>&menuType=<s:property value="menuType"/>'>查看</a>]
+								[<a href='toResMenuUpdate.action?showDate=<s:property value="menuDate"/>&menuType=<s:property value="menuType"/>'>修改</a>]
 								</div>
 							</td>
 						</tr>
 						</s:iterator>
 						</s:if>
 						<s:else>
-						<tr><td height="20" ><div align="center">没有菜单信息!</div></td></tr>
+						<tr><td height="30" ><div align="center">没有菜单信息!</div></td></tr>
 						</s:else>
 					</tbody>
 				</table>
