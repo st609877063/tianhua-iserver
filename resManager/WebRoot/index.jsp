@@ -9,7 +9,7 @@
 <head>
 <title></title>
 <script language="javascript" type="text/javascript">
-window.location.href = 'resItemsShow.action';
+window.location.href = 'tologin.action';
 </script>
 </head>
 <body></body>

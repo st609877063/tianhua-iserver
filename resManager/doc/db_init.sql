@@ -53,6 +53,7 @@ CREATE TABLE res_orders (
   o_user 	varchar(100) DEFAULT NULL COMMENT '用户名',
   o_phone 	int(11)  DEFAULT NULL COMMENT '用户手机号',
   o_date 	varchar(100) DEFAULT NULL COMMENT '时间',
+  o_type 	char(1) default '1' COMMENT '1:午餐 2：晚餐 3：生食',
   o_memo 	varchar(100) DEFAULT NULL COMMENT '备注',
   o_fee 	varchar(100) DEFAULT NULL COMMENT '费用',
   

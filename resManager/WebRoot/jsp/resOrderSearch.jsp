@@ -12,6 +12,7 @@
 <head>
 <title>欢迎订餐</title>
 
+
 <link href="kfc/common.css" rel="stylesheet" type="text/css">
 <link href="kfc/public.css" rel="stylesheet" type="text/css">
 <link href="kfc/new.css" rel="stylesheet" type="text/css">
@@ -56,108 +57,6 @@ function submitSearchForm(menuType) {
 	searchForm.submit();
 }
 
-
-function isDigit(s) { 
-	var patrn=/^[0-9]{1,20}$/; 
-	if (!patrn.exec(s)) return false;
-	return true ;
-}
-
-
-function orderItem(itemId, itemName, itemMoney) {
-	var num = $("#num_"+itemId).val();
-	//alert(num+","+itemId+","+itemName+","+itemMoney);
-	if(!isDigit(num)) {
-		alert("订餐分数只能为整数");
-		$("#num_"+itemId).val("0");
-		$("#num_"+itemId).focus();
-	}
-	
-	deleteOrder(itemId);
-	if(num != 0) {
-		var html = "<tr id='order_"+itemId+"'><td width='50'>"+itemName+"</td><td width='50'>"+num+"</td><td width='40'>"+itemMoney+"</td><td><a href='javascript:deleteOrderHand("+itemId+")'>删除</a></td>";
-		$("#menuToal").append(html);
-	}
-	
-	calMoney();
-}
-
-function deleteOrder(itemId) {
-	var obj = $("#order_"+itemId);
-	if(obj.length>0) {
-		obj.remove();
-	}
-}
-
-function deleteOrderHand(itemId) {
-	deleteOrder(itemId);
-	$("#num_"+itemId).val("0");
-	calMoney();
-}
-
-function calMoney() {
-	var total = 0;
-	var itemNum = 0;
-	var itemNumId;
-	var itemId;
-	var itemMoney = 0;
-  	$('input[name="itemNum"]').each(function(){    
-  		itemNum = $(this).val();
-  		itemNumId = $(this).attr('id');
-  		if(itemNumId != "") {
-  			var index = itemNumId.indexOf("_");
-  			itemId = itemNumId.substring(index+1);
-  		}
-  		itemMoney = $("#mon_"+itemId).val();
-  		total = total + itemMoney * itemNum;
-  	}); 
-  	
-  	$("#totalMoney").val(total);
-}
-
-
-function submitOrderForm() {
-	var username = $("#username").val();
-	var userphone = $("#userphone").val();
-	if(username == "" || userphone == "") {
-		alert("请填写姓名和电话");
-		return false;
-	}
-	calMoney();
-	var totalMoney = $("#totalMoney").val();
-	if(totalMoney == 0) {
-		alert("您未预订任何餐品");
-		return false;
-	}
-	
-	var tip = "您预订了：";
-	var menuOrder = "";
-	var itemId = 0;
-	$('input[name="itemNum"]').each(function(){    
-  		itemNum = $(this).val();
-  		itemNumId = $(this).attr('id');
-  		if(itemNumId != "") {
-  			var index = itemNumId.indexOf("_");
-  			itemId = itemNumId.substring(index+1);
-  		}
-  		tip = tip + $("#name_"+itemId).val()+" "+itemNum+"份。";
-  		
-  		menuOrder = menuOrder + itemId + "=" + itemNum + "#";
-  	});
-	if(menuOrder == "") {
-		alert("您未预订任何餐品");
-		return false;
-	}
-	$("#menuOrder").val(menuOrder);
-	tip = tip + "餐费为："+totalMoney+"元";
-	
-	if(confirm(tip)) {
-		
-		orderForm.submit();
-	}
-}
-
-
 function submitOrderSrhForm() {
 	var usernameSrh = $("#usernameSrh").val();
 	var userphoneSrh = $("#userphoneSrh").val();
@@ -192,8 +91,6 @@ function submitOrderSrhForm() {
 </head>
 
 <body>
-
-<input type="hidden" name="orderResult" id="orderResult" value="<s:property value="orderResult"/>">
 
 <div class="public_container" id="public_container">
 <div style="display: block;height: 60px">
@@ -282,31 +179,43 @@ function submitOrderSrhForm() {
 			<!--content_box_left_main_right start-->
 			<div class="content_box_left_main_right" id="c_content" style="display: block;">
 				<h1 class="content_box_left_main_right_h1" id="tab_obj" style="background-position: 0px 0px;"> 
-					<span><s:property value="showDate"/>日[<s:if test="menuType==1">午餐</s:if><s:if test="menuType==2">晚餐</s:if><s:if test="menuType==3">生食</s:if>]菜单详细</span>
+					<span>菜单详细</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="resOrderMenu.action">返回主页</a>
 				</h1>
 				<div id="showProductsNew">
 					<div style="" id="showP_c">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<tbody><tr><td class="content_box_left_main_right_c">
+						<tbody>
+						<s:if test="orderList !=null && orderList.size != 0">
+						<s:iterator value="orderList">
+						<tr><td class="content_box_left_main_right_c">
+							<div>
+								订单编号：<s:property value="orderNo"/>。订单日期：<s:property value="orderDate"/>。
+								订单类型：<s:if test="orderType==1">午餐</s:if><s:if test="orderType==2">晚餐</s:if><s:if test="orderType==3">生食</s:if>。
+								下单时间：<s:property value="orderCreateDate"/>。<br/>下单人：<s:property value="orderUser"/>，
+								手机号：<s:property value="orderPhone"/>。订单总费用：<s:property value="orderFee"/>。
+							</div>
 							<ul class="content_box_left_main_right_c_ul">
-								<s:if test="rtnList !=null && rtnList.size != 0">
-								<s:iterator value="rtnList">
+								<s:if test="itemList !=null && itemList.size != 0">
+								<s:iterator value="itemList">
 								<li>
 								<div><s:if test="itemType==1">主食</s:if><s:if test="itemType==2">副食</s:if></div>
 								<span><img src="<%=fujianPath %>/<s:property value="itemImg"/>" width="150" height="150"/></span><br/>
 								<div>编号：<s:property value="itemNo"/></div>
-								<div>菜名：<s:property value="itemName"/><input type="hidden" id="name_<s:property value="itemId"/>" value="<s:property value="itemName"/>"></div>
+								<div>菜名：<s:property value="itemName"/></div>
 								<div>说明：<s:property value="itemDesc"/></div>
-								<div>外卖价格：<s:property value="menuMoney"/><input type="hidden" id="mon_<s:property value="itemId"/>" value="<s:property value="menuMoney"/>"></div>
-								<div>份数：<input type="text" id="num_<s:property value="itemId"/>" name="itemNum" value="0" style="width:70px" 
-									onblur="javascript:orderItem('<s:property value="itemId"/>', '<s:property value="itemName"/>', '<s:property value="menuMoney"/>')"></div>
+								<div>价格：<s:property value="itemMenuMoney"/></div>
+								<div>份数：<s:property value="orderItemNum"/></div>
 								</li>
 								</s:iterator>
 								</s:if>
-								<s:else><li><div>今日没有菜单</div></li></s:else>
-							</ul>
+								<s:else><li><div>此订单没有内容</div></li></s:else>
+							</ul><br/>
 							<div id="clear_div"></div>
-						</td></tr></tbody>
+						</td></tr>
+						</s:iterator>
+						</s:if>
+						<s:else>没有查询到内容</s:else>
+						</tbody>
 						</table>
 						<span class="content_box_left_main_right_b"></span>
 					</div>
@@ -324,7 +233,6 @@ function submitOrderSrhForm() {
 			<div style="" id="showO_c">
 				<div class="content_box_right_dd">
 					<h1 class="content_box_right_dd_h1">我的订单</h1>
-					<form name="orderForm" action="resOrderSave.action" method="post">
 					<div class="content_box_right_dd_c">
 						<span class="content_box_right_dd_c_1" id="r_c">提醒：请正确填写手机号</span>
 
@@ -338,23 +246,12 @@ function submitOrderSrhForm() {
 						</table>
 						<div class="order_box_make" id="test">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" id="menuToal">
-
 							</table>
 						</div>
-						<span class="order_bg_info">合&nbsp;&nbsp;&nbsp;&nbsp;计:<input type="text" name="totalMoney" id="totalMoney" readonly value="0" style="width:50px">元</span>
-						<span class="order_bg_info">姓&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" name="username" id="username" ></span>
-						<span class="order_bg_info">手机号:<input type="text" name="userphone" id="userphone" ></span>
-						<input type="hidden" id="orderDate" name="orderDate" />
-						<input type="hidden" name="menuOrder" id="menuOrder">
-						<input type="hidden" id="orderMenuType" name="orderMenuType" value="<s:property value="menuType"/>">
-						<span class="order_bg_info">您预订：
-						<s:property value="showDate"/>日[<s:if test="menuType==1">午餐</s:if><s:if test="menuType==2">晚餐</s:if><s:if test="menuType==3">生食</s:if>]
-						</span>
 						<span class="order_bt"> 
-							<a href="javascript:submitOrderForm();">提交订单</a> 
+							<a href="resOrderMenu.action">返回主页</a>
 						</span>
 					</div>
-					</form>
 					<span class="content_box_right_2_b_1"></span>
 				</div>
 			</div>

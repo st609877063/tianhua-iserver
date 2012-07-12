@@ -11,26 +11,26 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/catalog_main.php"
+								href="javascript:void(0)"
 								target="main">网站栏目管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_list.php"
+								href="javascript:void(0)"
 								target="main">所有档案列表</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_list.php?arcrank=-1"
+								href="javascript:void(0)"
 								target="main">等审核的档案</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_list.php?mid=1"
+								href="javascript:void(0)"
 								target="main">我发布的文档</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/feedback_main.php"
+								href="javascript:void(0)"
 								target="main">评论管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/recycling.php"
+							<li><a href="javascript:void(0)"
 								target="main">内容回收站</a>
 							</li>
 						</ul>
@@ -41,27 +41,27 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_sg_list.php?channelid=-8"
+								href="javascript:void(0)"
 								target="main">分类信息</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_list.php?channelid=1"
+								href="javascript:void(0)"
 								target="main">普通文章</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_i_list.php?channelid=2"
+								href="javascript:void(0)"
 								target="main">图片集</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_i_list.php?channelid=3"
+								href="javascript:void(0)"
 								target="main">软件</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_list.php?channelid=6"
+								href="javascript:void(0)"
 								target="main">商品</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_s_list.php"
+								href="javascript:void(0)"
 								target="main">专题管理</a>
 							</li>
 						</ul>
@@ -72,22 +72,22 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/mychannel_main.php"
+								href="javascript:void(0)"
 								target="main">内容模型管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/templets_one.php"
+								href="javascript:void(0)"
 								target="main">单页文档管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/stepselect_main.php"
+								href="javascript:void(0)"
 								target="main">联动类别管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/freelist_main.php"
+								href="javascript:void(0)"
 								target="main">自由列表管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/diy_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">自定义表单</a>
 							</li>
 						</ul>
@@ -102,66 +102,66 @@
 					<dt>系统设置</dt>
 					<dd>
 						<ul class="item">
-							<li><a href="http://v57.demo.dedecms.com/dede/sys_info.php"
+							<li><a href="javascript:void(0)"
 								target="main">系统基本参数</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_admin_user.php"
+								href="javascript:void(0)"
 								target="main">系统用户管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/sys_group.php"
+							<li><a href="javascript:void(0)"
 								target="main">用户组设定</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_multiserv.php"
+								href="javascript:void(0)"
 								target="main">服务器分布/远程</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/log_list.php"
+							<li><a href="javascript:void(0)"
 								target="main">系统日志管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/sys_safe.php"
+							<li><a href="javascript:void(0)"
 								target="main">验证安全设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_info_mark.php"
+								href="javascript:void(0)"
 								target="main">图片水印设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_att.php"
+								href="javascript:void(0)"
 								target="main">自定义文档属性</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/soft_config.php"
+								href="javascript:void(0)"
 								target="main">软件频道设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/article_string_mix.php"
+								href="javascript:void(0)"
 								target="main">防采集串混淆</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/article_template_rand.php"
+								href="javascript:void(0)"
 								target="main">随机模板设置</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/sys_task.php"
+							<li><a href="javascript:void(0)"
 								target="main">计划任务管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/sys_data.php"
+							<li><a href="javascript:void(0)"
 								target="main">数据库备份/还原</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_sql_query.php"
+								href="javascript:void(0)"
 								target="main">SQL命令行工具</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_verifies.php"
+								href="javascript:void(0)"
 								target="main">文件校验[S]</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_safetest.php"
+								href="javascript:void(0)"
 								target="main">病毒扫描[S]</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_repair.php"
+								href="javascript:void(0)"
 								target="main">系统错误修复[S]</a>
 							</li>
 						</ul>
@@ -172,22 +172,22 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/templets_main.php"
+								href="javascript:void(0)"
 								target="main">默认模板管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/templets_tagsource.php"
+								href="javascript:void(0)"
 								target="main">标签源码管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/mytag_main.php"
+								href="javascript:void(0)"
 								target="main">自定义宏标记</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/mytag_tag_guide.php"
+								href="javascript:void(0)"
 								target="main">智能标记向导</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/tag_test.php"
+							<li><a href="javascript:void(0)"
 								target="main">全局标记测试</a>
 							</li>
 						</ul>
@@ -202,22 +202,22 @@
 					<dt>采集管理</dt>
 					<dd>
 						<ul class="item">
-							<li><a href="http://v57.demo.dedecms.com/dede/co_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">采集节点管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/co_url.php"
+							<li><a href="javascript:void(0)"
 								target="main">临时内容管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/co_get_corule.php"
+								href="javascript:void(0)"
 								target="main">导入采集规则</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/co_gather_start.php"
+								href="javascript:void(0)"
 								target="main">监控采集模式</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/co_do.php?dopost=coall"
+								href="javascript:void(0)"
 								target="main">采集未下载内容</a>
 							</li>
 						</ul>
@@ -228,30 +228,30 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_cache_up.php"
+								href="javascript:void(0)"
 								target="main">更新系统缓存</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/content_batch_up.php"
+								href="javascript:void(0)"
 								target="main">文档批量维护</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/search_keywords_main.php"
+								href="javascript:void(0)"
 								target="main">搜索关键词维护</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/article_keywords_main.php"
+								href="javascript:void(0)"
 								target="main">文档关键词维护</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/article_description_main.php"
+								href="javascript:void(0)"
 								target="main">自动摘要|分页</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/tags_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">TAG标签管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_data_replace.php"
+								href="javascript:void(0)"
 								target="main">数据库内容替换</a>
 							</li>
 						</ul>
@@ -261,15 +261,15 @@
 					<dt>附件管理</dt>
 					<dd>
 						<ul class="item">
-							<li><a href="http://v57.demo.dedecms.com/dede/media_add.php"
+							<li><a href="javascript:void(0)"
 								target="main">上传新文件</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/media_main.php"
+								href="javascript:void(0)"
 								target="main">附件数据管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/media_main.php?dopost=filemanager"
+								href="javascript:void(0)"
 								target="main">文件式管理器</a>
 							</li>
 						</ul>
@@ -285,11 +285,11 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_all.php"
+								href="javascript:void(0)"
 								target="main">一键更新网站</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_cache_up.php"
+								href="javascript:void(0)"
 								target="main">更新系统缓存</a>
 							</li>
 						</ul>
@@ -300,31 +300,31 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_homepage.php"
+								href="javascript:void(0)"
 								target="main">更新主页HTML</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_list.php"
+								href="javascript:void(0)"
 								target="main">更新栏目HTML</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_archives.php"
+								href="javascript:void(0)"
 								target="main">更新文档HTML</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_map_guide.php"
+								href="javascript:void(0)"
 								target="main">更新网站地图</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_rss.php"
+								href="javascript:void(0)"
 								target="main">更新RSS文件</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_js.php"
+								href="javascript:void(0)"
 								target="main">获取JS文件</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/makehtml_spec.php"
+								href="javascript:void(0)"
 								target="main">更新专题HTML</a>
 							</li>
 						</ul>
@@ -340,34 +340,34 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_main.php"
+								href="javascript:void(0)"
 								target="main">注册会员列表</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_rank.php"
+								href="javascript:void(0)"
 								target="main">会员级别设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_scores.php"
+								href="javascript:void(0)"
 								target="main">积分头衔设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_model_main.php"
+								href="javascript:void(0)"
 								target="main">会员模型管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/member_pm.php"
+							<li><a href="javascript:void(0)"
 								target="main">会员短信管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_guestbook.php"
+								href="javascript:void(0)"
 								target="main">会员留言管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_info_main.php?type=feed"
+								href="javascript:void(0)"
 								target="main">会员动态管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_info_main.php?type=mood"
+								href="javascript:void(0)"
 								target="main">会员心情管理</a>
 							</li>
 						</ul>
@@ -378,31 +378,31 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/cards_type.php"
+								href="javascript:void(0)"
 								target="main">点卡产品分类</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/cards_manage.php"
+								href="javascript:void(0)"
 								target="main">点卡产品管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_type.php"
+								href="javascript:void(0)"
 								target="main">会员产品分类</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/member_operations.php"
+								href="javascript:void(0)"
 								target="main">会员消费记录</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/shops_operations.php"
+								href="javascript:void(0)"
 								target="main">商店订单记录</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/sys_payment.php"
+								href="javascript:void(0)"
 								target="main">支付接口设置</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/shops_delivery.php"
+								href="javascript:void(0)"
 								target="main">配货方式设置</a>
 							</li>
 						</ul>
@@ -418,15 +418,15 @@
 					<dd>
 						<ul class="item">
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/module_main.php"
+								href="javascript:void(0)"
 								target="main">模块管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/module_upload.php"
+								href="javascript:void(0)"
 								target="main">上传新模块</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/module_make.php"
+								href="javascript:void(0)"
 								target="main">模块生成向导</a>
 							</li>
 						</ul>
@@ -436,43 +436,42 @@
 					<dt>辅助插件</dt>
 					<dd>
 						<ul class="item">
-							<li><a href="http://v57.demo.dedecms.com/dede/plus_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">插件管理器</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/erraddsave.php"
+								href="javascript:void(0)"
 								target="main">挑错管理</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/baidunews.php"
+							<li><a href="javascript:void(0)"
 								target="main">百度新闻</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/file_manage_main.php"
+								href="javascript:void(0)"
 								target="main">文件管理器</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/ad_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">广告管理</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/friendlink_main.php"
+								href="javascript:void(0)"
 								target="main">友情链接</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/vote_main.php"
+							<li><a href="javascript:void(0)"
 								target="main">投票模块</a>
 							</li>
-							<li><a
-								href="http://v57.demo.dedecms.com/dede/plus_bshare.php"
+							<li><a href="javascript:void(0)"
 								target="main">bShare分享插件</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/catalog_do.php?dopost=guestbook"
+								href="javascript:void(0)"
 								target="main">留言簿模块</a>
 							</li>
 							<li><a
-								href="http://v57.demo.dedecms.com/dede/mynews_main.php"
+								href="javascript:void(0)"
 								target="main">站内新闻发布</a>
 							</li>
-							<li><a href="http://v57.demo.dedecms.com/dede/mail_send.php"
+							<li><a href="javascript:void(0)"
 								target="main">邮件订阅</a>
 							</li>
 						</ul>
@@ -500,23 +499,17 @@
 				<li class="welcome">您好：admin ，欢迎使用xxx！</li>
 				<li><a href="#" target="menu">主菜单</a>
 				</li>
-				<li><a href="#"
-					onclick="JumpFrame('catalog_menu.php','public_guide.php');">内容发布</a>
+				<li><a href="javascript:void(0)">内容发布</a>
 				</li>
-				<li><a href="#"
-					onclick="JumpFrame('index_menu.php','content_list.php');">内容维护</a>
+				<li><a href="javascript:void(0)">内容维护</a>
 				</li>
-				<li><a href="#"
-					onclick="JumpFrame('index_menu.php','index_body.php');">系统主页</a>
+				<li><a href="javascript:void(0)">系统主页</a>
 				</li>
-				<li><a href="http://v57.demo.dedecms.com/index.php?upcache=1"
-					target="_blank">网站主页</a>
+				<li><a href="javascript:void(0)">网站主页</a>
 				</li>
-				<li><a href="http://v57.demo.dedecms.com/member"
-					target="_blank">会员中心</a>
+				<li><a href="javascript:void(0)">会员中心</a>
 				</li>
-				<li><a href="http://v57.demo.dedecms.com/dede/exit.php"
-					target="_top">注销</a>
+				<li><a href="dologout.action">注销</a>
 				</li>
 			</ul>
 			<div class="quick">
@@ -540,28 +533,28 @@
 <!-- 快捷方式 -->
 <div style="display: none;" class="qucikmenu" id="qucikmenu">
 	<ul>
-		<li><a href="http://v57.demo.dedecms.com/dede/content_list.php"
+		<li><a href="javascript:void(0)"
 			target="main">文档列表</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/feedback_main.php"
+		<li><a href="javascript:void(0)"
 			target="main">评论管理</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/public_guide.php"
+		<li><a href="javascript:void(0)"
 			target="main">内容发布</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/catalog_main.php"
+		<li><a href="javascript:void(0)"
 			target="main">栏目管理</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/sys_info.php"
+		<li><a href="javascript:void(0)"
 			target="main">修改参数</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/www.baidu.com"
+		<li><a href="javascript:void(0)"
 			target="main">考研视频</a>
 		</li>
-		<li><a href="http://v57.demo.dedecms.com/dede/www.hao123.com"
+		<li><a href="javascript:void(0)"
 			target="main">我的链接</a>
 		</li>
-		<li><a href="http://item.taobao.com/item.htm?id=16198856748"
+		<li><a href="javascript:void(0)"
 			target="main">第五代充值软件</a>
 		</li>
 	</ul>

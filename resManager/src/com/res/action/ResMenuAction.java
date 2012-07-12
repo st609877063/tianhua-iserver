@@ -28,6 +28,14 @@ public class ResMenuAction extends BaseAction {
 	private List<ResItems> fuItemsList = new ArrayList<ResItems>();
 	
 	public void validate() {
+		//不用频繁读取cookie.建议使用此写法
+		if(getCookieUid() == null || getCookieUid() == -1) {
+			setCookieInfo();
+			if(getCookieUid() == null){
+				setCookieUid(-1);
+			}
+		}
+		
 		/**********检查fujian目录下是否有default.jpg存在********/
 		String fujianPath = ServletActionContext.getServletContext().getRealPath("/fujian");
 		if(!FileTools.fileExist(fujianPath)) {
@@ -139,7 +147,7 @@ public class ResMenuAction extends BaseAction {
 					resMenu.setMenuDate(this.resMenu.getMenuDate());
 					resMenu.setMenuType(this.resMenu.getMenuType());
 					resMenu.setMenuMemo("");
-					resMenu.setMenuAdduser(0);
+					resMenu.setMenuAdduser(this.getCookieUid());
 					resMenu.setMenuCreatetime(DateTools.getTimestamp().intValue());
 					
 					resMenuList.add(resMenu);

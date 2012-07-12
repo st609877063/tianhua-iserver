@@ -63,7 +63,7 @@
 		<table border="0" cellpadding="2" cellspacing="1" width="98%">
 		<tbody><tr><td>
 		<ul style="margin: 0px 0px 0px 5px;">
-			<s:if test="rtnList !=null  && rtnList.size != 0">
+			<s:if test="rtnList !=null">
 			<s:iterator value="rtnList">
 			<li>
 			<div><s:if test="itemType==1">主食</s:if><s:if test="itemType==2">副食</s:if></div>

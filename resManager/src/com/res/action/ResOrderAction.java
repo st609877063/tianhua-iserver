@@ -19,16 +19,36 @@ public class ResOrderAction extends BaseAction {
 	private String showDate;
 	private String menuType;
 	private List<ResMenus> rtnList = new ArrayList<ResMenus>();
+	private List<ResOrders> orderList = new ArrayList<ResOrders>();
 	
-	//订单提交参数
+	//订单保存提交参数
 	private String totalMoney;
 	private String username;
 	private String userphone;
 	private String menuOrder;
 	private String orderDate;
+	private String orderMenuType;
 	private String orderResult="";
 	
+	//订单查询参数(前台)
+	private String usernameSrh;
+	private String userphoneSrh;
+	private String orderNoSrh;
+	
+	//订单查询参数(后台)
+	private String orderDateSrh;
+	private String orderTypeSrh;
+	
+	
 	public void validate() {
+		//不用频繁读取cookie.建议使用此写法
+		if(getCookieUid() == null || getCookieUid() == -1) {
+			setCookieInfo();
+			if(getCookieUid() == null){
+				setCookieUid(-1);
+			}
+		}
+		
 		/**********检查fujian目录下是否有default.jpg存在********/
 		String fujianPath = ServletActionContext.getServletContext().getRealPath("/fujian");
 		if(!FileTools.fileExist(fujianPath)) {
@@ -67,7 +87,7 @@ public class ResOrderAction extends BaseAction {
 	public String saveOrder() throws Exception {
 		if(totalMoney == null || totalMoney.equals("") || username == null || username.equals("") 
 				|| userphone == null || userphone.equals("") || menuOrder == null || menuOrder.equals("") 
-					|| orderDate == null || orderDate.equals("")) {
+					|| orderDate == null || orderDate.equals("") || orderMenuType == null || orderMenuType.equals("")) {
 			orderResult = "failed";
 			return "failed";
 		}
@@ -78,6 +98,7 @@ public class ResOrderAction extends BaseAction {
 		resOrderVo.setOrderCreatetime(DateTools.getTimestamp().intValue());
 		resOrderVo.setOrderDate(orderDate);
 		resOrderVo.setOrderFee(totalMoney);
+		resOrderVo.setOrderType(Integer.parseInt(orderMenuType));
 		resOrderVo.setOrderMemo("");
 		resOrderVo.setOrderNo(DateTools.getTimestamp().intValue());
 		resOrderVo.setOrderPhone(userphone);
@@ -116,6 +137,34 @@ public class ResOrderAction extends BaseAction {
 		}
 		
 		orderResult = String.valueOf(resOrderVo.getOrderNo());
+		return "success";
+	}
+	
+	public String saveOrderResult() throws Exception {
+		return "success";
+	}
+	
+	public String searchOrder() throws Exception {
+		if(orderNoSrh == null || orderNoSrh.equals("") ) {
+			if((usernameSrh == null || usernameSrh.equals("")) && (userphoneSrh == null || userphoneSrh.equals(""))) {
+				return "failed";
+			}
+		}
+		ResOrderManager resOrderManager = new ResOrderManager();
+		orderList = resOrderManager.getOrderList(orderNoSrh, usernameSrh, userphoneSrh, null, -1);
+		
+		return "success";
+	}
+	
+	
+	public String showOrder() throws Exception {
+		int orderType = -1;
+		if(orderTypeSrh != null && !orderTypeSrh.equals("")) {
+			orderType = Integer.parseInt(orderTypeSrh);
+		}
+		ResOrderManager resOrderManager = new ResOrderManager();
+		orderList = resOrderManager.getOrderList(orderNoSrh, usernameSrh, userphoneSrh, orderDateSrh, orderType);
+		
 		return "success";
 	}
 	
@@ -190,6 +239,62 @@ public class ResOrderAction extends BaseAction {
 
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	public String getUsernameSrh() {
+		return usernameSrh;
+	}
+
+	public void setUsernameSrh(String usernameSrh) {
+		this.usernameSrh = usernameSrh;
+	}
+
+	public String getUserphoneSrh() {
+		return userphoneSrh;
+	}
+
+	public void setUserphoneSrh(String userphoneSrh) {
+		this.userphoneSrh = userphoneSrh;
+	}
+
+	public String getOrderNoSrh() {
+		return orderNoSrh;
+	}
+
+	public void setOrderNoSrh(String orderNoSrh) {
+		this.orderNoSrh = orderNoSrh;
+	}
+
+	public List<ResOrders> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<ResOrders> orderList) {
+		this.orderList = orderList;
+	}
+
+	public String getOrderMenuType() {
+		return orderMenuType;
+	}
+
+	public void setOrderMenuType(String orderMenuType) {
+		this.orderMenuType = orderMenuType;
+	}
+
+	public String getOrderDateSrh() {
+		return orderDateSrh;
+	}
+
+	public void setOrderDateSrh(String orderDateSrh) {
+		this.orderDateSrh = orderDateSrh;
+	}
+
+	public String getOrderTypeSrh() {
+		return orderTypeSrh;
+	}
+
+	public void setOrderTypeSrh(String orderTypeSrh) {
+		this.orderTypeSrh = orderTypeSrh;
 	}
 	
 }

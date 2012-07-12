@@ -30,8 +30,12 @@ body {
 }
 -->
 </style>
+
 <script src="js/jquery.js" language="javascript" type="text/javascript"></script>
+<script src="js/dedeajax2.js" language="javascript" type="text/javascript"></script>
+<script src="js/leftmenu.js" language="javascript" type="text/javascript"></script>
 <script src="js/frame.js" language="javascript" type="text/javascript"></script>
+
 <script type="text/javascript">
 	function reset(){
 		$("#userName").val('');
@@ -45,21 +49,15 @@ body {
 		}else if($("#password").val()==''){
 			alert("密码不能为空!");
 		}else{
-			$("#loginForm").attr("action","login.action");
+			$("#loginForm").attr("action","dologin.action");
 			$("#loginForm").submit();
 		}
 	}
-	
-	$(document).ready(function(){
-		if(<s:property value="loginFail"/>){
-			alert('<s:property value="errMsg" escape="0"/>');
-		}
-	});
 </script>
 </head>
 
 <body>
-<s:form method="post" id="loginForm" action="login">
+<s:form method="post" id="loginForm" action="dologin">
 	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 		<tr>
 			<td bgcolor="#e5f6cf">&nbsp;</td>
