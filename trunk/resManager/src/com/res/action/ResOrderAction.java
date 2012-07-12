@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.Action;
 import com.res.bean.ResMenus;
 import com.res.bean.ResOrderMenu;
 import com.res.bean.ResOrders;
@@ -39,6 +40,7 @@ public class ResOrderAction extends BaseAction {
 	private String orderDateSrh;
 	private String orderTypeSrh;
 	
+	private boolean validUser = true;
 	
 	public void validate() {
 		//不用频繁读取cookie.建议使用此写法
@@ -47,6 +49,9 @@ public class ResOrderAction extends BaseAction {
 			if(getCookieUid() == null){
 				setCookieUid(-1);
 			}
+		}
+		if(getCookieUserName() != null && !getCookieUserName().equals("")) {
+			validUser = false;
 		}
 		
 		/**********检查fujian目录下是否有default.jpg存在********/
@@ -158,6 +163,10 @@ public class ResOrderAction extends BaseAction {
 	
 	
 	public String showOrder() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		int orderType = -1;
 		if(orderTypeSrh != null && !orderTypeSrh.equals("")) {
 			orderType = Integer.parseInt(orderTypeSrh);
