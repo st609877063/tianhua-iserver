@@ -137,7 +137,7 @@
 							<td height="20" >
 								<div align="center">
 									<span><img src="image/037.gif" width="9" height="9" /></span>
-									<span class="STYLE1">[<a href='toResItemUpdate.action?itemId=<s:property value="itemId" />' target="_blank">修改</a>]</span>
+									<span class="STYLE1">[<a href='toResItemUpdate.action?itemId=<s:property value="itemId" />'>修改</a>]</span>
 									<span><img src="image/010.gif" width="9" height="9" /></span>
 									<span class="STYLE1">[</span><a href="javascript:void(0)" name="deleteItemButton"  onclick="deleteItem(this, '<s:property value="itemId"/>')">删除</a><span class="STYLE1">]</span>
 								</div>

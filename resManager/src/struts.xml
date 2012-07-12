@@ -48,42 +48,34 @@
 			<result name="uploadFailed">/jsp/resItemImgSaveFailed.jsp</result>
 		</action>
 		<action name="resItemImgPreview" class="com.res.action.ResItemAction" method="previewItemImg">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="preview">/jsp/resItemImgPreview.jsp</result>
 			<result name="previewFailed" type="redirect">/resItemsShow.action</result>
 		</action>
 		<action name="resItemImgModify" class="com.res.action.ResItemAction" method="modifyItemImg">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resItemImgSave.jsp</result>
 			<result name="failed" type="redirect">/resItemsShow.action</result>
 		</action>
 		<action name="imgDownloadAttach" class="com.res.action.ResItemAction" method="imgDownloadAttach">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="failed" type="redirect">/resItemsShow.action</result>
 		</action>
 		
 		
 		<!-- 菜品 -->
 		<action name="resItemsShow" class="com.res.action.ResItemAction" method="showItems">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resItemsShow.jsp</result>
 		</action>
 		<action name="toResItemSave" class="com.res.action.ResItemAction" method="toSaveItem">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resItemSave.jsp</result>
 		</action>
 		<action name="resItemSave" class="com.res.action.ResItemAction" method="saveItems">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="savetofujian">/jsp/resItemImgSave.jsp</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="toResItemUpdate" class="com.res.action.ResItemAction" method="toUpdateItem">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resItemUpdate.jsp</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="resItemUpdate" class="com.res.action.ResItemAction" method="updateItem">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success" type="redirect">/resItemsShow.action</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
@@ -91,26 +83,21 @@
 
 		<!-- 菜单 -->
 		<action name="resMenuShow" class="com.res.action.ResMenuAction" method="showMenu">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resMenuShow.jsp</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="resMenuDetail" class="com.res.action.ResMenuAction" method="showMenuDetail">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resMenuDetail.jsp</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="toResMenuSave" class="com.res.action.ResMenuAction" method="toSaveMenu">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resMenuSave.jsp</result>
 		</action>
 		<action name="resMenuSave" class="com.res.action.ResMenuAction" method="saveMenu">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success" type="redirect">/resMenuShow.action</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
 		<action name="toResMenuUpdate" class="com.res.action.ResMenuAction" method="toUpdateMenu">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resMenuUpdate.jsp</result>
 			<result name="failed">/jsp/resSaveFailed.jsp</result>
 		</action>
@@ -133,7 +120,6 @@
 			<result name="failed" type="redirect">/resOrderMenu.action</result>
 		</action>
 		<action name="resOrderShow" class="com.res.action.ResOrderAction" method="showOrder">
-			<interceptor-ref name="authInterceptor"></interceptor-ref>
 			<result name="success">/jsp/resOrderShow.jsp</result>
 		</action>
 		

@@ -15,6 +15,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.Action;
 import com.res.bean.ResItems;
 import com.res.manager.ResItemsManager;
 import com.res.tools.DateTools;
@@ -31,7 +32,7 @@ public class ResItemAction extends BaseAction {
 	// ----------关键字查询 start ----------
 	private String srhItemNo="";
 	// ----------关键字查询  start----------
-	
+	private boolean validUser = true;
 	
 	public void validate() {
 		//不用频繁读取cookie.建议使用此写法
@@ -40,6 +41,9 @@ public class ResItemAction extends BaseAction {
 			if(getCookieUid() == null){
 				setCookieUid(-1);
 			}
+		}
+		if(getCookieUserName() != null && !getCookieUserName().equals("")) {
+			validUser = false;
 		}
 		
 		/**********检查fujian目录下是否有default.jpg存在********/
@@ -59,6 +63,10 @@ public class ResItemAction extends BaseAction {
 	
 	
 	public String showItems() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		ResItemsManager manager = new ResItemsManager();
 		rtnList = manager.getResItems(srhItemNo);
 		
@@ -66,10 +74,18 @@ public class ResItemAction extends BaseAction {
 	}
 	
 	public String toSaveItem() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		return "success";
 	}
 	
 	public String saveItems() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		ResItemsManager manager = new ResItemsManager();
 		
 		this.resItem.setItemCreatetime(DateTools.getTimestamp().intValue()); // 创建时间
@@ -89,6 +105,10 @@ public class ResItemAction extends BaseAction {
 	
 	
 	public String toUpdateItem() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		if (StringUtils.isNotEmpty(itemId)) {
 			int i_id = Integer.parseInt(itemId);
 			ResItemsManager manager = new ResItemsManager();
@@ -100,6 +120,10 @@ public class ResItemAction extends BaseAction {
 	}
 	
 	public String updateItem() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		ResItemsManager manager = new ResItemsManager();
 		
 		try {
@@ -123,6 +147,7 @@ public class ResItemAction extends BaseAction {
 	private String uploadFileFileName;
 
 	public String saveItemImg() throws Exception {
+
 		if (StringUtils.isNotEmpty(itemNo) && uploadFile!=null) {
 			try {
 				String fujianPath = ServletActionContext.getServletContext().getRealPath("/fujian");
@@ -158,6 +183,10 @@ public class ResItemAction extends BaseAction {
 	}
 	
 	public String previewItemImg() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		if (StringUtils.isNotEmpty(itemId)) {
 			int i_id = Integer.parseInt(itemId);
 			ResItemsManager manager = new ResItemsManager();
@@ -169,6 +198,10 @@ public class ResItemAction extends BaseAction {
 	}
 	
 	public String modifyItemImg() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		if (StringUtils.isNotEmpty(itemId)) {
 			int i_id = Integer.parseInt(itemId);
 			ResItemsManager manager = new ResItemsManager();
@@ -180,6 +213,10 @@ public class ResItemAction extends BaseAction {
 	}
 	
 	public String imgDownloadAttach() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
 		if (StringUtils.isNotEmpty(itemId)) {
 			int i_id = Integer.parseInt(itemId);
 			ResItemsManager manager = new ResItemsManager();

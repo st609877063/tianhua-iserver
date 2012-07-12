@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.Action;
 import com.res.bean.ResItems;
 import com.res.bean.ResMenus;
 import com.res.manager.ResItemsManager;
@@ -26,6 +27,7 @@ public class ResMenuAction extends BaseAction {
 	private List<ResMenus> rtnList = new ArrayList<ResMenus>();
 	private List<ResItems> zhuItemsList = new ArrayList<ResItems>();
 	private List<ResItems> fuItemsList = new ArrayList<ResItems>();
+	private boolean validUser = true;
 	
 	public void validate() {
 		//不用频繁读取cookie.建议使用此写法
@@ -34,6 +36,9 @@ public class ResMenuAction extends BaseAction {
 			if(getCookieUid() == null){
 				setCookieUid(-1);
 			}
+		}
+		if(getCookieUserName() != null && !getCookieUserName().equals("")) {
+			validUser = false;
 		}
 		
 		/**********检查fujian目录下是否有default.jpg存在********/
@@ -53,6 +58,11 @@ public class ResMenuAction extends BaseAction {
 	
 	
 	public String showMenu() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
+		
 		try {
 			ResMenuManager menuManager = new ResMenuManager();
 			List<ResMenus> menuDateTypeList = menuManager.getDistinctMenusDateType(showDate, -1);
@@ -105,6 +115,11 @@ public class ResMenuAction extends BaseAction {
 
 	
 	public String showMenuDetail() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
+		
 		if(showDate == null || showDate.equals("") || menuType == null || menuType.equals("") ) {
 			return "failed";
 		}
@@ -114,9 +129,12 @@ public class ResMenuAction extends BaseAction {
 		return "success";
 	}
 	
-	
-	
 	public String toSaveMenu() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
+		
 		ResItemsManager itemsManager = new ResItemsManager();
 		zhuItemsList = itemsManager.getResItemsByItemType(1);
 		fuItemsList = itemsManager.getResItemsByItemType(2);
@@ -124,9 +142,12 @@ public class ResMenuAction extends BaseAction {
 		return "success";
 	}
 	
-	
-	
 	public String saveMenu() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
+		
 		//处理menuItems参数
 		if(menuItems == null || menuItems.equals("")) {
 			return "failed";
@@ -168,6 +189,11 @@ public class ResMenuAction extends BaseAction {
 	
 	
 	public String toUpdateMenu() throws Exception {
+		if(validUser) {
+			return Action.LOGIN;
+		}
+		
+		
 		if(showDate == null || showDate.equals("") || menuType == null || menuType.equals("") ) {
 			return "failed";
 		}
@@ -176,8 +202,6 @@ public class ResMenuAction extends BaseAction {
 		
 		return "success";
 	}
-	
-	
 	
 	public List<ResMenus> getRtnList() {
 		return rtnList;
