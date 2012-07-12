@@ -46,7 +46,7 @@
 						</dt>
 						<dd style="display:block" class="sitem" id="items4_1">
 							<ul class="sitemu">
-								<li><a href="gift_cangku_list.action">订单查询</a></li>
+								<li><a href="resOrderShow.action">订单查询</a></li>
 							</ul>
 						</dd>
 					</dl>
@@ -61,8 +61,8 @@
 						</dt>
 						<dd style="display:block;" class="sitem" id="items1_2">
 							<ul class="sitemu">
-								<li><a href="gift_data_page.action" target="main">数据导出</a></li>
-								<li><a href="gift_data_page.action" target="main">数据导入</a></li>
+								<li><a href="javascript:void(0)" target="main">数据导出</a></li>
+								<li><a href="javascript:void(0)" target="main">数据导入</a></li>
 							</ul>
 						</dd>
 					</dl>
@@ -76,7 +76,7 @@
 						</dt>
 						<dd style="display:block;" class="sitem" id="items1_3">
 							<ul class="sitemu">
-								<li><a href="gift_lightbox_selectP.action">生成画册</a></li>
+								<li><a href="javascript:void(0)">生成画册</a></li>
 							</ul>
 						</dd>
 					</dl>
@@ -91,8 +91,8 @@
 						</dt>
 						<dd style="display:block" class="sitem" id="items4_1">
 							<ul class="sitemu">
-								<li><a href="gift_group_list.action">分组一览</a></li>
-								<li><a href="gift_group_saveP.action">添加分组</a></li>
+								<li><a href="javascript:void(0)">分组一览</a></li>
+								<li><a href="javascript:void(0)">添加分组</a></li>
 							</ul>
 						</dd>
 					</dl>
@@ -104,8 +104,8 @@
 						</dt>
 						<dd style="display:block" class="sitem" id="items4_1">
 							<ul class="sitemu">
-								<li><a href="gift_user_list.action">用户一览</a></li>
-								<li><a href="gift_user_saveP.action">添加用户</a></li>
+								<li><a href="javascript:void(0)">用户一览</a></li>
+								<li><a href="javascript:void(0)">添加用户</a></li>
 							</ul>
 						</dd>
 					</dl>

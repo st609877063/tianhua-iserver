@@ -46,7 +46,38 @@ $(function() {
 		}
 	}
 	
+	$("#showDate").datepicker();
+	$("#showDate").datepicker("option", "dateFormat", "yy-mm-dd");
+	
+	var showDateHidden = $("#showDateHidden").val();
+	$("#showDate").val(showDateHidden);
+	$("#orderDate").val(showDateHidden);
+	
 });
+
+function submitSearchForm(menuType) {
+	var menuDate = $("#showDate").val();
+	$("#menuType").val(menuType);
+	if(menuDate == "") {
+		alert("日期为空");
+		return false;
+	}
+
+	searchForm.submit();
+}
+
+function submitOrderSrhForm() {
+	var usernameSrh = $("#usernameSrh").val();
+	var userphoneSrh = $("#userphoneSrh").val();
+	var orderNoSrh = $("#orderNoSrh").val();
+	if(orderNoSrh == "") {
+		if(usernameSrh == "" && userphoneSrh == "") {
+			alert("请填写姓名电话进行查询。或者直接填写订单号查询");
+			return false;
+		}
+	}
+	orderSrhForm.submit();
+}
 
 </script>
 
@@ -113,6 +144,7 @@ $(function() {
 			<!--content_box_left_main_left start-->
 			<div class="content_box_left_main_left" id="showMenu">
 				<div style="width: 196px; overflow: hidden; float: left; background: #FFF;" id="menu_china">
+					<form name="searchForm" action="resOrderMenu.action" method="post">
 					<div style="width: 196px; overflow: hidden; background: #FFEFCD;">
 						<div style="display: block;" id="china">
 							<h1 class="content_box_left_main_left_h1"> 选项  </h1>
@@ -132,6 +164,25 @@ $(function() {
 							<span class="content_box_left_main_left_b_2"></span>
 						</div>
 					</div>
+					</form>
+				</div>
+				
+				<div class="content_box_right_2">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				   <tbody>
+				   		<tr><td><h1 class="content_box_right_2_h1"></h1></td></tr>
+				   <tr><td>
+				     <div class="content_box_right_2_c">
+			         <ul class="content_box_right_2_c_ul">
+			             <li><a href="javascript:void(0)" class="nav_right_l">提交订单提示餐费若和取食的餐费不同，请以食堂餐费为准</a></li>
+			             <li><a href="javascript:void(0)" class="nav_right_l">提交订单提示餐费若和取食的餐费不同，请以食堂餐费为准</a></li>
+			             <li><a href="javascript:void(0)" class="nav_right_l">提交订单提示餐费若和取食的餐费不同，请以食堂餐费为准</a></li>
+					 </ul>
+				     </div>
+				   </td></tr>
+				   <tr><td><span class="content_box_right_2_b"></span></td></tr>
+				 </tbody>
+				</table>
 				</div>
 			</div>
 			<!--content_box_left_main_left end-->
@@ -188,16 +239,9 @@ $(function() {
 						</table>
 						<div class="order_box_make" id="test">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" id="menuToal">
-
 							</table>
 						</div>
-						<span class="order_bg_info">合&nbsp;&nbsp;&nbsp;&nbsp;计:<input type="text" name="totalMoney" id="totalMoney" readonly value="0" style="width:50px">元</span>
-						<span class="order_bg_info">姓&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" name="username" id="username" ></span>
-						<span class="order_bg_info">手机号:<input type="text" name="userphone" id="userphone" ></span>
-						<input type="hidden" id="orderDate" name="orderDate" />
-						<input type="hidden" name="menuOrder" id="menuOrder">
 						<span class="order_bt"> 
-							<a href="javascript:submitOrderForm();">提交订单</a> 
 						</span>
 					</div>
 					<span class="content_box_right_2_b_1"></span>
@@ -209,17 +253,20 @@ $(function() {
 		<div class="content_box_right_2" id="helpArea">
 			<h1 class="content_box_right_3_h1">
 				<div class="nrlink">
-					<a href="javascript:void(0)"><font color="#EA0202"><u>订餐说明</u></font></a>
+					<a href="javascript:void(0)"><font color="#EA0202"><u>订单查询</u></font></a>
 				</div>帮助中心
 			</h1>
+			<form name="orderSrhForm" action="resOrderSearch.action" method="post">
 			<div class="content_box_right_2_c">
 				<ul class="content_box_right_2_c_ul2">
-					<li><a href="javascript:void(0)" class="nav_right_l">提交订单提示餐费若和取食的餐费不同，请以食堂餐费为准</a></li>
-					<li><a href="javascript:void(0)" class="nav_right_l">订餐说明</a></li>
-					<li><a href="javascript:void(0)" class="nav_right_l">订餐说明</a></li>
-					<li><a href="javascript:void(0)" class="nav_right_l">订餐说明</a></li>
+					<li>姓&nbsp;&nbsp;名:<input type="text" name="usernameSrh" id="usernameSrh" style="width:120px"></li>
+					<li>手机号:<input type="text" name="userphoneSrh" id="userphoneSrh"  style="width:120px"></li>
+					<li>或者填写订单号查询：</li>
+					<li>订单号:<input type="text" name="orderNoSrh" id="orderNoSrh"  style="width:120px"></li>
+					<li><a href="javascript:submitOrderSrhForm();" class="nav_right_l" align="center">查询订单</a> </li>
 				</ul>
 			</div>
+			</form>
 			<span class="content_box_right_2_b"></span>
 		</div>
 	</div>

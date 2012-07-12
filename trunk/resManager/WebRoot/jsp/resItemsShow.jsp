@@ -116,7 +116,7 @@
 							<td width="9%"><div align="center">图片信息</div></td>
 							<td width="15%"><div align="center">管理</div></td>
 						</tr>
-						<s:if test="rtnList!=null &&　rtnList.size != 0">
+						<s:if test="rtnList!=null">
 						<s:iterator value="rtnList" id="rtnItem">
 						<tr onmousemove="javascript:this.bgColor='#FCFDEE';" onmouseout="javascript:this.bgColor='#FFFFFF';" align="center" bgcolor="#FFFFFF" height="22">
 							<td height="20" ><div align="center"><s:property value="itemId" /></div></td>

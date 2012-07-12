@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50154
 File Encoding         : 65001
 
-Date: 2012-07-11 22:10:53
+Date: 2012-07-12 14:20:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,11 +37,11 @@ CREATE TABLE `res_items` (
 -- ----------------------------
 -- Records of res_items
 -- ----------------------------
-INSERT INTO `res_items` VALUES ('1', '11', '肉丝', 'default.jpg', null, '1', '1', '1', '2', '1', '1');
-INSERT INTO `res_items` VALUES ('2', '2', '馒头', 'default.jpg', null, '2', '2', '2', '1', '2', '2');
-INSERT INTO `res_items` VALUES ('3', 'sssss', '咖喱', 'default.jpg', null, '11.5', 'asdfas', 'asdfasdf', '1', '1341917341', '0');
-INSERT INTO `res_items` VALUES ('4', 'ssssssss', '鱼', '1341921515468_111.jpg', 'C:\\Program Files\\apache-tomcat-6-v2\\webapps\\res\\fujian\\1341921515468_111.jpg', '21.5', 'asdf', 'asdf', '2', '1341919097', '0');
-INSERT INTO `res_items` VALUES ('5', 'ssssssssddd', '龙虾', '1341923400703_111.jpg', 'C:\\Program Files\\apache-tomcat-6-v2\\webapps\\res\\fujian\\1341923400703_111.jpg', '31.5', 'asdf', 'asdf', '2', '1341919118', '0');
+INSERT INTO `res_items` VALUES ('1', 'rs', '肉丝', 'default.jpg', null, '1', '1', '1', '2', '1341917341', '0');
+INSERT INTO `res_items` VALUES ('2', 'mt', '馒头', 'default.jpg', null, '2', '2', '2', '1', '1341917341', '0');
+INSERT INTO `res_items` VALUES ('3', 'gl', '咖喱', 'default.jpg', null, '11.5', 'asdfas', 'asdfasdf', '1', '1341917341', '0');
+INSERT INTO `res_items` VALUES ('4', 'y', '鱼', '1341921515468_111.jpg', 'C:\\Program Files\\apache-tomcat-6-v2\\webapps\\res\\fujian\\1341921515468_111.jpg', '21.5', 'asdf', 'asdf', '2', '1341919097', '0');
+INSERT INTO `res_items` VALUES ('5', 'lx', '龙虾', '1341923400703_111.jpg', 'C:\\Program Files\\apache-tomcat-6-v2\\webapps\\res\\fujian\\1341923400703_111.jpg', '31.5', 'asdf', 'asdf', '2', '1341919118', '0');
 
 -- ----------------------------
 -- Table structure for `res_items_img`
@@ -109,20 +109,22 @@ CREATE TABLE `res_orders` (
   `o_user` varchar(100) DEFAULT NULL COMMENT '用户名',
   `o_phone` int(11) DEFAULT NULL COMMENT '用户手机号',
   `o_date` varchar(100) DEFAULT NULL COMMENT '时间',
+  `o_type` char(1) DEFAULT '1' COMMENT '1:午餐 2：晚餐 3：生食',
   `o_memo` varchar(100) DEFAULT NULL COMMENT '备注',
   `o_fee` varchar(100) DEFAULT NULL COMMENT '费用',
   `o_createtime` int(10) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`pk_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of res_orders
 -- ----------------------------
-INSERT INTO `res_orders` VALUES ('1', '1342015416', '田桦', '12312312', '2012-07-11', '', '50', '1342015416');
-INSERT INTO `res_orders` VALUES ('2', '1342015552', 'asdf', '122', '2012-07-11', '', '31', '1342015552');
-INSERT INTO `res_orders` VALUES ('3', '1342015612', 'dafsd', '1111', '2012-07-11', '', '129.6', '1342015612');
-INSERT INTO `res_orders` VALUES ('4', '1342015618', 'dafsdsss', '1111', '2012-07-11', '', '129.6', '1342015618');
-INSERT INTO `res_orders` VALUES ('5', '1342015826', 'dafsdss', '1111', '2012-07-11', '', '129.6', '1342015826');
+INSERT INTO `res_orders` VALUES ('1', '1342062484', 'test', '1111', '2012-07-11', '1', '', '39.4', '1342062484');
+INSERT INTO `res_orders` VALUES ('2', '1342062642', 'test', '1111', '2012-07-11', '1', '', '39.4', '1342062642');
+INSERT INTO `res_orders` VALUES ('3', '1342062691', 'test', '1111', '2012-07-11', '1', '', '39.4', '1342062691');
+INSERT INTO `res_orders` VALUES ('4', '1342062696', 'test', '1111', '2012-07-11', '1', '', '39.4', '1342062696');
+INSERT INTO `res_orders` VALUES ('5', '1342063456', 'aa', '11', '2012-07-11', '2', '', '17.5', '1342063456');
+INSERT INTO `res_orders` VALUES ('6', '1342065307', 'aaa', '111', '2012-07-10', '1', '', '72.5', '1342065307');
 
 -- ----------------------------
 -- Table structure for `res_order_menu`
@@ -138,21 +140,23 @@ CREATE TABLE `res_order_menu` (
   `om_total` varchar(100) DEFAULT NULL COMMENT '价格',
   `om_createtime` int(10) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`pk_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of res_order_menu
 -- ----------------------------
-INSERT INTO `res_order_menu` VALUES ('1', '1342015416', '2', '', '', '2', '', '1342015417');
-INSERT INTO `res_order_menu` VALUES ('2', '1342015416', '3', '', '', '4', '', '1342015417');
-INSERT INTO `res_order_menu` VALUES ('3', '1342015552', '2', '', '', '4', '', '1342015552');
-INSERT INTO `res_order_menu` VALUES ('4', '1342015552', '3', '', '', '2', '', '1342015552');
-INSERT INTO `res_order_menu` VALUES ('5', '1342015612', '2', '', '', '2', '', '1342015612');
-INSERT INTO `res_order_menu` VALUES ('6', '1342015612', '5', '', '', '4', '', '1342015612');
-INSERT INTO `res_order_menu` VALUES ('7', '1342015618', '2', '', '', '2', '', '1342015618');
-INSERT INTO `res_order_menu` VALUES ('8', '1342015618', '5', '', '', '4', '', '1342015618');
-INSERT INTO `res_order_menu` VALUES ('9', '1342015826', '2', '', '', '2', '', '1342015826');
-INSERT INTO `res_order_menu` VALUES ('10', '1342015826', '5', '', '', '4', '', '1342015826');
+INSERT INTO `res_order_menu` VALUES ('1', '1342062484', '2', '', '', '3', '', '1342062484');
+INSERT INTO `res_order_menu` VALUES ('2', '1342062484', '5', '', '', '1', '', '1342062484');
+INSERT INTO `res_order_menu` VALUES ('3', '1342062642', '2', '', '', '3', '', '1342062642');
+INSERT INTO `res_order_menu` VALUES ('4', '1342062642', '5', '', '', '1', '', '1342062642');
+INSERT INTO `res_order_menu` VALUES ('5', '1342062691', '2', '', '', '3', '', '1342062691');
+INSERT INTO `res_order_menu` VALUES ('6', '1342062691', '5', '', '', '1', '', '1342062691');
+INSERT INTO `res_order_menu` VALUES ('7', '1342062696', '2', '', '', '3', '', '1342062696');
+INSERT INTO `res_order_menu` VALUES ('8', '1342062696', '5', '', '', '1', '', '1342062696');
+INSERT INTO `res_order_menu` VALUES ('9', '1342063456', '2', '', '', '3', '', '1342063456');
+INSERT INTO `res_order_menu` VALUES ('10', '1342063456', '3', '', '', '1', '', '1342063456');
+INSERT INTO `res_order_menu` VALUES ('11', '1342065307', '4', '', '', '3', '', '1342065307');
+INSERT INTO `res_order_menu` VALUES ('12', '1342065307', '2', '', '', '4', '', '1342065307');
 
 -- ----------------------------
 -- Table structure for `res_user`

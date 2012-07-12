@@ -10,8 +10,8 @@ import org.apache.commons.logging.LogFactory;
 public class UserValidator {
 	
 	private static final Log LOG = LogFactory.getLog(UserValidator.class);
-	private static final String COOKIE_UID = "peo_gift_uid";
-	private static final String COOKIE_USERNAME = "peo_gift_username";
+	private static final String COOKIE_UID = "res_user_uid";
+	private static final String COOKIE_USERNAME = "res_user_username";
 	/**
 	 * 获取用户COOKIE
 	 * @return
@@ -46,17 +46,6 @@ public class UserValidator {
 		}
 		return userinfo;
 	} 
-	
-	//开发时使用，假设cookie已存在
-	/*
-	public String[] getCookie(HttpServletRequest request) {
-		String[] userinfo = new String[5];	
-		userinfo[0] = "1";
-		userinfo[1] = "twitteradmin";
-		userinfo[2] = "微微一哭";
-		userinfo[3] = "1";
-		return userinfo;
-	}*/
 	
 	/**
 	 * 设置cookie信息

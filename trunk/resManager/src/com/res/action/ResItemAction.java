@@ -34,6 +34,14 @@ public class ResItemAction extends BaseAction {
 	
 	
 	public void validate() {
+		//不用频繁读取cookie.建议使用此写法
+		if(getCookieUid() == null || getCookieUid() == -1) {
+			setCookieInfo();
+			if(getCookieUid() == null){
+				setCookieUid(-1);
+			}
+		}
+		
 		/**********检查fujian目录下是否有default.jpg存在********/
 		String fujianPath = ServletActionContext.getServletContext().getRealPath("/fujian");
 		if(!FileTools.fileExist(fujianPath)) {
@@ -65,7 +73,7 @@ public class ResItemAction extends BaseAction {
 		ResItemsManager manager = new ResItemsManager();
 		
 		this.resItem.setItemCreatetime(DateTools.getTimestamp().intValue()); // 创建时间
-		this.resItem.setItemAdduser(0); // 创建人
+		this.resItem.setItemAdduser(this.getCookieUid()); // 创建人
 		this.resItem.setItemImg("default.jpg");
 		String savePath = ServletActionContext.getServletContext().getRealPath("/fujian")+ File.separator + "default.jpg";
 		this.resItem.setItemImgpath(savePath);
