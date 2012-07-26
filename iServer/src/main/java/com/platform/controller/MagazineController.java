@@ -225,7 +225,8 @@ public class MagazineController {
 		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "b_" + timestamp +".jpg";; //ipad使用big
 		try {
 			ImageUtil.saveResizeImage(fileName, sFileName, 160, 210, "COVER"); //iphone 图片生成:封面：160*210
-			ImageUtil.saveResizeImage(fileName, bFileName, 400, 525, "COVER"); //ipad 图片生成
+			//ImageUtil.saveResizeImage(fileName, bFileName, 400, 525, "COVER"); //ipad 图片生成
+			ImageUtil.saveResizeImage(fileName, bFileName, 320, 420, "COVER"); //ipad 图片生成
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -293,7 +293,7 @@ public class ArticleController {
 		String bFileName = GlobalVariables.uri + GlobalVariables.fileLocation + File.separator + "b_" + timestamp +".jpg";; //ipad使用big
 		try {
 			ImageUtil.saveResizeImage(fileName, sFileName, 400, 400, "ARTICLE"); //iphone 图片生成
-			ImageUtil.saveResizeImage(fileName, bFileName, 1000, 1000, "ARTICLE"); //ipad 图片生成
+			ImageUtil.saveResizeImage(fileName, bFileName, 800, 800, "ARTICLE"); //ipad 图片生成
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
