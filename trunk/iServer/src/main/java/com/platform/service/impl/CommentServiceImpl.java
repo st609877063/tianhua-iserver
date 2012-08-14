@@ -18,6 +18,7 @@ import com.framework.persistence.PersistenceManager;
 import com.framework.persistence.QueryManager;
 import com.framework.util.DateTime;
 import com.platform.domain.Comment;
+import com.platform.domain.Section;
 import com.platform.service.CommentService;
 @Service("commentService")
 public class CommentServiceImpl implements CommentService {
@@ -165,12 +166,18 @@ public class CommentServiceImpl implements CommentService {
 	@Transactional(readOnly = true)
 	public Comment getComment(String commentId) throws ServiceException{
 		List<Comment> list = qm.findByNamedQuery("getCommentById", commentId);
-		Comment comment = list.get(0);
+		Comment comment = null;
+		if(list != null && list.size()>0) {
+			comment = list.get(0);
+		}
 		return comment;
 	}
 	public String getIphoneComment(String commentId) throws ServiceException{
 		List<Comment> list = qm.findByNamedQuery("getCommentById", commentId);
-		Comment comment = list.get(0);
+		Comment comment = null;
+		if(list != null && list.size()>0) {
+			comment = list.get(0);
+		}
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?><root>");

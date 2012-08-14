@@ -138,7 +138,7 @@ public class MagazineController {
 			StringBuffer sb = new StringBuffer();
 			sb.append("<select onChange=\"getSectionName()\" style=\"width:100px;\" id=\"magazineName\" name=\"magazineName\" size=\"1\">");
 			List<?> list = magazineService.getMagazinesList();
-			for(int i =0;i<list.size();i++){
+			for(int i =0; list!=null&&i<list.size();i++){
 				
 				Magazine magazine = (Magazine) list.get(i);
 				String sel = magazineId.equals(magazine.getMagazineId())?"selected":"";
@@ -163,7 +163,7 @@ public class MagazineController {
 			StringBuffer sb = new StringBuffer();
 			sb.append("<select id=\"magazineClassId\" name=\"magazineClassId\" size=\"1\">");
 			List<?> list = magazineService.getMagazineClassList();
-			for(int i =0;i<list.size();i++){
+			for(int i =0; list!=null&&i<list.size();i++){
 				MagazineClass magazineClass = (MagazineClass) list.get(i);
 				sb.append("<option  value="+magazineClass.getMagazineClassId()+">");
 				sb.append(magazineClass.getMagazineClassName());
@@ -193,24 +193,32 @@ public class MagazineController {
 		User user = userService.getUserById(userId);
 		String magazineClassId = request.getParameter("magazineClassId");
 		MagazineClass magazineClass = magazineService.getMagazineClass(magazineClassId);
-		magazine.setUser(user);
-		//magazine.setMagazineName(magazineName);
-		magazine.setMagazineClass(magazineClass);
-		magazine.setCreateDate(DateTime.getCurrentDateByString());
-		flag = magazineService.saveMagazine(magazine);
-		if("1".endsWith(magazineClassId))
-			flag2 = sectionService.saveXKSections(magazine);
-		else if("2".endsWith(magazineClassId))
-			flag2 = sectionService.saveCZSections(magazine);
-
+		
 		JSONObject json = new JSONObject();
-		json.put("success",true);
-		json.put("changeOK",flag);
-		if(flag&&flag2){
-			json.put("msg","添加杂志成功");
-		}else{
-			json.put("msg","添加杂志失败,请重新添加");
+		if(magazineClass != null) {
+			magazine.setUser(user);
+			//magazine.setMagazineName(magazineName);
+			magazine.setMagazineClass(magazineClass);
+			magazine.setCreateDate(DateTime.getCurrentDateByString());
+			flag = magazineService.saveMagazine(magazine);
+			if("1".endsWith(magazineClassId))
+				flag2 = sectionService.saveXKSections(magazine);
+			else if("2".endsWith(magazineClassId))
+				flag2 = sectionService.saveCZSections(magazine);
+			
+			json.put("success",true);
+			json.put("changeOK",flag);
+			if(flag&&flag2){
+				json.put("msg","添加杂志成功");
+			}else{
+				json.put("msg","添加杂志失败,请重新添加");
+			}
+		} else {
+			json.put("success",false);
+			json.put("changeOK",false);
+			json.put("msg","获取杂志信息失败");
 		}
+		
 		writer.print(json);
 	}
 	
@@ -268,18 +276,26 @@ public class MagazineController {
 		User user = userService.getUserById(userId);
 		String magazineClassId = request.getParameter("magazineClassId");
 		MagazineClass magazineClass = magazineService.getMagazineClass(magazineClassId);
-		magazine.setUser(user);
-		magazine.setMagazineClass(magazineClass);
-		magazine.setUpdateDate(DateTime.getCurrentDateByString());
-		changeOK = magazineService.updateMagazine(magazine);
+		
 		JSONObject json = new JSONObject();
-		json.put("success",true);
-		json.put("changeOK",changeOK);
-		if(changeOK){
-			json.put("msg","修改杂志成功");
-		}else{
-			json.put("msg","修改杂志失败,请重新修改");
+		if(magazineClass != null) {
+			magazine.setUser(user);
+			magazine.setMagazineClass(magazineClass);
+			magazine.setUpdateDate(DateTime.getCurrentDateByString());
+			changeOK = magazineService.updateMagazine(magazine);
+			json.put("success",true);
+			json.put("changeOK",changeOK);
+			if(changeOK){
+				json.put("msg","修改杂志成功");
+			}else{
+				json.put("msg","修改杂志失败,请重新修改");
+			}
+		} else {
+			json.put("success",false);
+			json.put("changeOK",false);
+			json.put("msg","获取杂志信息失败");
 		}
+		
 		writer.print(json);
 	}
 	
