@@ -72,7 +72,10 @@ public class MagazineServiceImpl implements MagazineService {
 	@Transactional(readOnly = true)
 	public MagazineClass getMagazineClass(String magazineClassId) throws ServiceException{	
 		List<MagazineClass> list = qm.findByNamedQuery("getMagazineClassById", magazineClassId);
-		MagazineClass magazine = list.get(0);
+		MagazineClass magazine = null;
+		if(list != null && list.size()>0) {
+			magazine = list.get(0);
+		}
 		return magazine;
 	}
 	/**
@@ -220,7 +223,10 @@ public class MagazineServiceImpl implements MagazineService {
 	@Transactional(readOnly = true)
 	public Magazine getMagazine(String magazineId) throws ServiceException{
 		List<Magazine> list = qm.findByNamedQuery("getMagazineById", magazineId);
-		Magazine magazine = list.get(0);
+		Magazine magazine = null;
+		if(list != null && list.size()>0) {
+			magazine = list.get(0);
+		}
 		return magazine;
 	}
 	/**
@@ -233,7 +239,10 @@ public class MagazineServiceImpl implements MagazineService {
 	@Transactional(readOnly = true)
 	public String getIphoneMagazine(String magazineId) throws ServiceException{
 		List<Magazine> list = qm.findByNamedQuery("getMagazineById", magazineId);
-		Magazine magazine = list.get(0);
+		Magazine magazine = null;
+		if(list != null && list.size()>0) {
+			magazine = list.get(0);
+		}
 		StringBuffer sb = new StringBuffer();
 		return "";
 	}

@@ -152,7 +152,10 @@ public class SectionServiceImpl implements SectionService {
 	@SuppressWarnings("unchecked")
 	public Section getSection(String sectionId) throws ServiceException{
 		List<Section> list = qm.findByNamedQuery("getSectionById", sectionId);
-		Section section = list.get(0);
+		Section section = null;
+		if(list != null && list.size()>0) {
+			section = list.get(0);
+		}
 		return section;
 	}
 	
