@@ -62,6 +62,25 @@ public class MagazineController {
 		}
 	}
 	
+	
+	// NEWS_MAG_URL:	http://localhost:8080/iServer/magazine/iphone/class?type=#
+	@RequestMapping(value ="/iphone/maglist",method = RequestMethod.GET)
+	public void getIphoneMagazineListByClass(HttpServletRequest request ,HttpServletResponse response,Magazine magazine) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter writer = null;
+		String magazineClass = request.getParameter("type");
+		
+		try {
+			writer = response.getWriter();
+			String str = magazineService.getIphoneMagazineListByClass(magazineClass);
+			writer.write(str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 	@RequestMapping(value ="/iphone/app",method = RequestMethod.GET)
 	public void getXiaokangApp(HttpServletRequest request ,HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -278,7 +297,7 @@ public class MagazineController {
 		MagazineClass magazineClass = magazineService.getMagazineClass(magazineClassId);
 		
 		JSONObject json = new JSONObject();
-		if(magazineClass != null) {
+		if(magazineClass != null && magazine != null && magazine.getMagazineId() != null && !magazine.getMagazineId().equals("")) {
 			magazine.setUser(user);
 			magazine.setMagazineClass(magazineClass);
 			magazine.setUpdateDate(DateTime.getCurrentDateByString());
