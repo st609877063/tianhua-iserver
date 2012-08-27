@@ -171,6 +171,49 @@ public class MagazineServiceImpl implements MagazineService {
 		return sb.toString();
 	}
 	
+	
+	@Transactional(readOnly = true)
+	public String getIphoneMagazineListByClass(String magazineClass) throws ServiceException{
+		String sql = "select * from magazine m,magazine_class mc " +
+				" where m.show_status = 1 and m.magazine_class_id = mc.magazine_class_id and m.magazine_class_id='" + magazineClass +"'"+
+				" order by PHASE DESC, CREATE_DATE DESC "; 
+		
+		RowSet rs = jqm.getRowSet(sql);
+		StringBuffer sb = new StringBuffer();
+		String pic = null;
+		try {
+			sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+			sb.append("<root>\n");
+			while (rs.next()) {
+				pic = rs.getString("MAGAZINE_PICTURE");
+				if(pic==null || "".equals(pic) || pic.trim().indexOf(".") == -1) {
+					pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_defaultCover.jpg";
+				} else {
+					String pic2 = "s_"+pic;
+					if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic2)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic2;
+					} else if(FileUtil.fileExist(GlobalVariables.uri+GlobalVariables.fileLocation+"/"+pic)) {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+pic;
+					} else {
+						pic = GlobalVariables.urlLocation+GlobalVariables.serverName+"static"+GlobalVariables.fileLocation+"/"+magazineClass+"_defaultCover.jpg";
+					}
+				}
+				sb.append("<item>");
+				sb.append("<PAGENUM>");sb.append(rs.getString("PHASE"));sb.append("</PAGENUM>");
+				sb.append("<PAGENAME>");sb.append(rs.getString("MAGAZINE_NAME"));sb.append("</PAGENAME>");
+				sb.append("<PDFLINK>");sb.append(rs.getString("MAGAZINE_ID"));sb.append("</PDFLINK>");
+				sb.append("<imageURL>");sb.append(pic);sb.append("</imageURL>");
+				sb.append("<PUBDATA>");sb.append(rs.getString("CREATE_DATE"));sb.append("</PUBDATA>");
+				sb.append("</item>");
+			}
+			sb.append("</root>\n");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+	
+	
 	@Transactional(readOnly = true)
 	public String getIphoneMagazines(int start,int limit,String sortorder) throws ServiceException{
 		String sql = "select * from magazine m,magazine_class mc " +
