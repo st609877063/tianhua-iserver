@@ -204,17 +204,18 @@ public class MagazineController {
 		boolean flag = false;
 		boolean flag2 = false;
 		//System.out.println(magazine.getMagazineName());
-		//String magazineName =request.getParameter("magazineName");
-		//if(magazineName!=null && !magazineName.equals("")) {
-		//	magazineName = new String(magazineName.getBytes("iso-8859-1"), "utf-8"); 
-		//}
+//		String magazineName =request.getParameter("magazineName");
+//		if(magazineName!=null && !magazineName.equals("")) {
+//			magazineName = new String(magazineName.getBytes("ISO8859-1"), "utf-8"); 
+//		}
+		
 		String userId = request.getParameter("userId");
 		User user = userService.getUserById(userId);
 		String magazineClassId = request.getParameter("magazineClassId");
 		MagazineClass magazineClass = magazineService.getMagazineClass(magazineClassId);
 		
 		JSONObject json = new JSONObject();
-		if(magazineClass != null) {
+		if(magazineClass != null && magazine != null) {
 			magazine.setUser(user);
 			//magazine.setMagazineName(magazineName);
 			magazine.setMagazineClass(magazineClass);
@@ -291,6 +292,7 @@ public class MagazineController {
 		response.setCharacterEncoding("UTF-8");	
 		PrintWriter writer = response.getWriter();
 		boolean changeOK =false;
+		
 		String userId = request.getParameter("userId");
 		User user = userService.getUserById(userId);
 		String magazineClassId = request.getParameter("magazineClassId");
@@ -301,6 +303,11 @@ public class MagazineController {
 			magazine.setUser(user);
 			magazine.setMagazineClass(magazineClass);
 			magazine.setUpdateDate(DateTime.getCurrentDateByString());
+			
+			//解决乱码问题
+			String decodeStr = new String(magazine.getMagazineName().getBytes("ISO8859-1"), "UTF-8");
+			magazine.setMagazineName(decodeStr);
+			
 			changeOK = magazineService.updateMagazine(magazine);
 			json.put("success",true);
 			json.put("changeOK",changeOK);
