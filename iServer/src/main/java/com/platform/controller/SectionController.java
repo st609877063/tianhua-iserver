@@ -154,8 +154,16 @@ public class SectionController {
 		boolean changeOK =false;
 		String magazineId = request.getParameter("magazineId");
 		Magazine magazine = magazineService.getMagazine(magazineId);
-		section.setMagazine(magazine);
-		changeOK = sectionService.updateSection(section);
+		if(magazine != null) {
+			section.setMagazine(magazine);
+			
+			//解决乱码问题
+			String decodeStr = new String(section.getSectionName().getBytes("ISO8859-1"), "UTF-8");
+			section.setSectionName(decodeStr);
+			
+			changeOK = sectionService.updateSection(section);
+		}
+		
 		JSONObject json = new JSONObject();
 		json.put("success",true);
 		json.put("changeOK",changeOK);
