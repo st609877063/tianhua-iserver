@@ -193,6 +193,7 @@
 							type:"POST",
 							url:'section?_method=POST',
 							dataType:"json", 
+							contentType: "application/x-www-form-urlencoded; charset=utf-8",
 							success:function(json){ 
 								$("#sections").jqmHide();
 								$("#grid").flexReload();
@@ -208,6 +209,7 @@
 							'&seq='+seq+
 							'&hide='+hide,
 							dataType:"json", 
+							contentType: "application/x-www-form-urlencoded; charset=utf-8",
 							success:function(json){ 					
 								$("#sections").jqmHide();
 								$("#grid").flexReload();

@@ -277,6 +277,7 @@
 							'&magazineId='+magazineId+
 							'&sectionId='+sectionId,
 							dataType:"json", 
+							contentType: "application/x-www-form-urlencoded; charset=utf-8",
 							clearForm: true,
 							success:function(json){ 
 								alert(json.msg);
@@ -301,6 +302,7 @@
 							//'&author='+author,
 							//'&articleContent='+articleContent,
 							dataType:"json", 
+							contentType: "application/x-www-form-urlencoded; charset=utf-8",
 							clearForm: true,
 							success:function(json){ 					
 								alert(json.msg);

@@ -170,6 +170,7 @@
 						type:"POST",
 						url:'user?_method=POST',
 						dataType:"json", 
+						contentType: "application/x-www-form-urlencoded; charset=utf-8",
 						success:function(json){ 
 							$("#users").jqmHide();
 							$("#grid").flexReload();
@@ -182,6 +183,7 @@
 						type:"PUT",
 						url:'user?_method=PUT&userId='+id+'&name='+name+'&password='+password,
 						dataType:"json", 
+						contentType: "application/x-www-form-urlencoded; charset=utf-8",
 						success:function(json){ 					
 							$("#users").jqmHide();
 							$("#grid").flexReload();
