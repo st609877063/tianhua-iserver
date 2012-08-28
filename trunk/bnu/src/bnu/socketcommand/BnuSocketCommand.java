@@ -23,6 +23,8 @@ import bnu.managerWeb.BnuManagerYjbgWeb;
 import bnu.managerWeb.BnuManagerZdxsWeb;
 import bnu.managerWeb.BnuManagerZdzyWeb;
 import bnu.managerWeb.BnuManagerZlxxWeb;
+import bnu.managerWeb.BnuReCalculateWeb;
+import bnu.managerWeb.BnuResumeDocWeb;
 import bnu.web.BnuHRCghjWeb;
 import bnu.web.BnuHRGjhqkWeb;
 import bnu.web.BnuHRGjwxxjlWeb;
