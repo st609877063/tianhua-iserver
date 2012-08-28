@@ -356,6 +356,7 @@
 					type:"POST",
 					url:'magazine?_method=POST',
 					dataType:"json", 
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
 					success:function(json){ 
 						$("#magazines").jqmHide();
 						$("#grid").flexReload();
@@ -372,6 +373,7 @@
 					'&userId='+userId+
 					'&magazinePicture='+magazinePicture+
 					'&showStatus='+showStatus,
+					contentType:"application/x-www-form-urlencoded; charset=utf-8",
 					dataType:"json", 
 					success:function(json){ 					
 						$("#magazines").jqmHide();
