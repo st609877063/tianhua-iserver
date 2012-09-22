@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="iOCR"
+  id="myeclipse.1348233818193"
+  context-root="/iOCR"
+  j2ee-spec="5.0"
+  archive="iOCR.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
