@@ -52,6 +52,8 @@ public class MyServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String url = req.getParameter("j_imgurl");
+		//http://passport.people.com.cn/imageCode.do
+		System.out.println("url=============="+url);
 		InputStream instream = InitEnv.class.getResourceAsStream(InitEnv.CERTPATH);
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		String protocol = "http";
