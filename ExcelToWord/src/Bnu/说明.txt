@@ -1,0 +1,8 @@
+代码运行的流程：
+1. 运行Bnu下 XXXToExcel.java来使“基础数据”变成7个单独的大Excel。
+比如：CghjToExcel.java(成果获奖) KyxmToExcel.java(科研项目) QtcgToExcel.java(其他成果)
+XslwToExcel.java(学术论文) XszzToExcel.java(学术著作)YjbgToExcel.java（研究报告）ZlxxToExcel.java（专利信息）
+
+2：最后运行ToWord.java 使用7个大Excel生成每个人对应的考核表
+
+注意：文件的位置要搞清楚。
