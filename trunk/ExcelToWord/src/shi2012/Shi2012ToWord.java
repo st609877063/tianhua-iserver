@@ -393,7 +393,7 @@ public class Shi2012ToWord {
 				
 //				System.out.println("============研究咨询报告（终稿）.xlsbegin===================");
 				StringBuffer yjbgContent = new StringBuffer();
-				InputStream yjbgIs = new FileInputStream("E:/shi/2012/科研工作量/研究咨询报告（终稿）.xls.xls");
+				InputStream yjbgIs = new FileInputStream("E:/shi/2012/科研工作量/研究咨询报告（终稿）.xls");
 				//CHARGENM<负责人姓名>	工作证号	全部作者	CGMC<成果名称>	CNDW<采纳单位>
 				Workbook yjbgRwb = Workbook.getWorkbook(yjbgIs);
 				Sheet yjbgRs = (Sheet) yjbgRwb.getSheet(0);
