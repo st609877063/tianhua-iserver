@@ -25,8 +25,8 @@ public class Shi2012ToWord {
 		String userName = "";
 		String title = ""; //职称
 		String grade = ""; //岗位级别
-//		for (int i = 1; i <= rowNum-1; i++) {
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= rowNum-1; i++) {
+//		for (int i = 1; i <= 5; i++) {
 			dept = "教育学部"+rs.getCell(0, i).getContents(); // //部门
 			userId = rs.getCell(1, i).getContents(); //  //ID
 			userName = rs.getCell(2, i).getContents(); // //name
@@ -55,25 +55,21 @@ public class Shi2012ToWord {
 					String mcTemp = kcxxRs.getCell(2, kcxxRowIndex).getContents(); // //课程名称
 					String xfTemp = kcxxRs.getCell(3, kcxxRowIndex).getContents(); // //学分
 					String bhTemp = kcxxRs.getCell(4, kcxxRowIndex).getContents(); // //上课班号
-					String xqTemp = kcxxRs.getCell(6, kcxxRowIndex).getContents(); // //学期
-					String fzrTemp = kcxxRs.getCell(7, kcxxRowIndex).getContents(); // //负责人
+					String xqTemp = kcxxRs.getCell(13, kcxxRowIndex).getContents(); // //学期
 
 					if(kcxxName1.equals(userName)) {
 						kcxxContent.append(kcxxNum+". ");
 						if(!mcTemp.equals("")) {
-							kcxxContent.append("\""+mcTemp+"\"");						
+							kcxxContent.append("\""+mcTemp+"\"");					
 						}
 						if(!xfTemp.equals("")) {
-							kcxxContent.append(","+xfTemp);
+							kcxxContent.append(", "+xfTemp);
 						}
 						if(!bhTemp.equals("")) {
-							kcxxContent.append(","+bhTemp);
+							kcxxContent.append(", "+bhTemp);
 						}
 						if(!xqTemp.equals("")) {
-							kcxxContent.append(","+xqTemp);
-						}
-						if(!fzrTemp.equals("")) {
-							kcxxContent.append(","+fzrTemp);
+							kcxxContent.append(", "+xqTemp);
 						}
 						kcxxContent.append("\n");
 						kcxxNum++;
@@ -170,7 +166,6 @@ public class Shi2012ToWord {
 							dsxsContent.append(tempIndex+". 中职、高校学生："+temp13+"\n");
 							tempIndex++;
 						}
-						dsxsContent.append("\n");
 						dsxsNum++;
 					}
 				}
@@ -198,12 +193,11 @@ public class Shi2012ToWord {
 					//导出项目
 					String dwTemp = shfwRs.getCell(2, shfwRowIndex).getContents(); //2011.9～2012.8期间 
 					String zwTemp = shfwRs.getCell(3, shfwRowIndex).getContents(); //职务
-					String sjtgzTemp = shfwRs.getCell(4, shfwRowIndex).getContents(); //数据提供者
 
 					if(shfwId1.equals(userId) || shfwName1.equals(userName) ) {
 //						qtgzContent.append(shfwNum+". ");
 						if(!dwTemp.equals("")) {
-							qtgzContent.append(dwTemp+", ");
+							qtgzContent.append(dwTemp);
 						}
 						if(!zwTemp.equals("")) {
 							qtgzContent.append(zwTemp);
@@ -231,16 +225,16 @@ public class Shi2012ToWord {
 				String xzzwName1 = ""; String xzzwId1 = "";
 				int xzzwNum = 1;
 				for(int xzzwRowIndex=1; xzzwRowIndex<xzzwRowNum-1; xzzwRowIndex++) {
-					xzzwName1 =  shfwRs.getCell(0, xzzwRowIndex).getContents().trim() ; //第1完成人姓名
-					xzzwId1 =  shfwRs.getCell(1, xzzwRowIndex).getContents().trim() ; //第1完成人ID
+					xzzwName1 =  xzzwRs.getCell(0, xzzwRowIndex).getContents().trim() ; //第1完成人姓名
+					xzzwId1 =  xzzwRs.getCell(1, xzzwRowIndex).getContents().trim() ; //第1完成人ID
 					
-					String zwTemp = shfwRs.getCell(2, xzzwRowIndex).getContents(); //职务
-					String qtTemp = shfwRs.getCell(3, xzzwRowIndex).getContents(); //其他工作
+					String zwTemp = xzzwRs.getCell(2, xzzwRowIndex).getContents(); //职务
+					String qtTemp = xzzwRs.getCell(3, xzzwRowIndex).getContents(); //其他工作
 
 					if(xzzwName1.equals(userName) || xzzwId1.equals(userId)) {
 //						xzzwContent.append(xzzwNum+". ");
 						if(!zwTemp.equals("")) {
-							xzzwContent.append(zwTemp+"： ");
+							xzzwContent.append(zwTemp);
 						}
 						if(!qtTemp.equals("")) {
 							xzzwContent.append(qtTemp);
@@ -335,13 +329,13 @@ public class Shi2012ToWord {
 							zzContent.append(", <<"+temp2+">>");
 						}
 						if(!temp3.equals("")) {
-							zzContent.append(","+temp3);
+							zzContent.append(", "+temp3);
 						}
 						if(!temp4.equals("")) {
-							zzContent.append(","+temp4);
+							zzContent.append(", "+temp4+"年");
 						}
 						if(!temp5.equals("")) {
-							zzContent.append(","+temp5);
+							zzContent.append(", ISBN:"+temp5);
 						}
 						zzContent.append("\n");
 						zzNum++;
@@ -376,13 +370,13 @@ public class Shi2012ToWord {
 							kyhjContent.append(kyhjNum+". "+temp1);
 						}
 						if(!temp3.equals("")) {
-							kyhjContent.append(","+temp3);
+							kyhjContent.append(", "+temp3);
 						}
 						if(!temp4.equals("")) {
-							kyhjContent.append(","+temp4);
+							kyhjContent.append(", "+temp4);
 						}
 						if(!temp5.equals("")) {
-							kyhjContent.append(","+temp5);
+							kyhjContent.append(", "+temp5);
 						}
 						kyhjContent.append("\n");
 						kyhjNum++;
@@ -416,10 +410,10 @@ public class Shi2012ToWord {
 							yjbgContent.append(yjbgNum+". "+temp1);
 						}
 						if(!temp3.equals("")) {
-							yjbgContent.append(","+temp3);
+							yjbgContent.append(", "+temp3);
 						}
 						if(!temp4.equals("")) {
-							yjbgContent.append(","+temp4);
+							yjbgContent.append(", 采纳单位："+temp4+", 2011年");
 						}
 						yjbgContent.append("\n");
 						yjbgNum++;
@@ -443,17 +437,17 @@ public class Shi2012ToWord {
 					
 					String temp1 = kyxmRs.getCell(2, kyxmRowIndex).getContents(); //项目来源
 					String temp3 = kyxmRs.getCell(4, kyxmRowIndex).getContents(); //项目类型
-					String temp4 = kyxmRs.getCell(5, kyxmRowIndex).getContents(); //项目名称
+					String temp4 = kyxmRs.getCell(6, kyxmRowIndex).getContents(); //项目名称
 					
-					if(kyxmName1.equals(userName) ) {
-						if(!temp1.equals("")) {
-							kyxmContent.append(kyxmNum+". "+temp1);
-						}
-						if(!temp3.equals("")) {
-							kyxmContent.append(","+temp3);
-						}
+					if(kyxmName1.equals(userName) || kyxmId.equals(userId)) {
 						if(!temp4.equals("")) {
-							kyxmContent.append(","+temp4);
+							kyxmContent.append(kyxmNum+". \""+temp4+"\"");
+						}
+						if(!temp1.equals("")) {
+							kyxmContent.append(", "+temp1);
+						}
+						if(!temp3.equals("") && !temp3.equals("无")) {
+							kyxmContent.append(", "+temp3);
 						}
 						
 						kyxmContent.append("\n");
@@ -478,7 +472,30 @@ public class Shi2012ToWord {
 				}
 				
 				
-				WordTable[] wt=new WordTable[14];
+				StringBuffer kygz = new StringBuffer();
+				if(!xslwContent.toString().trim().equals("")) {
+					kygz.append("学术论文：\n");
+					kygz.append(xslwContent+"\n");
+				}
+				if(!zzContent.toString().trim().equals("")) {
+					kygz.append("著作：\n");
+					kygz.append(zzContent+"\n");
+				}
+				if(!kyhjContent.toString().trim().equals("")) {
+					kygz.append("奖励：\n");
+					kygz.append(kyhjContent+"\n");
+				}
+				if(!yjbgContent.toString().trim().equals("")) {
+					kygz.append("研究（咨询）报告：\n");
+					kygz.append(yjbgContent+"\n");
+				}
+				if(!kyxmContent.toString().trim().equals("")) {
+					kygz.append("2011年科研立项：\n");
+					kygz.append(kyxmContent);
+				}
+				
+				
+				WordTable[] wt=new WordTable[10];
 				for(int arrayIndex=0; arrayIndex<wt.length; arrayIndex++){
 		        	wt[arrayIndex]=new WordTable();
 		        	switch(arrayIndex){
@@ -514,27 +531,11 @@ public class Shi2012ToWord {
 		        			wt[arrayIndex].originalText="instructionalState";
 		        			wt[arrayIndex].finalText=jxgz.toString();
 		        			break;
-		        		case 8://科研工作:学术论文
-		        			wt[arrayIndex].originalText="keyan1";
-		        			wt[arrayIndex].finalText=xslwContent.toString();
+		        		case 8://科研工作
+		        			wt[arrayIndex].originalText="kygz";
+		        			wt[arrayIndex].finalText=kygz.toString();
 		        			break;
-		        		case 9://科研工作:著作
-		        			wt[arrayIndex].originalText="keyan2";
-		        			wt[arrayIndex].finalText=zzContent.toString();
-		        			break;
-		        		case 10://科研工作：奖励
-		        			wt[arrayIndex].originalText="keyan3";
-		        			wt[arrayIndex].finalText=kyhjContent.toString();
-		        			break;
-		        		case 11://科研工作：研究（咨询）报告
-		        			wt[arrayIndex].originalText="keyan4";
-		        			wt[arrayIndex].finalText=yjbgContent.toString();
-		        			break;
-		        		case 12://科研工作：2011年科研立项
-		        			wt[arrayIndex].originalText="keyan5";
-		        			wt[arrayIndex].finalText=kyxmContent.toString();
-		        			break;
-		        		case 13: //其它工作
+		        		case 9: //其它工作
 		        			wt[arrayIndex].originalText="otherwork";
 		        			wt[arrayIndex].finalText=qtgzContent.toString();
 		        			break;
