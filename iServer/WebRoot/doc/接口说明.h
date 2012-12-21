@@ -21,8 +21,15 @@ isIpad: 0和1.分别代表是否是ipad版（返回的图片大小不一）
 
 //用户登陆
 #define MAG_USER_LOGIN_URL @"http://118.145.16.102:8080/iServer/user/iphone/checkLogin"
+loginName 
+loginPassword
 //注册
 #define MAG_USER_REGISTER_URL @"http://118.145.16.102:8080/iServer/user/iphone/register"
+userName
+password
+[dataBody appendData:[strBody dataUsingEncoding:NSUTF8StringEncoding]];
+
+
 #define DISSCUZ_MESSAGE_LIST_URL @"http://118.145.16.102:8080/iServer/comment/iphone/?count=%d&nid=%d&begin=%d"
 #define DISSCUZ_MESSAGE_DETAIL_URL @"http://118.145.16.102:8080/iServer/comment/iphone/detail/?tid=%@"
 //提交评论
