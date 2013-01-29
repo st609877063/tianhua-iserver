@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="common/taglibs.jsp" %>
 <c:set var="magazineId" value="${param.magazineId}"/>
 <c:set var="magazineName" value="${param.magazineName}"/>

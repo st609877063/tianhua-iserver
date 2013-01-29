@@ -1,4 +1,5 @@
-<%@page import="com.platform.database.GlobalVariables" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" import="com.platform.database.GlobalVariables"%>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

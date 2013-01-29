@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="common/taglibs.jsp" %>
 <c:set var="user" value="${sessionScope.username}"/>
 <c:set var="userId" value="${sessionScope.userId}"/>
