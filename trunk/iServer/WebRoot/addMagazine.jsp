@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" import="java.util.*" %>
 <%
 	String path = request.getContextPath();
 %>
