@@ -33,7 +33,7 @@ public class ModifyWordDocument {
 //服务器上
         
        // String modelLocation="D:"+File.separator+"20100930-bnuoa"+File.separator+"webserver"+File.separator+"webapps"+File.separator+"fe"+File.separator+"techerResume"+File.separator+"achievements"+File.separator;
-        String modelLocation = "E:/temp/";
+        String modelLocation = "E:/shi/2012/";
         
         // 打开一个已经存在的文档，本机测试地址
         Dispatch doc = Dispatch.call(wrdDocs, "Open", modelLocation+"教师考核表.doc").toDispatch();
@@ -78,7 +78,7 @@ public class ModifyWordDocument {
         //String location="E:"+File.separator+"FEfiles"+File.separator+"20100930-bnuoa"+File.separator+"webserver"+File.separator+"webapps"+File.separator+"fe"+File.separator+"techerResume"+File.separator+"achievements"+File.separator;
         //服务器上
        // String location="D:"+File.separator+"20100930-bnuoa"+File.separator+"webserver"+File.separator+"webapps"+File.separator+"fe"+File.separator+"techerResume"+File.separator+"achievements"+File.separator;
-        String location = "E:/temp/resume/";
+        String location = "E:/shi/";
         
         
 //        String fileName=""+thisYear+"年教师考核表_"+wt[2].finalText+"_"+wt[1].finalText+".doc";
