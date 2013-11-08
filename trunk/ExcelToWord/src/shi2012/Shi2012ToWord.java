@@ -239,7 +239,6 @@ public class Shi2012ToWord {
 						if(!qtTemp.equals("")) {
 							xzzwContent.append(qtTemp);
 						}
-						xzzwContent.append("\n");
 						xzzwNum++;
 					}
 				}
@@ -255,7 +254,7 @@ public class Shi2012ToWord {
 				
 				String xxshgzName1 = "";
 				int xxshgzNum = 1;
-				for(int xxshgzRowIndex=1; xxshgzRowIndex<xxshgzRowNum-1; xxshgzRowIndex++) {
+				for(int xxshgzRowIndex=0; xxshgzRowIndex<xxshgzRowNum-1; xxshgzRowIndex++) {
 					xxshgzName1 =  xxshgzRs.getCell(0, xxshgzRowIndex).getContents().trim() ; //第1完成人姓名
 					
 					//导出项目
@@ -264,7 +263,6 @@ public class Shi2012ToWord {
 						if(!temp1.equals("")) {
 							xxshgzContent.append(temp1);
 						}
-						xxshgzContent.append("\n");
 						xxshgzNum++;
 					}
 				}
