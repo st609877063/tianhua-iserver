@@ -1,0 +1,123 @@
+@charset "gbk";
+/* 
+政务通应用组件
+*/
+.color_01{color:#058dc7}
+.color_02{color:#ff4800}
+
+/**数据分析**/
+
+/*左侧导航按钮*/
+.zwp_nav .nav_arr_j{background-position:0 -1200px}
+.zwp_nav .nav_arr_k{background-position:0 -1248px}
+.zwp_nav .nav_arr_l{background-position:0 -1300px}
+.zwp_nav .nav_arr_m{background-position:0 -1347px}
+.zwp_nav .current .nav_arr_j{background-position:0 -1400px}
+.zwp_nav .current .nav_arr_k{background-position:0 -1448px}
+.zwp_nav .current .nav_arr_l{background-position:0 -1500px}
+.zwp_nav .current .nav_arr_m{background-position:0 -1547px}
+.zwp_nav .nav_arr_noicon,.zwp_nav .current .nav_arr_noicon{padding-left:29px;background-position:0 100px}
+.zwp_nav .sub_menu .nav_arr_noicon,.zwp_nav .current .sub_menu .nav_arr_noicon{padding-left:45px}
+
+
+/*顶部数据筛选*/
+.nav_wrap{border-bottom:2px solid #ddd;padding-bottom:7px;position:relative;z-index:1}
+.nav_wrap td{vertical-align:top}
+.blk_local{float:left;font:16px/20px "微软雅黑";}
+/*时间组*/
+.date_arr{float:right}
+.date_arr a:link,.date_arr a:visited{float:left;margin:0 2px;_display:inline;width:63px;height:24px;line-height:24px;border:1px solid #adb7c6;border-radius:3px;background-color:#fff;text-align:center}
+.date_arr a:hover{color:#68748a;text-decoration:none}
+.date_arr .current:link,.date_arr .current:visited,.date_arr .current:hover{color:#68748a;text-decoration:none;background-color:#e2e7ee}
+.date_detail{float:right;width:242px;padding:0 7px}
+.date_detail .date_on{position:relative;width:220px;padding:2px 12px 2px 8px;border-radius:3px;color:#68748a;text-align:left;border:1px solid #adb7c6;background:#dee3eb;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eceff4', endColorstr='#dee3eb', GradientType='0');background:-webkit-gradient(linear, left top, left bottom, color-stop(0.1, #eceff4),  color-stop(1, #dee3eb));background:-moz-linear-gradient(top, #eceff4, #dee3eb);box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 1px 1px rgba(0,0,0,.1);cursor:pointer}
+.date_detail .date_on:hover,.date_detail .selected{background:#eceff4;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dee3eb', endColorstr='#eceff4', GradientType='0');background:-webkit-gradient(linear, left top, left bottom, color-stop(0.1, #dee3eb),  color-stop(1, #eceff4));background:-moz-linear-gradient(top, #dee3eb, #eceff4);}
+.date_detail .date_on .arr{position:absolute;top:50%;margin-top:-2px;right:6px;width:7px;height:4px;display:block;background:url(../image/zwt_icon_s_02_d.png) no-repeat 100% -950px;_background-image:url(../image/zwt_icon_s_02_d_b8.png)}
+.date_detail .pb_date{position:relative;zoom:1}
+.pb_date .zwp_time_layer{top:7px;display:none}
+.pb_date .zwp_time_layer .layer_bg{width:240px}
+.pb_date .ZWT_Layer .list_rt_arr{position:absolute;top:-7px;top:-6px\9;left:50%;margin-left:-6px;font:12px/14px "SimSun";cursor:default;}
+.pb_date .date_set{text-align:left}
+.pb_date .date_set .key_date{width:82px;width:80px \9;height:22px;line-height:22px;font-family:Arial;text-align:center;color:#666;border:1px solid #cacaca}
+.pb_date .date_set .btn_arr{text-align:center;padding-top:13px}
+.pb_date .date_set .btn_arr .btn_lightblue{width:68px;padding:0;margin:0 5px}
+
+/*图表*/
+.chart_type {float:left;position:relative;padding-left:8px;width:141px;border:1px solid #ccc;}
+.chart_type a{display:block;height:21px;line-height:21px;cursor:pointer;white-space:nowrap}
+.chart_type a:hover{text-decoration:none;}
+.chart_type .s_select span {display:block;padding-right:20px;background: url("http://i0.peopleurl.cn/microblog-v3/images/wb_s_03.png") no-repeat scroll 100% -392px;_background:url(http://i0.peopleurl.cn/microblog-v3/images/wb_s_03_b8.png) no-repeat scroll 100% -394px;}
+.chart_type dt{}
+.chart_type dd{position:absolute;left:-1px;padding:5px;border:1px solid #ccc;background-color:#fff;display:none}
+.chart_type dd a{_width:139px;min-width:139px;}
+
+.subnav_wrap{padding:15px 0 10px;border-bottom:1px dashed #ccc}
+.subnav_wrap td{vertical-align:bottom}
+.subnav_wrap .date_a{float:right;color:#999;padding-left:25px;background:url(../image/chart_icon_01.png) no-repeat 0 -190px}
+.subnav_wrap .date_b{float:right;color:#999;padding-left:25px;background:url(../image/chart_icon_01.png) no-repeat 0 -240px}
+/*数据表格1*/
+.pb_total table{width:747px;border-collapse:separate;text-align:center}
+.pb_total td{width:143px;height:108px;border:1px solid #c2c2c2}
+.pb_total .pb_hd_01{font:14px/22px "微软雅黑";margin:5px 0}
+.pb_total .pb_num{font:700 18px/22px Arial;color:#333;margin-top:5px}
+.pb_total .pb_num_down{font:700 18px/22px Arial;color:#0a8a00;margin-top:5px}
+.pb_total .pb_num_down span{padding-left:15px;background:url(../image/chart_icon_01.png) no-repeat 0 5px;}
+.pb_total .pb_num_up{font:700 18px/22px Arial;color:#dc0201;margin-top:5px}
+.pb_total .pb_num_up span{padding-left:15px;background:url(../image/chart_icon_01.png) no-repeat 0 -45px;}
+.pb_total .num_detail{font-family:Arial}
+.pb_total .num_detail span{padding-left:10px;background:url(../image/chart_icon_01.png) no-repeat 0 -95px;}
+.pb_total .num_detail .num_a{background-position:0 -95px;margin-right:10px}
+.pb_total .num_detail .num_b{background-position:0 -145px}
+/*数据表格2*/
+.data_table_01{border-bottom:1px solid #c2c2c2;text-align:center}
+.data_table_01 th{height:32px;border:1px solid #c2c2c2;font-weight:700}
+.data_table_01 td{width:246px;height:32px;border-top:1px dashed #c2c2c2;border-left:1px solid #c2c2c2;border-right:1px solid #c2c2c2}
+
+/*签发微博*/
+.blk_04{padding:10px 0 0;*zoom:1}
+.blk_04 b{color:#0175a0;font-size:14px}
+
+/*签发微博列表*/
+.SWB_List_wrap{height:520px;overflow-x:hidden;overflow-y:auto;*position:relative;padding-right:20px;border-bottom:1px solid #cacaca}
+/* 微博列表 */
+.SWB_List{padding-bottom:40px;margin-top:-1px;}
+.SWB_List table{width:100%;}
+.SWB_List .SWB_items{border-top:1px dashed #ccc;padding:20px 0;*zoom:1;}
+.SWB_List .list_del{border:1px solid #e7a7a7;padding:20px 20px 19px;background:#fee!important;margin:-1px -20px 0;}
+.SWB_List .list_item:hover{background:#fcfcfc;}
+.SWB_List .list_face{float:left;}
+.SWB_List .list_detail{margin-left:69px;}
+.SWB_List .list_user{font-size:14px;line-height:16px;}
+.SWB_List .list_name{font-weight:bold;}
+.SWB_List .wb_cont{padding:10px;background-color:#f7f7f7;border:1px solid #ddd;margin:8px 0 0;}
+.SWB_List .list_text{font-size:14px;line-height:24px;color:#333;word-break:break-all;}
+.SWB_List .list_media{padding:5px 0 0;_position:relative;}
+.SWB_List .list_bottom{padding:6px 0 0;}
+.SWB_List .list_type{float:left;padding:0 8px 0 0;}
+.SWB_List .list_type a{display:inline-block;width:16px;height:20px;margin:0 7px 0 0}
+.SWB_List .list_type img{vertical-align:-3px;box-shadow:1px 1px 1px #999}
+.SWB_List .list_func{clear:both}
+.SWB_List .list_func .wb_staut{float:right;margin-right:15px;line-height:26px}
+.SWB_List .list_func .wb_ctrl{float:right}
+.SWB_List .list_func .wb_ctrl a{width:54px;padding:0;margin:0 7px 0 0}
+
+.SWB_Edit .SWB_items{border:none}
+.SWB_List .items_set{width:25px;line-height:50px;margin-top:20px}
+.SWB_Edit td{vertical-align:top;border-top:1px dashed #cacaca}
+
+/*操作记录*/
+/*图表*/
+.wb_ctrl_rec{float:right;}
+.wb_ctrl_rec .select_rec{position:relative;}
+.wb_ctrl_rec .select_rec .s_select{position:relative;z-index:1}
+.wb_ctrl_rec .select_rec .s_select:link,.wb_ctrl_rec .select_rec .s_select:visited{display:block;width:90px;border:1px solid #b9d3de;border-radius:3px;background-color:#e6ecf1;text-align:center;color:#017aa6;height:24px;line-height:24px}
+.wb_ctrl_rec .select_rec .s_select span {padding-right:20px;background:url(../image/zwt_icon_s_02_d.png) no-repeat 100% -845px;_background-image:url(../image/zwt_icon_s_02_d_b8.png)}
+
+.wb_ctrl_rec .select_rec dd{display:none;position:absolute;z-index:2;right:1px;top:30px}
+.wb_ctrl_rec .table_rec{border:1px solid #b9d3de;background-color:#e6ecf1;width:420px;table-layout:fixed;text-align:center;color:#71a2b4}
+.wb_ctrl_rec .table_rec tr{border-bottom:1px dashed #b9d3de;height:22px}
+.wb_ctrl_rec .show .s_select:link,.wb_ctrl_rec .show .s_select:visited,.wb_ctrl_rec .show .s_select:hover{border-bottom-style:dashed;border-bottom-left-radius:0;border-bottom-right-radius:0;padding-bottom:5px;color:#87b7c8;text-decoration:underline}
+.wb_ctrl_rec .show .s_select span {background-position:100% -895px}
+.wb_ctrl_rec .show dd{display:block}
+.wb_allset{padding:15px 0 5px;}
+.wb_allset a{margin:0 5px}

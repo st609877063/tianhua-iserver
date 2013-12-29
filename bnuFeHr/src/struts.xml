@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="message"/>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.maxSize" value="30000000" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<constant name="struts.allowed.action.names" value="[a-zA-Z0-9!]*" />
+
+	<package name="dptwb-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="authInterceptor" class="com.people.dptwb.interceptor.AuthorityInterceptor"></interceptor>
+			<interceptor-stack name="twitterStack">
+				<interceptor-ref name="authInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>				
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="twitterStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">/tologin.action</result>
+			<result name="input" type="redirect">/dptwb/blank_page.jsp</result>
+			<result name="error" type="redirect">/dptwb/blank_page.jsp</result>
+		</global-results>
+		
+	</package>
+	
+	<include file="struts-usermanage.xml" />
+	<include file="struts-home.xml" />
+
+</struts>
