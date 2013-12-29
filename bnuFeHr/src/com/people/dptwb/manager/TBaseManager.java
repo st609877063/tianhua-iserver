@@ -285,4 +285,8 @@ public class TBaseManager {
 	protected Connection getMainConnection(){
 		return ConnectionManager.getConnection();
 	}
+	
+	protected Connection getReadConnection(){
+		return ConnectionManager.getReadConnection();
+	}
 }

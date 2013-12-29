@@ -22,10 +22,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.map.ObjectMapper;
-
-import com.people.dptwb.constant.Constant;
 
 /**
  * 实用工具类
@@ -859,79 +855,6 @@ public class UtilTools {
 		
 	}
 	/********************************* 公用方法 end *************************************************/
-
-	/**
-	 * json字符串转List<Map>
-	 * 
-	 * @param json
-	 * @param str
-	 *            ：json node 节点
-	 * @return
-	 */
-	public static List<Map<String, Object>> jsonToList(String json,
-			String... str) {
-
-		Map<String, Object> map = null;
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			JsonNode node = objectMapper.readTree(json);
-			for (int i = 0; str.length > 0 && i < str.length; i++) {
-				node = node.get(str[i]);
-			}
-			for (int j = 0; node != null && j < node.size(); j++) {
-				map = objectMapper.readValue(node.get(j), Map.class);
-				list.add(map);
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	/**
-	 * json字符串转List<Map>
-	 * 
-	 * @param json
-	 * @param
-	 * @return
-	 */
-	public static Map<String, Object> jsonToMap(String json) {
-		Map<String, Object> map = null;
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			map = objectMapper.readValue(json, Map.class);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return map;
-	}
-	
-	/**
-	 * json字符串转List<Map>
-	 * 
-	 * @param json
-	 * @param 
-	 * @return
-	 */
-	public static Map<String, Object> jsonToMap(String json,String ...str) {
-		Map<String, Object> map = null;
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			JsonNode node = objectMapper.readTree(json);
-			for (int i = 0;str.length>0&& i < str.length; i++) {
-				node = node.get(str[i]);
-			}
-				map = objectMapper.readValue(node, Map.class);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return map;
-	}
 
 	/**
 	 * 字符串转map 类似 video : {picurl : xxx,player : xxx,realurl : xxx,shorturl :

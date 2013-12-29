@@ -40,7 +40,7 @@ public class HrManager extends TBaseManager {
 		Connection r2Conn = null;
 		StringBuilder sb = new StringBuilder();
 		try {
-			r2Conn = getMainConnection();
+			r2Conn = getReadConnection();
 			sb.append("select count(*) num from fe_users u where 1=1 ");
 			if (StringUtils.isNotBlank(bianhao)) {
 				sb.append(" and u.bianhao='").append(bianhao).append("' ");
@@ -82,7 +82,7 @@ public class HrManager extends TBaseManager {
 		}
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			rtnList = (List<FeUsers>) queryEntityList(mainConn, sb.toString(),
 					new FeUsers());
 		} catch (Exception e) {
@@ -103,7 +103,7 @@ public class HrManager extends TBaseManager {
 		}
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			rtnList = (List<FeChuguo>) queryEntityList(mainConn, sql,
 					new FeChuguo());
 		} catch (Exception e) {
@@ -121,7 +121,7 @@ public class HrManager extends TBaseManager {
 		String sql = "select distinct(jigou) from fe_users ";
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			List<Map<String, Object>> tempList = query(mainConn, sql);
 			if (tempList != null && tempList.size() > 0) {
 				rtnList = new ArrayList<String>();
@@ -151,7 +151,7 @@ public class HrManager extends TBaseManager {
 		String sql = "select distinct(jibie) from fe_users ";
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			List<Map<String, Object>> tempList = query(mainConn, sql);
 			if (tempList != null && tempList.size() > 0) {
 				rtnList = new ArrayList<String>();
@@ -194,7 +194,7 @@ public class HrManager extends TBaseManager {
 		sb.append(" group by ").append(weidu);
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			List<Map<String, Object>> tempList = query(mainConn, sb.toString());
 			if (tempList != null && tempList.size() > 0) {
 				dataMap = new HashMap<String, String>();
@@ -239,7 +239,7 @@ public class HrManager extends TBaseManager {
 		String sql = "";
 
 		try {
-			mainConn = getMainConnection();
+			mainConn = getReadConnection();
 			ResultSetHandler rsh = new MapListHandler();
 			QueryRunner qr = new QueryRunner();
 			ArrayList<Map> result = (ArrayList<Map>) qr.query(mainConn, sql, rsh);
