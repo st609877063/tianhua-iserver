@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="home" extends="dptwb-default">
+
+	<action name="hrHome" class="com.people.dptwb.action.home.HrHomeAction" method="toHrHome">
+		<result name="success">/dptwb/jsp/hr_home.jsp</result>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	<action name="hrDetail" class="com.people.dptwb.action.home.HrHomeAction" method="toHrDetail">
+		<result name="success">/dptwb/jsp/hr_detail.jsp</result>
+		<result name="error" type="redirect">hrHome.action</result>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	<action name="hrChartUser" class="com.people.dptwb.action.home.HrHomeAction" method="toHrChartUser">
+		<result name="success">/dptwb/jsp/hr_chart_users.jsp</result>
+		<result name="error" type="redirect">hrHome.action</result>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	<action name="hrChartChuguo" class="com.people.dptwb.action.home.HrHomeAction" method="toHrChartChuguo">
+		<result name="success">/dptwb/jsp/hr_chart_chuguo.jsp</result>
+		<result name="error" type="redirect">hrHome.action</result>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+	</action>
+	
+	</package>
+</struts>

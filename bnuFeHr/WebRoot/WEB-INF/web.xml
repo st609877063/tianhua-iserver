@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<!-- DWR -->
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- UrlRewriteFilter的过滤器 -->
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- struts2 -->
+	
+	<filter>
+        <filter-name>StrutsFilter</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>StrutsFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+	
+	<!-- 数据库连接池 -->
+	<servlet>
+		<servlet-name>InitDBFactoryServlet</servlet-name>
+		<servlet-class>com.people.dptwb.server.InitDBFactoryServlet</servlet-class>
+		<!-- log4j -->
+		<init-param>
+			<param-name>log4j-init</param-name>
+			<param-value>WEB-INF/classes/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- 欢迎页 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/dptwb/404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/dptwb/404.jsp</location>
+	</error-page>
+</web-app>

@@ -1,0 +1,61 @@
+@charset "utf-8";
+.page_login{height:500px;}
+.page_login .wrap{width:960px;margin:0 auto}
+.page_login .lg_top{width:100%;padding:50px 0 0;height:50px;text-align:right;background:url(../image/logo.jpg) no-repeat 0 0}
+.page_login .new_rgt{color:#017aa6}
+.lg_center{width:100%;height:400px;}
+.login_box{position:relative;top:33px;float:right;width:348px;height:338px;background:url(../image/login_fm_bg.png) no-repeat 0 0;_background-image:url(../image/login_fm_bg_b8.png)}
+.login_box .lg_msg{position:absolute;top:47px;left:61px;_width:100%;padding-left:20px;background:url(../image/alarm.png) no-repeat 0 4px;color:#cb0000}
+.login_box .lg_msg a:link,.login_box .lg_msg a:visited,.login_box .lg_msg a:hover{color:#017aa6}
+.login_box .fm_group{position:relative;_zoom:1}
+.login_box .wgt_text{line-height:20px;margin:10px 0;border:1px solid #b1b1b1;border-radius:3px;border-radius:4px \9;background:#fff;color:#aaa;height:20px;width:230px;padding:11px 10px;box-shadow: inset 1px 1px 3px rgba(0,0,0,.2)}
+.login_box .selected{border-color:#017aa6;box-shadow:0 0 5px rgba(1,122,166,.5);color:#333}
+.login_box .wgt_smit{height:46px;width:252px;margin:11px 0;border:none;line-height:20px;background:none;;color:#aaa;cursor:pointer;padding:0;background:url(../image/logo_btn.png) no-repeat 0 0;_background-image:url(../image/logo_btn_b8.png) }
+.login_box .wgt_smit:hover{background-position:0 -100px}
+.login_box .randNum:link,.login_box .randNum:visited{position:absolute;height:28px;line-height:28px;width:84px;padding:0;right:41px;top:50%;margin-top:-15px;}
+.login_box .randNum:hover{border-color:#9ba4b1;background:#eceff4;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eceff4', GradientType='0');background:-webkit-gradient(linear, left top, left bottom, color-stop(0.1, #ffffff),  color-stop(1, #eceff4));background:-moz-linear-gradient(top, #ffffff, #eceff4);}
+.pb_layer{position:absolute;top:53px;left:0;width:249px;line-height:24px;background-color:#ffefd6;border:1px solid #efcd73;color:#bb975f;text-align:center}
+.pb_layer  .Layer_close:link,.pb_layer  .Layer_close:visited{position:absolute;right:5px;top:6px;width:12px;height:12px;background:url(../image/zwt_s_01_d.png) no-repeat 2px -48px;overflow:hidden;line-height:200px;outline:none;_background-image:url(../image/zwt_s_01_d_b8.png)}
+.pb_layer  .Layer_close:hover{background-position:-48px -48px}
+.pb_layer .list_rt_arr{position:absolute;top:-7px;top:-7px\9;_top:-6px;right:9px;font:12px/14px "SimSun";cursor:default;}
+.pb_layer .line_rt_arr_line1{color:#efcd73;display:inline-block;vertical-align:top;}
+.pb_layer .line_rt_arr_line2{color:#ffefd6;margin-left:-12px;line-height:16px;display:inline-block;vertical-align:top;}
+.randNum_layer{z-index:10;text-align:left}
+.randNum_cont{padding:20px 20px 10px 35px}
+.randNum_cont .wgt_text03{float:left;width:108px;height:21px;padding:2px 5px; background-color:#fff;border:1px solid #bbb}
+.randNum_cont .randNum_pic{float:right;text-align:right;height:27px;line-height:27px;padding:0 0 17px 0}
+.randNum_cont .randNum_pic a{color:#bb975f}
+.randNum_cont .randNum_get{width:178px;height:26px;background:url(../image/icon_getNum.png) no-repeat 0 0;padding:0;border:none;cursor:pointer;}
+
+/*20131125优化*/
+/*登录左侧滚动信息*/
+.lg_picScrool{float:left;padding:25px 0 0 20px;width:560px;overflow:hidden;_display:inline}
+.lg_picScrool ul{}
+.lg_picScrool ul li{display:none;width:560px;height:330px;}
+.lg_picScrool a{display:block;}
+.lg_picScrool .nums_list{text-align:center;}
+.lg_picScrool .nums_list a {display:inline-block;background:url(../image/top_pic_arr.png) no-repeat 100% 0;cursor: pointer;width:8px;height: 12px;line-height:200;overflow: hidden;margin:0 4px 0 3px;-webkit-transition:All .5s ease; -moz-transition:All .5s ease; -o-transition:All .5s ease;transition: all 0.5s ease 0s;}
+.lg_picScrool .nums_list a.on {background-position:0 0}
+
+/*忘记密码*/
+.fm_findPswd{padding:20px 0 0 50px}
+.fm_findPswd form{padding:45px 0;}
+.fm_findPswd li{padding:5px 0;font-size:14px;line-height:27px;}
+.fm_findPswd label{display:inline-block;width:78px;vertical-align:top;}
+.fm_findPswd .rg_text{border:1px solid #c2c2c2;padding:4px 5px;height:17px;line-height:17px;color:#999;width:347px;vertical-align:top}
+.fm_findPswd textarea{border:1px solid #c2c2c2;padding:4px 5px;color:#999;width:347px;height:117px;overflow-x:hidden;overflow-y:auto;vertical-align:text-top}
+/*表单交互反馈*/
+.fm_findPswd b{color:#f00;font-style:normal;}
+.fm_findPswd i{font-style:normal;font-size:12px}
+.fm_findPswd .info_ok{display:inline-block;width:27px;height:27px;background:url(../image/zwt_s_02_d.png) no-repeat 0 -200px;vertical-align:top;_background-image:url(../image/zwt_s_02_d_b8.png)}
+.fm_findPswd .info_false{display:inline-block;padding-left:20px;background:url(../image/alarm.png) no-repeat 0 4px;color:#cb0000;font-size:12px;line-height:20px;margin-left:15px}
+.fm_findPswd .fm_tips{display:inline-block;width:230px;height:34px;line-height:34px;border:1px solid #efcd73;color:#bb975f;text-align:center;margin-left:23px;background-color:#ffefd6;}
+.fm_findPswd .fm_tips a{color:#0179a5}
+/*表单按钮（下一步、提交、确定、）*/
+.fm_findPswd .btn_next{width:102px;height:37px;background:url(../image/btn_arr_01.png) no-repeat 0 0;padding:0;border:none;cursor:pointer}
+.fm_findPswd .btn_next:hover{background-position:100% 0}
+.fm_findPswd .btn_send{width:102px;height:37px;background:url(../image/H_btn_send.png) no-repeat 0 0;padding:0;border:none;cursor:pointer}
+.fm_findPswd .btn_send:hover{background-position:100% 0}
+.fm_findPswd .btn_ok{width:102px;height:37px;background:url(../image/btn_arr_01.png) no-repeat 0 -50px;padding:0;border:none;cursor:pointer}
+.fm_findPswd .btn_ok:hover{background-position:100% -50px}
+
